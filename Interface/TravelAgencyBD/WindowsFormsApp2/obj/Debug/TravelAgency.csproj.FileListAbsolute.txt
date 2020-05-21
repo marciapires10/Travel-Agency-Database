@@ -8,3 +8,13 @@ C:\Users\marci\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\TravelAg
 C:\Users\marci\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\TravelAgency.csproj.CoreCompileInputs.cache
 C:\Users\marci\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.exe
 C:\Users\marci\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.pdb
+C:\Users\marci\Desktop\BD_Projeto\BD_travel_agency\Interface\TravelAgencyBD\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.exe.config
+C:\Users\marci\Desktop\BD_Projeto\BD_travel_agency\Interface\TravelAgencyBD\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.exe
+C:\Users\marci\Desktop\BD_Projeto\BD_travel_agency\Interface\TravelAgencyBD\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.pdb
+C:\Users\marci\Desktop\BD_Projeto\BD_travel_agency\Interface\TravelAgencyBD\WindowsFormsApp2\obj\Debug\TravelAgency.csprojAssemblyReference.cache
+C:\Users\marci\Desktop\BD_Projeto\BD_travel_agency\Interface\TravelAgencyBD\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.Form1.resources
+C:\Users\marci\Desktop\BD_Projeto\BD_travel_agency\Interface\TravelAgencyBD\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.Properties.Resources.resources
+C:\Users\marci\Desktop\BD_Projeto\BD_travel_agency\Interface\TravelAgencyBD\WindowsFormsApp2\obj\Debug\TravelAgency.csproj.GenerateResource.cache
+C:\Users\marci\Desktop\BD_Projeto\BD_travel_agency\Interface\TravelAgencyBD\WindowsFormsApp2\obj\Debug\TravelAgency.csproj.CoreCompileInputs.cache
+C:\Users\marci\Desktop\BD_Projeto\BD_travel_agency\Interface\TravelAgencyBD\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.exe
+C:\Users\marci\Desktop\BD_Projeto\BD_travel_agency\Interface\TravelAgencyBD\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.pdb

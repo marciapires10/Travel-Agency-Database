@@ -18,7 +18,6 @@ namespace WindowsFormsApp2
         public Form1()
         {
             this.AutoSize = true;
-            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             InitializeComponent();
         }
 
