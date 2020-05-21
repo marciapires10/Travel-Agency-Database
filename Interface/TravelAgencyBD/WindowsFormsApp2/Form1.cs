@@ -52,8 +52,6 @@ namespace WindowsFormsApp2
             if (!verifySGBDConnection())
                 return;
 
-            //cn = getSGBDConnection();
-
 
             string email = textBox1.Text;
             string password = textBox2.Text;
@@ -70,7 +68,7 @@ namespace WindowsFormsApp2
                 return;
             }
 
-            SqlCommand cmd = new SqlCommand("SELECT Email, Password FROM TravelAgency.Agent WHERE Email= @Email AND Password= @Password", cn);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM TravelAgency.Agent WHERE Email= @Email AND Password= @Password", cn);
 
             SqlParameter aEmail = new SqlParameter("@Email", SqlDbType.VarChar);
             SqlParameter aPassword = new SqlParameter("@Password", SqlDbType.VarChar);
@@ -89,6 +87,8 @@ namespace WindowsFormsApp2
             {
                 MessageBox.Show("You have logged in successfully" + email);
                 this.Hide();
+                Form2 page2 = new Form2();
+                page2.ShowDialog();
             }
 
             else
