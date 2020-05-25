@@ -56,46 +56,55 @@ namespace WindowsFormsApp2
             string email = textBox1.Text;
             string password = textBox2.Text;
 
-            if(email == "")
+
+            if (email == "" && password == "")
+            {
+                MessageBox.Show("Inputs cannot be left in blank", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            else if (email == "")
             {
                 MessageBox.Show("Please enter e-mail", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if(password == "")
+            else if (password == "")
             {
                 MessageBox.Show("Please enter password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            SqlCommand cmd = new SqlCommand("SELECT * FROM TravelAgency.Agent WHERE Email= @Email AND Password= @Password", cn);
-
-            SqlParameter aEmail = new SqlParameter("@Email", SqlDbType.VarChar);
-            SqlParameter aPassword = new SqlParameter("@Password", SqlDbType.VarChar);
-
-            cmd.Parameters.Add(aEmail);
-            cmd.Parameters.Add(aPassword);
-
-            cmd.Parameters["@Email"].Value = email;
-            cmd.Parameters["@Password"].Value = password;
-
-            cmd.Connection = cn;
-
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            if (reader.Read())
-            {
-                MessageBox.Show("You have logged in successfully" + email);
-                this.Hide();
-                Form2 page2 = new Form2();
-                page2.ShowDialog();
-            }
-
             else
             {
-                MessageBox.Show("Login failed, try again", "Login Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM TravelAgency.Agent WHERE Email= @Email AND Password= @Password", cn);
+
+                SqlParameter aEmail = new SqlParameter("@Email", SqlDbType.VarChar);
+                SqlParameter aPassword = new SqlParameter("@Password", SqlDbType.VarChar);
+
+                cmd.Parameters.Add(aEmail);
+                cmd.Parameters.Add(aPassword);
+
+                cmd.Parameters["@Email"].Value = email;
+                cmd.Parameters["@Password"].Value = password;
+
+                cmd.Connection = cn;
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    MessageBox.Show("You have logged in successfully\n" + email);
+                    this.Hide();
+                    Form2 menu = new Form2();
+                    menu.ShowDialog();
+                }
+
+                else
+                {
+                    MessageBox.Show("Login failed, try again", "Login Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
+            
             cn.Close();
         }
 

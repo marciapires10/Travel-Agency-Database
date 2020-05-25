@@ -42,6 +42,20 @@ namespace WindowsFormsApp2
         }
 
 
+        private void AddCustomer()
+        {
+            if (!verifySGBDConnection())
+            {
+                return;
+            }
+
+            SqlCommand cmd = new SqlCommand();
+
+           
+            
+
+        }
+
 
         // button to cancel action, close actual form
         private void button1_Click(object sender, EventArgs e)
@@ -63,6 +77,8 @@ namespace WindowsFormsApp2
             string nif = textBox4.Text;
             string phoneno = textBox5.Text;
         }
+
+        
     } 
 
 }
