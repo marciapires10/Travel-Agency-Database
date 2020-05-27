@@ -68,17 +68,19 @@ namespace WindowsFormsApp2
             }
 
 
-            SqlCommand cmd = new SqlCommand("SELECT * FROM TravelAgency.Person", cn);
+            SqlCommand cmd = new SqlCommand("Select Person.Email, Person.Fname, Person.Lname, Person.phoneNo, CustID, NIF from TravelAgency.Customer Join TravelAgency.Person ON TravelAgency.Customer.Email = TravelAgency.Person.Email;", cn);
             SqlDataReader reader = cmd.ExecuteReader();
             listBox1.Items.Clear();
 
             while (reader.Read())
             {
-                Person p = new Person();
+                Customer p = new Customer();
                 p.Email = reader["Email"].ToString();
                 p.Fname = reader["Fname"].ToString();
                 p.Lname = reader["Lname"].ToString();
                 p.PhoneNo = reader["phoneNo"].ToString();
+                p.ID = reader["CustID"].ToString();
+                p.NIF = reader["NIF"].ToString();
                 listBox1.Items.Add(p);
             }
 
@@ -95,12 +97,14 @@ namespace WindowsFormsApp2
                 return;
             }
 
-            Person p = new Person();
-            p = (Person)listBox1.Items[currentCustomer];
-            lbFname.Text = p.Fname;
-            lbLname.Text = p.Lname;
-            lbEmail.Text = p.Email;
-            lbPhone.Text = p.PhoneNo;
+            Customer p = new Customer();
+            p = (Customer)listBox1.Items[currentCustomer];
+            lbFname.Text = "Name: "+ p.Fname + " " + p.Lname;
+            lbCustID.Text = "Customer ID: "+p.ID;
+            lbNIF.Text ="NIF: "+ p.NIF;
+            lbEmail.Text = "Email: "+p.Email;
+            lbPhone.Text = "Phone number: "+p.PhoneNo;
+
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -180,7 +184,7 @@ namespace WindowsFormsApp2
             {
                 MessageBox.Show("Could not found destination", "Accommodation", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
+            
             cn.Close();
         }
 

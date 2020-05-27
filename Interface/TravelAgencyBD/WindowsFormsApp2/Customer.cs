@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp2
 {
-    class Customer 
+    class Customer:Person
     {
         private string _ID;
         private string _NIF;
@@ -24,10 +24,18 @@ namespace WindowsFormsApp2
         }
 
 
-        public Customer(string _ID, string _NIF)
+        public Customer(string _ID, string _NIF, string _email, string _fname, string _lname, string _phoneNo)
         {
             this._ID = _ID;
             this._NIF = _NIF;
+            this.Email = _email;
+            this.Fname = _fname;
+            this.Lname = _lname;
+            this.PhoneNo = _phoneNo;
+        }
+
+        public Customer() { 
+        
         }
     }
 }
