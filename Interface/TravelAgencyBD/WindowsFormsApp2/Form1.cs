@@ -75,22 +75,26 @@ namespace WindowsFormsApp2
             }
             else
             {
-                SqlCommand cmd = new SqlCommand("SELECT * FROM TravelAgency.Agent WHERE Email= @Email AND Password= @Password", cn);
+                SqlCommand cmd = new SqlCommand("TravelAgency.VerifyAgent", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter aEmail = new SqlParameter("@Email", SqlDbType.VarChar);
-                SqlParameter aPassword = new SqlParameter("@Password", SqlDbType.VarChar);
+                SqlParameter aPassword = new SqlParameter("@AccountPwd", SqlDbType.VarChar);
 
                 cmd.Parameters.Add(aEmail);
                 cmd.Parameters.Add(aPassword);
 
                 cmd.Parameters["@Email"].Value = email;
-                cmd.Parameters["@Password"].Value = password;
+                cmd.Parameters["@AccountPwd"].Value = password;
 
                 cmd.Connection = cn;
 
+                int i = cmd.ExecuteNonQuery();
+                MessageBox.Show(i.ToString());
+
                 SqlDataReader reader = cmd.ExecuteReader();
 
-                if (reader.Read())
+                if (reader.Read() || i == 1)
                 {
                     MessageBox.Show("You have logged in successfully\n" + email);
                     this.Hide();

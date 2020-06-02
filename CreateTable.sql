@@ -9,13 +9,35 @@ CREATE TABLE TravelAgency.Person(
 	PRIMARY KEY(Email),
 );
 
+
+-- Old Agent Table - not in use
 CREATE TABLE TravelAgency.Agent(
 	AgID			INT			NOT NULL,
-	Password		VARCHAR(50)	NOT NULL,
+	Password		VARCHAR(100)	NOT NULL,
 	Email			VARCHAR(60)	NOT NULL,
 	PRIMARY KEY(AgID),
 	FOREIGN KEY(Email) REFERENCES TravelAgency.Person(Email),
 );
+
+
+-- New Agent Table
+CREATE TABLE [TravelAgency].[Agent](
+	[AgID] [int] NOT NULL,
+	[Password] [varbinary](20),
+	[Salt] CHAR(25),
+	[Email] [varchar](60) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[AgID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [TravelAgency].[Agent]  WITH CHECK ADD  CONSTRAINT [FK__Agent__Email__20CCCE1C] FOREIGN KEY([Email])
+REFERENCES [TravelAgency].[Person] ([Email])
+GO
+ALTER TABLE [TravelAgency].[Agent] CHECK CONSTRAINT [FK__Agent__Email__20CCCE1C]
+GO
+
 
 
 CREATE TABLE TravelAgency.Customer(

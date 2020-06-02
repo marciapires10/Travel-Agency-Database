@@ -1,4 +1,26 @@
-INSERT INTO Agent([AgID],[Password],[Email]) VALUES(1,'CLJ76KJO1JB','gravida.Aliquam@quis.org'),(2,'WNV63NAB5IX','in@tellusNunclectus.edu'),(3,'XFE33OHT6ZM','Sed.dictum.Proin@seddolor.net'),(4,'UGO58OPU4CF','faucibus.ut@massa.net');
+INSERT INTO TravelAgency.Agent([AgID],[Password],[Email]) VALUES(1,'CLJ76KJO1JB','gravida.Aliquam@quis.org'),(2,'WNV63NAB5IX','in@tellusNunclectus.edu'),(3,'XFE33OHT6ZM','Sed.dictum.Proin@seddolor.net'),(4,'UGO58OPU4CF','faucibus.ut@massa.net');
+
+USE p1g9; 
+GO 
+
+EXEC TravelAgency.CreateAccount @NewAgID = 1, @NewAccountPwd = 'CLJ76KJO1JB', @Email = 'gravida.Aliquam@quis.org';
+GO 
+
+SELECT * FROM TravelAgency.SecurityAccounts;
+
+DECLARE @Result TINYINT;
+
+EXEC @Result = TravelAgency.VerifyAccount @AgID = 1, @AccountPwd = 'CLJ76KJO1JB';
+SELECT @Result;
+
+
+EXEC @Result = TravelAgency.VerifyAccount @AgID = 1, @AccountPwd = 'WeakP4ssw0rd!';
+SELECT @Result;
+GO 
+
+
+
+
 INSERT INTO Agent([AgID],[Password],[Email]) VALUES(5,'KDH55IBK1GC','vulputate@Nullamutnisi.org'),(6,'MSO18BUA2MS','diam.luctus@rutrumFuscedolor.com'),(7,'TTG43JTO2XV','tincidunt@nec.com'),(8,'OBX18ZIN7CL','dui.quis.accumsan@nequeInornare.ca');
 INSERT INTO Agent([AgID],[Password],[Email]) VALUES(9,'AQG67HFR3JC','orci.consectetuer@lorem.net'),(10,'UPT50ETI2RW','commodo.at.libero@Fuscealiquet.net'),(11,'DNW91ZLV5ET','neque@Crasinterdum.edu'),(12,'HLO97EKW9BC','leo@in.org');
 INSERT INTO Agent([AgID],[Password],[Email]) VALUES(13,'SEN12HXX5OE','non.enim.Mauris@mauris.org'),(14,'DQF11JUK6DA','Curabitur.ut.odio@Morbi.com'),(15,'LCN45TRG1MU','libero@luctusaliquetodio.co.uk'),(16,'GGE32MMK5AV','lectus.rutrum@ut.org');
