@@ -41,7 +41,7 @@ GO
 
 
 CREATE TABLE TravelAgency.Customer(
-	CustID			INT			NOT NULL,
+	CustID			INT			NOT NULL	identity(1,1),
 	NIF				INT			check(NIF > 100000000),
 	Email			VARCHAR(60)	NOT NULL,
 	PRIMARY KEY(CustID),

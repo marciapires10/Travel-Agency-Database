@@ -1,9 +1,8 @@
-CREATE PROCEDURE TravelAgency.spAddCostumer
+CREATE PROCEDURE TravelAgency.spAddCustomer
 	@Email VARCHAR(max),
 	@Fname VARCHAR(max),
 	@Lname VARCHAR(max),
 	@PhoneNo INT,
-	@CustId INT,
 	@NIF INT,
 	@responseMsg NVARCHAR(250) output
 
@@ -16,8 +15,8 @@ BEGIN
 					INSERT INTO TravelAgency.Person (Email, Fname, Lname, PhoneNo) 
 					VALUES (@Email, @Fname, @Lname, @PhoneNo)
 
-					INSERT INTO TravelAgency.Customer(CustID, NIF, Email)
-					VALUES (@CustId, @NIF, @Email)
+					INSERT INTO TravelAgency.Customer(NIF, Email)
+					VALUES (@NIF, @Email)
 
 					SET @responseMsg = 'Success'
 		END TRY

@@ -79,7 +79,6 @@ namespace WindowsFormsApp2
                 p.Fname = reader["Fname"].ToString();
                 p.Lname = reader["Lname"].ToString();
                 p.PhoneNo = reader["phoneNo"].ToString();
-                p.ID = reader["CustID"].ToString();
                 p.NIF = reader["NIF"].ToString();
                 listBox1.Items.Add(p);
             }
@@ -204,8 +203,6 @@ namespace WindowsFormsApp2
             int NIF = Int32.Parse(textBox5.Text);
             int phoneNo = Int32.Parse(textBox6.Text);
 
-            int custID = 100;
-
             if (string.IsNullOrEmpty(fname))
             {
                 MessageBox.Show("First name has to be defined!", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -228,19 +225,20 @@ namespace WindowsFormsApp2
                     CommandText = "TravelAgency.spAddCustomer"
                 };
 
+
                 cmd.Parameters.Add(new SqlParameter("@Fname", SqlDbType.VarChar));
                 cmd.Parameters.Add(new SqlParameter("@Lname", SqlDbType.VarChar));
                 cmd.Parameters.Add(new SqlParameter("@Email", SqlDbType.VarChar));
                 cmd.Parameters.Add(new SqlParameter("@NIF", SqlDbType.Int));
                 cmd.Parameters.Add(new SqlParameter("@PhoneNo", SqlDbType.Int));
-                cmd.Parameters.Add(new SqlParameter("@CustID", SqlDbType.Int));
+                //cmd.Parameters.Add(new SqlParameter("@CustID", SqlDbType.Int));
                 cmd.Parameters.Add(new SqlParameter("@responseMsg", SqlDbType.NVarChar, 250));
                 cmd.Parameters["@Fname"].Value = fname;
                 cmd.Parameters["@Lname"].Value = lname;
                 cmd.Parameters["@Email"].Value = email;
                 cmd.Parameters["@NIF"].Value = NIF;
                 cmd.Parameters["@PhoneNo"].Value = phoneNo;
-                cmd.Parameters["@CustID"].Value = custID;
+                //cmd.Parameters["@CustID"].Value = custID;
                 cmd.Parameters["@responseMsg"].Direction = ParameterDirection.Output;
 
                 if (!verifySGBDConnection())
@@ -251,7 +249,77 @@ namespace WindowsFormsApp2
                 cmd.Connection = cn;
                 cmd.ExecuteNonQuery();
 
+                if ("" + cmd.Parameters["@responseMsg"].Value == "Success")
+                {
+                    MessageBox.Show("Customer added");
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Customer already exists", "Registration Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
                 cn.Close();
+            }
+        }
+
+        private void editCustomer()
+        {
+            string fname = textBox2.Text;
+            string lname = textBox3.Text;
+            string email = textBox4.Text;
+            int NIF = Int32.Parse(textBox5.Text);
+            int phoneNo = Int32.Parse(textBox6.Text);
+
+            if (string.IsNullOrEmpty(fname))
+            {
+                MessageBox.Show("First name has to be defined!", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            if (string.IsNullOrEmpty(lname))
+            {
+                MessageBox.Show("Last name has to be defined!", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                SqlCommand cmd = new SqlCommand
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    CommandText = "TravelAgency.spEditCustomer"
+                };
+
+                cmd.Parameters.Add(new SqlParameter("@Fname", SqlDbType.VarChar));
+                cmd.Parameters.Add(new SqlParameter("@Lname", SqlDbType.VarChar));
+                cmd.Parameters.Add(new SqlParameter("@Email", SqlDbType.VarChar));
+                cmd.Parameters.Add(new SqlParameter("@NIF", SqlDbType.Int));
+                cmd.Parameters.Add(new SqlParameter("@PhoneNo", SqlDbType.Int));
+                cmd.Parameters.Add(new SqlParameter("@responseMsg", SqlDbType.NVarChar, 250));
+                cmd.Parameters["@Fname"].Value = fname;
+                cmd.Parameters["@Lname"].Value = lname;
+                cmd.Parameters["@Email"].Value = email;
+                cmd.Parameters["@NIF"].Value = NIF;
+                cmd.Parameters["@PhoneNo"].Value = phoneNo;
+                cmd.Parameters["@responseMsg"].Direction = ParameterDirection.Output;
+
+                if (!verifySGBDConnection())
+                {
+                    return;
+                }
+
+                cmd.Connection = cn;
+                cmd.ExecuteNonQuery();
+
+                if ("" + cmd.Parameters["@responseMsg"].Value == "Success")
+                {
+                    MessageBox.Show("Success");
+                }
+                else
+                {
+                    MessageBox.Show("Error");
+                }
+
+                cn.Close();
+
             }
         }
 
@@ -317,6 +385,15 @@ namespace WindowsFormsApp2
             textBox6.ReadOnly = false;
         }
 
+        public void clearFields()
+        {
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+            textBox5.Text = "";
+            textBox6.Text = "";
+        }
+
         private void button4_Click(object sender, EventArgs e)
         {
             searchAcc();
@@ -325,14 +402,22 @@ namespace WindowsFormsApp2
         // want to add new Customer
         private void btn_Add_Click(object sender, EventArgs e)
         {
-            addCustomer();
-            loadCustomers();
+            unlockControls();
+            textBox4.ReadOnly = false;
+            clearFields();
+            btn_Add.Visible = false;
+            btn_Edit.Visible = false;
+            btn_Remove.Visible = false;
+            btn_OK.Visible = true;
+            btn_Cancel.Visible = true;
         }
 
         // want to edit a Customer
         private void btn_Edit_Click(object sender, EventArgs e)
         {
             unlockControls();
+            editCustomer();
+            loadCustomers();
         }
 
         // want to delete a Customer
@@ -347,7 +432,8 @@ namespace WindowsFormsApp2
         // confirm
         private void btn_OK_Click(object sender, EventArgs e)
         {
-
+            addCustomer();
+            loadCustomers();
         }
 
         // cancel
