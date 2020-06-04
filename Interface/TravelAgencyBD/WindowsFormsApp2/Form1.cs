@@ -94,7 +94,7 @@ namespace WindowsFormsApp2
 
                 SqlDataReader reader = cmd.ExecuteReader();
 
-                if (reader.Read() || i == 1)
+                if (reader.Read() || i != 1)
                 {
                     MessageBox.Show("You have logged in successfully\n" + email);
                     this.Hide();

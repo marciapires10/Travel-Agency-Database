@@ -87,6 +87,7 @@ namespace WindowsFormsApp2
             cn.Close();
 
             currentCustomer++;
+            showButtonsCustomer();
             //showCustomer();
         }
 
@@ -99,11 +100,18 @@ namespace WindowsFormsApp2
 
             Customer p = new Customer();
             p = (Customer)listBox1.Items[currentCustomer];
-            lbFname.Text = "Name: "+ p.Fname + " " + p.Lname;
-            lbCustID.Text = "Customer ID: "+p.ID;
-            lbNIF.Text ="NIF: "+ p.NIF;
-            lbEmail.Text = "Email: "+p.Email;
-            lbPhone.Text = "Phone number: "+p.PhoneNo;
+            textBox2.Text = p.Fname;
+            textBox3.Text = p.Lname;
+            textBox4.Text = p.Email;
+            textBox5.Text = p.NIF;
+            textBox6.Text = p.PhoneNo;
+
+            textBox2.ReadOnly = true;
+            textBox3.ReadOnly = true;
+            textBox4.ReadOnly = true;
+            textBox5.ReadOnly = true;
+            textBox6.ReadOnly = true;
+
 
         }
 
@@ -188,9 +196,104 @@ namespace WindowsFormsApp2
             cn.Close();
         }
 
+        private void removeCustomer()
+        {
+            string email = textBox4.Text;
+            if (string.IsNullOrEmpty(email))
+            {
+                MessageBox.Show("Username has to be defined.", "Input error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
+            else
+            {
+                SqlCommand cmd = new SqlCommand
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    CommandText = "TravelAgency.spDeleteCustomer"
+                };
+
+                cmd.Parameters.Add(new SqlParameter("@Email", SqlDbType.VarChar));
+                cmd.Parameters.Add(new SqlParameter("@responseMsg", SqlDbType.NVarChar, 250));
+                cmd.Parameters["@Email"].Value = email;
+                cmd.Parameters["@responseMsg"].Direction = ParameterDirection.Output;
+
+                if (!verifySGBDConnection())
+                {
+                    return;
+                }
+
+                cmd.Connection = cn;
+                cmd.ExecuteNonQuery();
+
+                if ("" + cmd.Parameters["@responseMsg"].Value == "Success")
+                {
+                    MessageBox.Show("" + cmd.Parameters["@responseMsg"].Value);
+                }
+                else
+                {
+                    MessageBox.Show("" + cmd.Parameters["@responseMsg"].Value, "Remove User", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                textBox4.Text = "";
+                cn.Close();
+            }
+        }
+
+
+        public void showButtonsCustomer()
+        {
+            btn_Add.Visible = true;
+            btn_Edit.Visible = true;
+            btn_Remove.Visible = true;
+            btn_OK.Visible = false;
+            btn_Cancel.Visible = false;
+        }
+
+
+        public void unlockControls()
+        {
+            textBox2.ReadOnly = false;
+            textBox3.ReadOnly = false;
+            textBox5.ReadOnly = false;
+            textBox6.ReadOnly = false;
+        }
+
         private void button4_Click(object sender, EventArgs e)
         {
             searchAcc();
+        }
+
+        // want to add new Customer
+        private void btn_Add_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // want to edit a Customer
+        private void btn_Edit_Click(object sender, EventArgs e)
+        {
+            unlockControls();
+        }
+
+        // want to delete a Customer
+        private void btn_Remove_Click(object sender, EventArgs e)
+        {
+            removeCustomer();
+            loadCustomers();
+            
+
+        }
+
+        // confirm
+        private void btn_OK_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // cancel
+        private void btn_Cancel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
