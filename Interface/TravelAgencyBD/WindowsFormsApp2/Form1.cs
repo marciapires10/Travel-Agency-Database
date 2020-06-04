@@ -80,21 +80,21 @@ namespace WindowsFormsApp2
 
                 SqlParameter aEmail = new SqlParameter("@Email", SqlDbType.VarChar);
                 SqlParameter aPassword = new SqlParameter("@AccountPwd", SqlDbType.VarChar);
+                SqlParameter aResult = new SqlParameter("@Result", SqlDbType.Int);
 
                 cmd.Parameters.Add(aEmail);
                 cmd.Parameters.Add(aPassword);
+                cmd.Parameters.Add(aResult);
 
                 cmd.Parameters["@Email"].Value = email;
                 cmd.Parameters["@AccountPwd"].Value = password;
-
+                cmd.Parameters["@Result"].Direction = ParameterDirection.Output;
                 cmd.Connection = cn;
 
-                int i = cmd.ExecuteNonQuery();
-                MessageBox.Show(i.ToString());
+                cmd.ExecuteNonQuery();
 
-                SqlDataReader reader = cmd.ExecuteReader();
 
-                if (reader.Read() || i != 1)
+                if ((int)cmd.Parameters["@Result"].Value == 1)
                 {
                     MessageBox.Show("You have logged in successfully\n" + email);
                     this.Hide();
