@@ -196,6 +196,65 @@ namespace WindowsFormsApp2
             cn.Close();
         }
 
+        private void addCustomer()
+        {
+            string fname = textBox2.Text;
+            string lname = textBox3.Text;
+            string email = textBox4.Text;
+            int NIF = Int32.Parse(textBox5.Text);
+            int phoneNo = Int32.Parse(textBox6.Text);
+
+            int custID = 100;
+
+            if (string.IsNullOrEmpty(fname))
+            {
+                MessageBox.Show("First name has to be defined!", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            if (string.IsNullOrEmpty(lname))
+            {
+                MessageBox.Show("Last name has to be defined!", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            if (string.IsNullOrEmpty(email))
+            {
+                MessageBox.Show("Email has to be defined!", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                SqlCommand cmd = new SqlCommand
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    CommandText = "TravelAgency.spAddCustomer"
+                };
+
+                cmd.Parameters.Add(new SqlParameter("@Fname", SqlDbType.VarChar));
+                cmd.Parameters.Add(new SqlParameter("@Lname", SqlDbType.VarChar));
+                cmd.Parameters.Add(new SqlParameter("@Email", SqlDbType.VarChar));
+                cmd.Parameters.Add(new SqlParameter("@NIF", SqlDbType.Int));
+                cmd.Parameters.Add(new SqlParameter("@PhoneNo", SqlDbType.Int));
+                cmd.Parameters.Add(new SqlParameter("@CustID", SqlDbType.Int));
+                cmd.Parameters.Add(new SqlParameter("@responseMsg", SqlDbType.NVarChar, 250));
+                cmd.Parameters["@Fname"].Value = fname;
+                cmd.Parameters["@Lname"].Value = lname;
+                cmd.Parameters["@Email"].Value = email;
+                cmd.Parameters["@NIF"].Value = NIF;
+                cmd.Parameters["@PhoneNo"].Value = phoneNo;
+                cmd.Parameters["@CustID"].Value = custID;
+                cmd.Parameters["@responseMsg"].Direction = ParameterDirection.Output;
+
+                if (!verifySGBDConnection())
+                {
+                    return;
+                }
+
+                cmd.Connection = cn;
+                cmd.ExecuteNonQuery();
+
+                cn.Close();
+            }
+        }
+
         private void removeCustomer()
         {
             string email = textBox4.Text;
@@ -266,7 +325,8 @@ namespace WindowsFormsApp2
         // want to add new Customer
         private void btn_Add_Click(object sender, EventArgs e)
         {
-
+            addCustomer();
+            loadCustomers();
         }
 
         // want to edit a Customer
