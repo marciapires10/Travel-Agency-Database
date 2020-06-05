@@ -341,7 +341,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(1005, 113);
+            this.button4.Location = new System.Drawing.Point(1004, 53);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(62, 34);
             this.button4.TabIndex = 12;
@@ -351,7 +351,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(841, 81);
+            this.textBox1.Location = new System.Drawing.Point(762, 57);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(228, 26);
             this.textBox1.TabIndex = 11;
@@ -360,7 +360,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label3.Location = new System.Drawing.Point(835, 51);
+            this.label3.Location = new System.Drawing.Point(756, 27);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(115, 25);
             this.label3.TabIndex = 10;
@@ -370,7 +370,7 @@
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(926, 193);
+            this.comboBox1.Location = new System.Drawing.Point(850, 130);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(140, 28);
             this.comboBox1.TabIndex = 8;
@@ -378,7 +378,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(836, 196);
+            this.label2.Location = new System.Drawing.Point(760, 133);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 20);
             this.label2.TabIndex = 7;
