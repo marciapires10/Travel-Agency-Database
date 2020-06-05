@@ -66,6 +66,16 @@
     <Compile Include="Form3.Designer.cs">
       <DependentUpon>Form3.cs</DependentUpon>
     </Compile>
+    <Compile Include="p1g9DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>p1g9DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="p1g9DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>p1g9DataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -87,6 +97,28 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="p1g9DataSet.xsc">
+      <DependentUpon>p1g9DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="p1g9DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>p1g9DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="p1g9DataSet.xss">
+      <DependentUpon>p1g9DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="p1g9DataSet1.xsc">
+      <DependentUpon>p1g9DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="p1g9DataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>p1g9DataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="p1g9DataSet1.xss">
+      <DependentUpon>p1g9DataSet1.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
