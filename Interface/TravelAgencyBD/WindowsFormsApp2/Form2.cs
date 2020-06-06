@@ -17,6 +17,8 @@ namespace WindowsFormsApp2
         private SqlConnection cn;
         private int currentCustomer = 0;
         private int currentAcc = 0;
+        private BindingSource bindingSource1 = new BindingSource();
+        private SqlDataAdapter dataAdapter = new SqlDataAdapter();
 
         public Form2()
         {
@@ -31,6 +33,8 @@ namespace WindowsFormsApp2
             cn = getSGBDConnection();
             loadCustomers();
             loadAccommodation();
+            dataGridView1.DataSource = bindingSource1;
+            GetData();
 
         }
 
@@ -594,6 +598,39 @@ namespace WindowsFormsApp2
         {
             add_flight add_new_flight = new add_flight();
             add_new_flight.ShowDialog();
+            GetData();
+        }
+
+        private void GetData()
+        {
+            try
+            {
+                if (!verifySGBDConnection())
+                {
+                    return;
+                }
+
+                // Create a new data adapter based on the specified query.
+                dataAdapter = new SqlDataAdapter("Select * from TravelAgency.Flight", cn);
+
+                // Create a command builder to generate SQL update, insert, and
+                // delete commands based on selectCommand.
+                SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
+
+                // Populate a new data table and bind it to the BindingSource.
+                DataTable table = new DataTable();
+
+                dataAdapter.Fill(table);
+                bindingSource1.DataSource = table;
+
+                // Resize the DataGridView columns to fit the newly loaded content.
+                dataGridView1.AutoResizeColumns(
+                    DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader);
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Error");
+            }
         }
     }
 }

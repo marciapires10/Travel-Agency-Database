@@ -196,6 +196,7 @@
             this.addflight_cancel_button.TabIndex = 10;
             this.addflight_cancel_button.Text = "Cancel";
             this.addflight_cancel_button.UseVisualStyleBackColor = true;
+            this.addflight_cancel_button.Click += new System.EventHandler(this.addflight_cancel_button_Click);
             // 
             // addflight_addnew_button
             // 
