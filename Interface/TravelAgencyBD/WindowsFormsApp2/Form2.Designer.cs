@@ -54,6 +54,7 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.btn_addNew = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_Next = new System.Windows.Forms.Button();
             this.btn_Back = new System.Windows.Forms.Button();
@@ -82,6 +83,11 @@
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -91,6 +97,7 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tabPage8.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -352,6 +359,7 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.btn_addNew);
             this.tabPage5.Controls.Add(this.tableLayoutPanel1);
             this.tabPage5.Controls.Add(this.btn_Next);
             this.tabPage5.Controls.Add(this.btn_Back);
@@ -367,6 +375,16 @@
             this.tabPage5.TabIndex = 0;
             this.tabPage5.Text = "Accommodation";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // btn_addNew
+            // 
+            this.btn_addNew.Location = new System.Drawing.Point(832, 374);
+            this.btn_addNew.Name = "btn_addNew";
+            this.btn_addNew.Size = new System.Drawing.Size(168, 70);
+            this.btn_addNew.TabIndex = 16;
+            this.btn_addNew.Text = "ADD NEW";
+            this.btn_addNew.UseVisualStyleBackColor = true;
+            this.btn_addNew.Click += new System.EventHandler(this.btn_addNew_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -403,7 +421,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(862, 375);
+            this.button4.Location = new System.Drawing.Point(876, 214);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(62, 34);
             this.button4.TabIndex = 12;
@@ -415,7 +433,7 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(762, 57);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(228, 26);
+            this.textBox1.Size = new System.Drawing.Size(298, 26);
             this.textBox1.TabIndex = 11;
             // 
             // label3
@@ -432,15 +450,15 @@
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(850, 129);
+            this.comboBox1.Location = new System.Drawing.Point(862, 126);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(140, 28);
+            this.comboBox1.Size = new System.Drawing.Size(198, 28);
             this.comboBox1.TabIndex = 8;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(760, 132);
+            this.label2.Location = new System.Drawing.Point(757, 129);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 20);
             this.label2.TabIndex = 7;
@@ -667,6 +685,11 @@
             // 
             // tabPage8
             // 
+            this.tabPage8.Controls.Add(this.button1);
+            this.tabPage8.Controls.Add(this.label6);
+            this.tabPage8.Controls.Add(this.comboBox2);
+            this.tabPage8.Controls.Add(this.label5);
+            this.tabPage8.Controls.Add(this.listBox2);
             this.tabPage8.Location = new System.Drawing.Point(4, 29);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
@@ -695,6 +718,51 @@
             this.tabPage4.Text = "Bookings";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // listBox2
+            // 
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.ItemHeight = 20;
+            this.listBox2.Location = new System.Drawing.Point(61, 98);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(287, 344);
+            this.listBox2.TabIndex = 0;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(57, 45);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(93, 20);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Promotions:";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(479, 138);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(164, 28);
+            this.comboBox2.TabIndex = 2;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(475, 98);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(68, 20);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Options:";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(697, 138);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 28);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "OK";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -720,6 +788,8 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tabPage8.ResumeLayout(false);
+            this.tabPage8.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -779,5 +849,11 @@
         private System.Windows.Forms.ComboBox flight_country_combobox;
         private System.Windows.Forms.Label flight_country_label;
         private System.Windows.Forms.Label flight_filter_label;
+        private System.Windows.Forms.Button btn_addNew;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Button button1;
     }
 }

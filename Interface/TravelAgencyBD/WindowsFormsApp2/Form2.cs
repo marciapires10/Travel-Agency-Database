@@ -59,9 +59,10 @@ namespace WindowsFormsApp2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form3 addCustomer = new Form3();
-            addCustomer.ShowDialog();
+            
         }
+
+        // CUSTOMER TAB
 
         // load Customers
         private void loadCustomers()
@@ -94,6 +95,7 @@ namespace WindowsFormsApp2
             //showCustomer();
         }
 
+        // showCustomer
         public void showCustomer()
         {
             if (listBox1.Items.Count == 0 | currentCustomer < 0)
@@ -132,6 +134,7 @@ namespace WindowsFormsApp2
 
         }
 
+        // add new Customer
         private void addCustomer()
         {
             string fname = textBox2.Text;
@@ -200,6 +203,7 @@ namespace WindowsFormsApp2
             }
         }
 
+        // edit Customer
         private void editCustomer()
         {
             string fname = textBox2.Text;
@@ -260,6 +264,7 @@ namespace WindowsFormsApp2
             }
         }
 
+        // remove Customer
         private void removeCustomer()
         {
             string email = textBox4.Text;
@@ -301,34 +306,6 @@ namespace WindowsFormsApp2
                 textBox4.Text = "";
                 cn.Close();
             }
-        }
-
-
-        public void showButtonsCustomer()
-        {
-            btn_Add.Visible = true;
-            btn_Edit.Visible = true;
-            btn_Remove.Visible = true;
-            btn_OK.Visible = false;
-            btn_Cancel.Visible = false;
-        }
-
-
-        public void unlockControls()
-        {
-            textBox2.ReadOnly = false;
-            textBox3.ReadOnly = false;
-            textBox5.ReadOnly = false;
-            textBox6.ReadOnly = false;
-        }
-
-        public void clearFields()
-        {
-            textBox2.Text = "";
-            textBox3.Text = "";
-            textBox4.Text = "";
-            textBox5.Text = "";
-            textBox6.Text = "";
         }
 
         
@@ -440,7 +417,16 @@ namespace WindowsFormsApp2
             comboBox1.Items.Add("None");
             comboBox1.Items.Add("PriceAsc");
             comboBox1.Items.Add("PriceDesc");
+
+            comboBox2.Text = "None";
+            comboBox2.Items.Add("None");
+            comboBox2.Items.Add("DiscountAsc");
+            comboBox2.Items.Add("DiscountDesc");
+            comboBox2.Items.Add("Active");
+            comboBox2.Items.Add("Not available");
+
             loadAccommodation();
+            loadPromo();
         }
 
         private void loadAccommodation()
@@ -690,6 +676,96 @@ namespace WindowsFormsApp2
             filterAcc(option, dest);
         }
 
-        
+        private void btn_addNew_Click(object sender, EventArgs e)
+        {
+            Form4 newAcc = new Form4();
+            newAcc.ShowDialog();
+        }
+
+        // PROMO TAB
+        private void loadPromo()
+        {
+            if (!verifySGBDConnection())
+                return;
+            
+
+            SqlCommand cmd = new SqlCommand
+            {
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "TravelAgency.spLoadPromo"
+            };
+
+            cmd.Connection = cn;
+            SqlDataReader reader = cmd.ExecuteReader();
+            listBox2.Items.Clear();
+
+            while (reader.Read())
+            {
+                listBox2.Items.Add(reader["ID"] + " | " + reader["Active"] + " | " + reader["Discount"] + "%");
+            }
+
+            cn.Close();
+        }
+
+        private void filterPromo(string option)
+        {
+            SqlCommand cmd = new SqlCommand
+            {
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "TravelAgency.spFilterPromo"
+            };
+
+            cmd.Parameters.Add(new SqlParameter("@option", SqlDbType.VarChar));
+            cmd.Parameters["@option"].Value = option;
+
+
+            if (!verifySGBDConnection())
+                return;
+
+            cmd.Connection = cn;
+            SqlDataReader reader = cmd.ExecuteReader();
+            listBox2.Items.Clear();
+
+            while (reader.Read())
+            {
+                listBox2.Items.Add(reader["ID"] + " | " + reader["Active"] + " | " + reader["Discount"] + "%");
+            }
+
+            cn.Close();
+        }
+
+        // help functions
+        public void showButtonsCustomer()
+        {
+            btn_Add.Visible = true;
+            btn_Edit.Visible = true;
+            btn_Remove.Visible = true;
+            btn_OK.Visible = false;
+            btn_Cancel.Visible = false;
+        }
+
+
+        public void unlockControls()
+        {
+            textBox2.ReadOnly = false;
+            textBox3.ReadOnly = false;
+            textBox5.ReadOnly = false;
+            textBox6.ReadOnly = false;
+        }
+
+        public void clearFields()
+        {
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+            textBox5.Text = "";
+            textBox6.Text = "";
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            string option = comboBox2.Text;
+            filterPromo(option);
+        }
     }
 }
