@@ -584,5 +584,16 @@ namespace WindowsFormsApp2
             cn.Close();
 
         }
+
+        private void tableLayoutPanel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void flight_add_button_Click(object sender, EventArgs e)
+        {
+            add_flight add_new_flight = new add_flight();
+            add_new_flight.ShowDialog();
+        }
     }
 }
