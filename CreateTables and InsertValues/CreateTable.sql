@@ -54,10 +54,11 @@ CREATE TABLE TravelAgency.CC(
 	PRIMARY KEY(City),
 );
 
+
 CREATE TABLE TravelAgency.Accommodation(
-	ID			INT				NOT NULL,
+	ID			INT				NOT NULL	identity(1,1),
 	Name		VARCHAR(40)		NOT NULL,
-	Image		VARBINARY(MAX),
+	Image		VARCHAR(MAX),
 	Description VARCHAR(500),
 	Price		SMALLMONEY		NOT NULL,
 	CC_Location	VARCHAR(20)		NOT NULL,
@@ -66,8 +67,9 @@ CREATE TABLE TravelAgency.Accommodation(
 );
 
 
+
 CREATE TABLE TravelAgency.Promo(
-	ID			INT		NOT NULL,
+	ID			INT		NOT NULL identity(1,1),
 	ACTIVE		BIT		NOT NULL,
 	DISCOUNT	INT		NOT NULL,
 	PRIMARY KEY(ID),
@@ -111,6 +113,7 @@ CREATE TABLE TravelAgency.Flight(
 
 ALTER TABLE TravelAgency.Flight ALTER COLUMN Airline NCHAR(3) NOT NULL;
 ALTER TABLE TravelAgency.Flight ADD FOREIGN KEY(Airline) REFERENCES TravelAgency.Airline(ICAO);
+
 
 CREATE TABLE TravelAgency.Transfer(
 	ID			INT			NOT NULL,
