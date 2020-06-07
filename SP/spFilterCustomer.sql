@@ -30,4 +30,4 @@ AS
 			SELECT tt.* FROM @tempTable tt
 	END
 
-exec TravelAgency.spFilterCustomer Marcia, Pires
+--exec TravelAgency.spFilterCustomer Marcia, Pires
