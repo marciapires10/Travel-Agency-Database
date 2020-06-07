@@ -21,6 +21,7 @@ namespace WindowsFormsApp2
             cn = getSGBDConnection();
             textBox1.Text = CustID;
             textBox1.ReadOnly = true;
+            loadBookHistoric(CustID);
         }
 
         private void Form3_Load(object sender, EventArgs e)
@@ -49,7 +50,7 @@ namespace WindowsFormsApp2
         }
 
 
-        private void loadBookHistoric(int custID)
+        private void loadBookHistoric(string custID)
         {
             
             SqlCommand cmd = new SqlCommand("select * from TravelAgency.CustomerHistoric ('" + custID + "')", cn);

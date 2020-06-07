@@ -1059,6 +1059,7 @@ namespace WindowsFormsApp2
         private void btn_Historic_Click(object sender, EventArgs e)
         {
             string selCustomer = listBox1.SelectedItem.ToString();
+
             Form3 historic = new Form3(selCustomer);
             historic.ShowDialog();
 
