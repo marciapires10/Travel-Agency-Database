@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,10 +17,10 @@ namespace WindowsFormsApp2
 
         private SqlConnection cn;
         private int ID;
-        public mod_flight(int ID)
+        public mod_flight(int flight_ID)
         {
             InitializeComponent();
-            this.ID = ID;
+            this.ID = flight_ID;
             cn = getSGBDConnection();
             load_flights();
         }
@@ -80,8 +81,46 @@ namespace WindowsFormsApp2
             
             reader = cmd.ExecuteReader();
 
+            while (reader.Read())
+            {
+                Debug.WriteLine(reader["Airline"].ToString());
+                foreach(String s in airline.Items){
+                    if (s.Contains(reader["Airline"].ToString()))
+                    {
+                        Debug.WriteLine(airline.Items.IndexOf(s));
+                        airline.SelectedIndex = airline.Items.IndexOf(s);
+                    }
+                }
+                foreach (String s in classtype.Items)
+                {
+                    if (s.Contains(reader["classType"].ToString()))
+                    {
+                        classtype.SelectedIndex = classtype.Items.IndexOf(s);
+                    }
+                }
 
+                price.Value = (decimal) reader["Price"];
 
+                foreach (String s in dep_city.Items)
+                {
+                    if (s.Contains(reader["CC_Depart"].ToString())){
+                        dep_city.SelectedIndex = dep_city.Items.IndexOf(s);
+                    }
+                }
+
+                foreach (String s in arr_city.Items)
+                {
+                    if (s.Contains(reader["CC_Arriv"].ToString()))
+                    {
+                        arr_city.SelectedIndex = arr_city.Items.IndexOf(s);
+                    }
+                }
+
+                dep_time.Value = (DateTime) reader["departTime"];
+                arr_time.Value = (DateTime) reader["arrivalTime"];
+            }
+
+            cn.Close();
         }
         private bool verifySGBDConnection()
         {
@@ -185,6 +224,11 @@ namespace WindowsFormsApp2
         private void cancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void mod_flight_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

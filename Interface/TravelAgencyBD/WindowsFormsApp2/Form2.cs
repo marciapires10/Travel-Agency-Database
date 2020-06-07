@@ -35,6 +35,7 @@ namespace WindowsFormsApp2
             loadCustomers();
             dataGridView1.DataSource = bindingSource1;
             GetData();
+            loadFlights();
 
             initialFieldsPack();
         }
@@ -1062,6 +1063,250 @@ namespace WindowsFormsApp2
 
             Form3 historic = new Form3(selCustomer);
             historic.ShowDialog();
+
+        }
+
+        private void flight_modify_button_Click(object sender, EventArgs e)
+        {
+            int flight_id = (int) dataGridView1.CurrentRow.Cells["ID"].Value;
+            System.Diagnostics.Debug.WriteLine(flight_id);
+            mod_flight edit_flight = new mod_flight(flight_id);
+            edit_flight.ShowDialog();
+            GetData();
+        }
+
+        private void flight_remove_button_Click(object sender, EventArgs e)
+        {
+            int flight_id = (int) dataGridView1.CurrentRow.Cells["ID"].Value;
+            Debug.WriteLine(flight_id);
+            DialogResult dr = MessageBox.Show("This flight will be removed", "Remove Flight", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dr == DialogResult.No) return;
+
+            if (!verifySGBDConnection())
+            {
+                return;
+            }
+
+
+            SqlCommand cmd = new SqlCommand("DELETE FROM [TravelAgency].[Flight] WHERE ID = @ID", cn);
+
+            SqlParameter _id = new SqlParameter("@ID", SqlDbType.Int);
+
+            cmd.Parameters.Add(_id);
+            cmd.Parameters["@ID"].Value = flight_id;
+
+            cmd.ExecuteNonQuery();
+
+            cn.Close();
+
+            GetData();
+        }
+
+        private void flight_search_button_Click(object sender, EventArgs e)
+        {
+            GetData();
+            String search = flight_search_textBox.Text;
+            search = search.ToLower();
+            if(search == "")
+            {
+                return;
+            }
+
+            for(int i = dataGridView1.Rows.Count - 1; i>=0; i--)
+            {
+                DataGridViewRow r = dataGridView1.Rows[i];
+                String s = "";
+                foreach (DataGridViewCell c in r.Cells)
+                {
+                    s += c.Value.ToString();
+                }
+                s = s.ToLower();
+                if (!s.Contains(search))
+                {
+                    dataGridView1.Rows.Remove(r);
+                    
+                }
+                Debug.WriteLine(s);
+
+            }
+        }
+
+        private void flight_classtype_combobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GetData();
+
+            if (flight_classtype_combobox == null)
+            {
+                GetData();
+                return;
+            }
+            String class_type = flight_classtype_combobox.Text;
+
+
+            try
+            {
+                if (!verifySGBDConnection())
+                {
+                    return;
+                }
+
+                // Create a new data adapter based on the specified query.
+                dataAdapter = new SqlDataAdapter("Select * from TravelAgency.Flight WHERE classType = @ClassType", cn);
+
+                dataAdapter.SelectCommand.Parameters.Add(new SqlParameter("@ClassType", SqlDbType.NVarChar,250));
+                dataAdapter.SelectCommand.Parameters["@ClassType"].Value = class_type;
+
+                // Create a command builder to generate SQL update, insert, and
+                // delete commands based on selectCommand.
+                SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
+
+                // Populate a new data table and bind it to the BindingSource.
+                DataTable table = new DataTable();
+
+                dataAdapter.Fill(table);
+                bindingSource1.DataSource = table;
+
+                // Resize the DataGridView columns to fit the newly loaded content.
+                dataGridView1.AutoResizeColumns(
+                    DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader);
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Error");
+            }
+
+        }
+
+        private void flight_airline_combobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GetData();
+
+            if (flight_airline_combobox == null)
+            {
+                GetData();
+                return;
+            }
+            String airline = flight_airline_combobox.Text;
+            airline = airline.Split(' ')[0];
+
+            try
+            {
+                if (!verifySGBDConnection())
+                {
+                    return;
+                }
+
+                // Create a new data adapter based on the specified query.
+                dataAdapter = new SqlDataAdapter("Select * from TravelAgency.Flight WHERE Airline = @Airline", cn);
+
+                dataAdapter.SelectCommand.Parameters.Add(new SqlParameter("@Airline", SqlDbType.NVarChar,250));
+                dataAdapter.SelectCommand.Parameters["@Airline"].Value = airline;
+
+                // Create a command builder to generate SQL update, insert, and
+                // delete commands based on selectCommand.
+                SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
+
+                // Populate a new data table and bind it to the BindingSource.
+                DataTable table = new DataTable();
+
+                dataAdapter.Fill(table);
+                bindingSource1.DataSource = table;
+
+                // Resize the DataGridView columns to fit the newly loaded content.
+                dataGridView1.AutoResizeColumns(
+                    DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader);
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Error");
+            }
+
+        }
+
+        private void loadFlights()
+        {
+            if (!verifySGBDConnection())
+            {
+                return;
+            }
+
+            SqlCommand cmd = new SqlCommand("SELECT ICAO + ' - ' + Name AS Airline FROM TravelAgency.Airline", cn);
+            SqlDataReader reader = cmd.ExecuteReader();
+            flight_airline_combobox.Items.Clear();
+
+
+            while (reader.Read())
+            {
+                flight_airline_combobox.Items.Add(reader["Airline"].ToString());
+            }
+
+            cn.Close();
+
+            if (!verifySGBDConnection())
+            {
+                return;
+            }
+
+
+            flight_country_combobox.Items.Clear();
+
+            cmd = new SqlCommand("SELECT City+', '+Country AS Location FROM TravelAgency.CC", cn);
+            reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                flight_country_combobox.Items.Add(reader["Location"].ToString());
+            }
+
+            cn.Close();
+
+
+        }
+
+        private void flight_country_combobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GetData();
+
+
+            if (flight_country_combobox == null)
+            {
+                GetData();
+                return;
+            }
+            String city = flight_country_combobox.Text;
+            city = city.Split(',')[0];
+
+            try
+            {
+                if (!verifySGBDConnection())
+                {
+                    return;
+                }
+
+                // Create a new data adapter based on the specified query.
+                dataAdapter = new SqlDataAdapter("Select * from TravelAgency.Flight WHERE CC_Depart = @city or CC_Arriv = @city", cn);
+
+                dataAdapter.SelectCommand.Parameters.Add(new SqlParameter("@city", SqlDbType.NVarChar,250));
+                dataAdapter.SelectCommand.Parameters["@city"].Value = city;
+
+                // Create a command builder to generate SQL update, insert, and
+                // delete commands based on selectCommand.
+                SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
+
+                // Populate a new data table and bind it to the BindingSource.
+                DataTable table = new DataTable();
+
+                dataAdapter.Fill(table);
+                bindingSource1.DataSource = table;
+
+                // Resize the DataGridView columns to fit the newly loaded content.
+                dataGridView1.AutoResizeColumns(
+                    DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader);
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Error");
+            }
 
         }
     }
