@@ -212,15 +212,18 @@
             // addflight_airline_combobox
             // 
             this.addflight_airline_combobox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.addflight_airline_combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.addflight_airline_combobox.FormattingEnabled = true;
             this.addflight_airline_combobox.Location = new System.Drawing.Point(170, 17);
             this.addflight_airline_combobox.Name = "addflight_airline_combobox";
             this.addflight_airline_combobox.Size = new System.Drawing.Size(498, 21);
             this.addflight_airline_combobox.TabIndex = 0;
+            this.addflight_airline_combobox.SelectedIndexChanged += new System.EventHandler(this.addflight_airline_combobox_SelectedIndexChanged);
             // 
             // addflight_classtype_combobox
             // 
             this.addflight_classtype_combobox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.addflight_classtype_combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.addflight_classtype_combobox.FormattingEnabled = true;
             this.addflight_classtype_combobox.Items.AddRange(new object[] {
             "Economy",
@@ -230,6 +233,7 @@
             this.addflight_classtype_combobox.Name = "addflight_classtype_combobox";
             this.addflight_classtype_combobox.Size = new System.Drawing.Size(498, 21);
             this.addflight_classtype_combobox.TabIndex = 1;
+            this.addflight_classtype_combobox.SelectedIndexChanged += new System.EventHandler(this.addflight_classtype_combobox_SelectedIndexChanged);
             // 
             // addflight_arrTime
             // 
@@ -273,11 +277,13 @@
             // addflight_depLoc
             // 
             this.addflight_depLoc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.addflight_depLoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.addflight_depLoc.FormattingEnabled = true;
             this.addflight_depLoc.Location = new System.Drawing.Point(3, 14);
             this.addflight_depLoc.Name = "addflight_depLoc";
             this.addflight_depLoc.Size = new System.Drawing.Size(342, 21);
             this.addflight_depLoc.TabIndex = 3;
+            this.addflight_depLoc.SelectedIndexChanged += new System.EventHandler(this.addflight_depLoc_SelectedIndexChanged);
             // 
             // addflight_departure_addLoc
             // 
@@ -308,12 +314,14 @@
             // addflight_arrLoc
             // 
             this.addflight_arrLoc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.addflight_arrLoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.addflight_arrLoc.FormattingEnabled = true;
             this.addflight_arrLoc.ItemHeight = 13;
             this.addflight_arrLoc.Location = new System.Drawing.Point(3, 14);
             this.addflight_arrLoc.Name = "addflight_arrLoc";
             this.addflight_arrLoc.Size = new System.Drawing.Size(342, 21);
             this.addflight_arrLoc.TabIndex = 0;
+            this.addflight_arrLoc.SelectedIndexChanged += new System.EventHandler(this.addflight_arrLoc_SelectedIndexChanged);
             // 
             // addflight_arrival_addLoc
             // 

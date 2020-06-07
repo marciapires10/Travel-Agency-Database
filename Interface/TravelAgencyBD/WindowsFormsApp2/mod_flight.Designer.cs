@@ -232,6 +232,7 @@
             // arr_city
             // 
             this.arr_city.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.arr_city.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.arr_city.FormattingEnabled = true;
             this.arr_city.Location = new System.Drawing.Point(3, 14);
             this.arr_city.Name = "arr_city";
@@ -268,6 +269,7 @@
             // dep_city
             // 
             this.dep_city.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.dep_city.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.dep_city.FormattingEnabled = true;
             this.dep_city.Location = new System.Drawing.Point(3, 14);
             this.dep_city.Name = "dep_city";
@@ -288,7 +290,7 @@
             // airline
             // 
             this.airline.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.airline.FormattingEnabled = true;
+            this.airline.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.airline.Location = new System.Drawing.Point(169, 17);
             this.airline.Name = "airline";
             this.airline.Size = new System.Drawing.Size(495, 21);
@@ -297,7 +299,12 @@
             // classtype
             // 
             this.classtype.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.classtype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.classtype.FormattingEnabled = true;
+            this.classtype.Items.AddRange(new object[] {
+            "Economy",
+            "Business",
+            "Executive"});
             this.classtype.Location = new System.Drawing.Point(169, 73);
             this.classtype.Name = "classtype";
             this.classtype.Size = new System.Drawing.Size(495, 21);
@@ -348,6 +355,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "mod_flight";
             this.Text = "Modify Flight";
+            this.Load += new System.EventHandler(this.mod_flight_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);

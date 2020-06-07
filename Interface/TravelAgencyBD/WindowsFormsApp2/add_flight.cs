@@ -191,5 +191,25 @@ namespace WindowsFormsApp2
         {
             this.Close();
         }
+
+        private void addflight_airline_combobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addflight_classtype_combobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addflight_depLoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addflight_arrLoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -63,18 +63,11 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.tabPage9 = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.flight_add_button = new System.Windows.Forms.Button();
             this.flight_search_textBox = new System.Windows.Forms.TextBox();
             this.flight_search_button = new System.Windows.Forms.Button();
-            this.flight_modify_button = new System.Windows.Forms.Button();
-            this.flight_remove_button = new System.Windows.Forms.Button();
+            this.flight_add_button = new System.Windows.Forms.Button();
             this.flight_airline_combobox = new System.Windows.Forms.ComboBox();
             this.flight_airline_label = new System.Windows.Forms.Label();
             this.flight_classtype_label = new System.Windows.Forms.Label();
@@ -82,6 +75,14 @@
             this.flight_country_combobox = new System.Windows.Forms.ComboBox();
             this.flight_country_label = new System.Windows.Forms.Label();
             this.flight_filter_label = new System.Windows.Forms.Label();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.flight_remove_button = new System.Windows.Forms.Button();
+            this.flight_modify_button = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -90,6 +91,7 @@
             this.tabPage6.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -101,7 +103,7 @@
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(759, 390);
@@ -110,10 +112,10 @@
             // tabPage1
             // 
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage1.Size = new System.Drawing.Size(739, 356);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage1.Size = new System.Drawing.Size(751, 364);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Profile";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -141,10 +143,10 @@
             this.tabPage2.Controls.Add(this.btn_Edit);
             this.tabPage2.Controls.Add(this.btn_Add);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage2.Size = new System.Drawing.Size(739, 356);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage2.Size = new System.Drawing.Size(751, 364);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Customers";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -152,7 +154,7 @@
             // btn_Search
             // 
             this.btn_Search.Location = new System.Drawing.Point(623, 34);
-            this.btn_Search.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Search.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Search.Name = "btn_Search";
             this.btn_Search.Size = new System.Drawing.Size(68, 29);
             this.btn_Search.TabIndex = 23;
@@ -163,7 +165,7 @@
             // lblSearch
             // 
             this.lblSearch.Location = new System.Drawing.Point(371, 39);
-            this.lblSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lblSearch.Margin = new System.Windows.Forms.Padding(2);
             this.lblSearch.Name = "lblSearch";
             this.lblSearch.Size = new System.Drawing.Size(218, 20);
             this.lblSearch.TabIndex = 22;
@@ -182,7 +184,7 @@
             // btn_Cancel
             // 
             this.btn_Cancel.Location = new System.Drawing.Point(623, 233);
-            this.btn_Cancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Cancel.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Size = new System.Drawing.Size(68, 31);
             this.btn_Cancel.TabIndex = 20;
@@ -193,7 +195,7 @@
             // btn_OK
             // 
             this.btn_OK.Location = new System.Drawing.Point(623, 198);
-            this.btn_OK.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_OK.Margin = new System.Windows.Forms.Padding(2);
             this.btn_OK.Name = "btn_OK";
             this.btn_OK.Size = new System.Drawing.Size(67, 31);
             this.btn_OK.TabIndex = 19;
@@ -204,7 +206,7 @@
             // textBox6
             // 
             this.textBox6.Location = new System.Drawing.Point(479, 238);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox6.Margin = new System.Windows.Forms.Padding(2);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(110, 20);
             this.textBox6.TabIndex = 18;
@@ -212,7 +214,7 @@
             // textBox5
             // 
             this.textBox5.Location = new System.Drawing.Point(309, 238);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(2);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(110, 20);
             this.textBox5.TabIndex = 17;
@@ -220,7 +222,7 @@
             // textBox4
             // 
             this.textBox4.Location = new System.Drawing.Point(309, 170);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(2);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(281, 20);
             this.textBox4.TabIndex = 16;
@@ -228,7 +230,7 @@
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(479, 110);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(110, 20);
             this.textBox3.TabIndex = 15;
@@ -246,7 +248,7 @@
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(309, 110);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(110, 20);
             this.textBox2.TabIndex = 13;
@@ -266,7 +268,7 @@
             this.listBox1.BackColor = System.Drawing.Color.White;
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(26, 39);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(2);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(245, 303);
             this.listBox1.TabIndex = 5;
@@ -316,7 +318,7 @@
             // btn_Remove
             // 
             this.btn_Remove.Location = new System.Drawing.Point(573, 304);
-            this.btn_Remove.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Remove.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Remove.Name = "btn_Remove";
             this.btn_Remove.Size = new System.Drawing.Size(118, 37);
             this.btn_Remove.TabIndex = 4;
@@ -327,7 +329,7 @@
             // btn_Edit
             // 
             this.btn_Edit.Location = new System.Drawing.Point(441, 304);
-            this.btn_Edit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Edit.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Edit.Name = "btn_Edit";
             this.btn_Edit.Size = new System.Drawing.Size(118, 37);
             this.btn_Edit.TabIndex = 3;
@@ -338,7 +340,7 @@
             // btn_Add
             // 
             this.btn_Add.Location = new System.Drawing.Point(310, 304);
-            this.btn_Add.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Add.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Add.Name = "btn_Add";
             this.btn_Add.Size = new System.Drawing.Size(118, 37);
             this.btn_Add.TabIndex = 2;
@@ -350,9 +352,9 @@
             // 
             this.tabPage3.Controls.Add(this.tabControl2);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage3.Size = new System.Drawing.Size(751, 364);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Packages";
@@ -367,7 +369,7 @@
             this.tabControl2.Controls.Add(this.tabPage9);
             this.tabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl2.Location = new System.Drawing.Point(2, 2);
-            this.tabControl2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl2.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
             this.tabControl2.Size = new System.Drawing.Size(747, 360);
@@ -384,10 +386,10 @@
             this.tabPage5.Controls.Add(this.comboBox1);
             this.tabPage5.Controls.Add(this.label2);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage5.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage5.Size = new System.Drawing.Size(729, 329);
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage5.Size = new System.Drawing.Size(739, 334);
             this.tabPage5.TabIndex = 0;
             this.tabPage5.Text = "Accommodation";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -399,7 +401,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Location = new System.Drawing.Point(19, 48);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -410,7 +412,7 @@
             // 
             this.btn_Next.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btn_Next.Location = new System.Drawing.Point(441, 16);
-            this.btn_Next.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Next.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Next.Name = "btn_Next";
             this.btn_Next.Size = new System.Drawing.Size(37, 22);
             this.btn_Next.TabIndex = 14;
@@ -421,7 +423,7 @@
             // 
             this.btn_Back.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btn_Back.Location = new System.Drawing.Point(19, 16);
-            this.btn_Back.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Back.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Back.Name = "btn_Back";
             this.btn_Back.Size = new System.Drawing.Size(37, 22);
             this.btn_Back.TabIndex = 13;
@@ -431,7 +433,7 @@
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(669, 34);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(41, 22);
             this.button4.TabIndex = 12;
@@ -442,7 +444,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(508, 37);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(153, 20);
             this.textBox1.TabIndex = 11;
@@ -463,7 +465,7 @@
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(567, 84);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(95, 21);
             this.comboBox1.TabIndex = 8;
@@ -482,57 +484,13 @@
             // 
             this.tabPage6.Controls.Add(this.tableLayoutPanel2);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
-            this.tabPage6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage6.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage6.Size = new System.Drawing.Size(739, 334);
             this.tabPage6.TabIndex = 1;
             this.tabPage6.Text = "Flight";
             this.tabPage6.UseVisualStyleBackColor = true;
-            // 
-            // tabPage7
-            // 
-            this.tabPage7.Location = new System.Drawing.Point(4, 22);
-            this.tabPage7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage7.Size = new System.Drawing.Size(729, 329);
-            this.tabPage7.TabIndex = 2;
-            this.tabPage7.Text = "Transfer";
-            this.tabPage7.UseVisualStyleBackColor = true;
-            // 
-            // tabPage8
-            // 
-            this.tabPage8.Location = new System.Drawing.Point(4, 22);
-            this.tabPage8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage8.Size = new System.Drawing.Size(729, 329);
-            this.tabPage8.TabIndex = 3;
-            this.tabPage8.Text = "Promo";
-            this.tabPage8.UseVisualStyleBackColor = true;
-            // 
-            // tabPage9
-            // 
-            this.tabPage9.Location = new System.Drawing.Point(4, 22);
-            this.tabPage9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage9.Size = new System.Drawing.Size(729, 329);
-            this.tabPage9.TabIndex = 4;
-            this.tabPage9.Text = "Overview";
-            this.tabPage9.UseVisualStyleBackColor = true;
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage4.Size = new System.Drawing.Size(739, 356);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Bookings";
-            this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel2
             // 
@@ -551,15 +509,12 @@
             // 
             // tableLayoutPanel3
             // 
-            this.tableLayoutPanel3.ColumnCount = 3;
+            this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.66667F));
+            this.tableLayoutPanel3.Controls.Add(this.flight_search_textBox, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.flight_search_button, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.flight_add_button, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.flight_search_textBox, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.flight_search_button, 1, 1);
-            this.tableLayoutPanel3.Controls.Add(this.flight_modify_button, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.flight_remove_button, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.flight_airline_combobox, 1, 3);
             this.tableLayoutPanel3.Controls.Add(this.flight_airline_label, 0, 3);
             this.tableLayoutPanel3.Controls.Add(this.flight_classtype_label, 0, 4);
@@ -567,98 +522,67 @@
             this.tableLayoutPanel3.Controls.Add(this.flight_country_combobox, 1, 5);
             this.tableLayoutPanel3.Controls.Add(this.flight_country_label, 0, 5);
             this.tableLayoutPanel3.Controls.Add(this.flight_filter_label, 1, 2);
+            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(444, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 7;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.Size = new System.Drawing.Size(288, 324);
             this.tableLayoutPanel3.TabIndex = 0;
-            this.tableLayoutPanel3.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel3_Paint);
             // 
-            // dataGridView1
+            // flight_search_textBox
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(435, 324);
-            this.dataGridView1.TabIndex = 0;
+            this.flight_search_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.flight_search_textBox.Location = new System.Drawing.Point(98, 50);
+            this.flight_search_textBox.Name = "flight_search_textBox";
+            this.flight_search_textBox.Size = new System.Drawing.Size(187, 20);
+            this.flight_search_textBox.TabIndex = 16;
+            // 
+            // flight_search_button
+            // 
+            this.flight_search_button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flight_search_button.Location = new System.Drawing.Point(3, 43);
+            this.flight_search_button.Name = "flight_search_button";
+            this.flight_search_button.Size = new System.Drawing.Size(89, 34);
+            this.flight_search_button.TabIndex = 15;
+            this.flight_search_button.Text = "Search";
+            this.flight_search_button.UseVisualStyleBackColor = true;
+            this.flight_search_button.Click += new System.EventHandler(this.flight_search_button_Click);
             // 
             // flight_add_button
             // 
             this.flight_add_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flight_add_button.Location = new System.Drawing.Point(3, 3);
             this.flight_add_button.Name = "flight_add_button";
-            this.flight_add_button.Size = new System.Drawing.Size(89, 23);
+            this.flight_add_button.Size = new System.Drawing.Size(89, 34);
             this.flight_add_button.TabIndex = 1;
             this.flight_add_button.Text = "Add New";
             this.flight_add_button.UseVisualStyleBackColor = true;
             this.flight_add_button.Click += new System.EventHandler(this.flight_add_button_Click);
             // 
-            // flight_search_textBox
-            // 
-            this.flight_search_textBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flight_search_textBox.Location = new System.Drawing.Point(3, 32);
-            this.flight_search_textBox.Name = "flight_search_textBox";
-            this.flight_search_textBox.Size = new System.Drawing.Size(89, 20);
-            this.flight_search_textBox.TabIndex = 4;
-            // 
-            // flight_search_button
-            // 
-            this.flight_search_button.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flight_search_button.Location = new System.Drawing.Point(98, 32);
-            this.flight_search_button.Name = "flight_search_button";
-            this.flight_search_button.Size = new System.Drawing.Size(90, 23);
-            this.flight_search_button.TabIndex = 5;
-            this.flight_search_button.Text = "Search";
-            this.flight_search_button.UseVisualStyleBackColor = true;
-            // 
-            // flight_modify_button
-            // 
-            this.flight_modify_button.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flight_modify_button.Location = new System.Drawing.Point(98, 3);
-            this.flight_modify_button.Name = "flight_modify_button";
-            this.flight_modify_button.Size = new System.Drawing.Size(90, 23);
-            this.flight_modify_button.TabIndex = 2;
-            this.flight_modify_button.Text = "Modify";
-            this.flight_modify_button.UseVisualStyleBackColor = true;
-            // 
-            // flight_remove_button
-            // 
-            this.flight_remove_button.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flight_remove_button.Location = new System.Drawing.Point(194, 3);
-            this.flight_remove_button.Name = "flight_remove_button";
-            this.flight_remove_button.Size = new System.Drawing.Size(91, 23);
-            this.flight_remove_button.TabIndex = 3;
-            this.flight_remove_button.Text = "Remove";
-            this.flight_remove_button.UseVisualStyleBackColor = true;
-            // 
             // flight_airline_combobox
             // 
             this.flight_airline_combobox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flight_airline_combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.flight_airline_combobox.FormattingEnabled = true;
-            this.flight_airline_combobox.Location = new System.Drawing.Point(98, 81);
+            this.flight_airline_combobox.Location = new System.Drawing.Point(98, 96);
             this.flight_airline_combobox.Name = "flight_airline_combobox";
-            this.flight_airline_combobox.Size = new System.Drawing.Size(90, 21);
+            this.flight_airline_combobox.Size = new System.Drawing.Size(187, 21);
             this.flight_airline_combobox.TabIndex = 6;
+            this.flight_airline_combobox.SelectedIndexChanged += new System.EventHandler(this.flight_airline_combobox_SelectedIndexChanged);
             // 
             // flight_airline_label
             // 
             this.flight_airline_label.AutoSize = true;
             this.flight_airline_label.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flight_airline_label.Location = new System.Drawing.Point(3, 78);
+            this.flight_airline_label.Location = new System.Drawing.Point(3, 93);
             this.flight_airline_label.Name = "flight_airline_label";
             this.flight_airline_label.Size = new System.Drawing.Size(89, 27);
             this.flight_airline_label.TabIndex = 6;
@@ -669,7 +593,7 @@
             // 
             this.flight_classtype_label.AutoSize = true;
             this.flight_classtype_label.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flight_classtype_label.Location = new System.Drawing.Point(3, 105);
+            this.flight_classtype_label.Location = new System.Drawing.Point(3, 120);
             this.flight_classtype_label.Name = "flight_classtype_label";
             this.flight_classtype_label.Size = new System.Drawing.Size(89, 27);
             this.flight_classtype_label.TabIndex = 7;
@@ -679,42 +603,144 @@
             // flight_classtype_combobox
             // 
             this.flight_classtype_combobox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flight_classtype_combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.flight_classtype_combobox.FormattingEnabled = true;
-            this.flight_classtype_combobox.Location = new System.Drawing.Point(98, 108);
+            this.flight_classtype_combobox.Items.AddRange(new object[] {
+            "Economy",
+            "Business",
+            "Executive"});
+            this.flight_classtype_combobox.Location = new System.Drawing.Point(98, 123);
             this.flight_classtype_combobox.Name = "flight_classtype_combobox";
-            this.flight_classtype_combobox.Size = new System.Drawing.Size(90, 21);
+            this.flight_classtype_combobox.Size = new System.Drawing.Size(187, 21);
             this.flight_classtype_combobox.TabIndex = 7;
+            this.flight_classtype_combobox.SelectedIndexChanged += new System.EventHandler(this.flight_classtype_combobox_SelectedIndexChanged);
             // 
             // flight_country_combobox
             // 
             this.flight_country_combobox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flight_country_combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.flight_country_combobox.FormattingEnabled = true;
-            this.flight_country_combobox.Location = new System.Drawing.Point(98, 135);
+            this.flight_country_combobox.Location = new System.Drawing.Point(98, 150);
             this.flight_country_combobox.Name = "flight_country_combobox";
-            this.flight_country_combobox.Size = new System.Drawing.Size(90, 21);
+            this.flight_country_combobox.Size = new System.Drawing.Size(187, 21);
             this.flight_country_combobox.TabIndex = 8;
+            this.flight_country_combobox.SelectedIndexChanged += new System.EventHandler(this.flight_country_combobox_SelectedIndexChanged);
             // 
             // flight_country_label
             // 
             this.flight_country_label.AutoSize = true;
             this.flight_country_label.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flight_country_label.Location = new System.Drawing.Point(3, 132);
+            this.flight_country_label.Location = new System.Drawing.Point(3, 147);
             this.flight_country_label.Name = "flight_country_label";
             this.flight_country_label.Size = new System.Drawing.Size(89, 27);
             this.flight_country_label.TabIndex = 10;
-            this.flight_country_label.Text = "Select Country";
+            this.flight_country_label.Text = "Select City";
             this.flight_country_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // flight_filter_label
             // 
             this.flight_filter_label.AutoSize = true;
             this.flight_filter_label.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flight_filter_label.Location = new System.Drawing.Point(98, 58);
+            this.flight_filter_label.Location = new System.Drawing.Point(98, 80);
             this.flight_filter_label.Name = "flight_filter_label";
-            this.flight_filter_label.Size = new System.Drawing.Size(90, 20);
+            this.flight_filter_label.Size = new System.Drawing.Size(187, 13);
             this.flight_filter_label.TabIndex = 11;
             this.flight_filter_label.Text = "Filters:";
             this.flight_filter_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.flight_remove_button, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.flight_modify_button, 0, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(98, 3);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(187, 34);
+            this.tableLayoutPanel4.TabIndex = 12;
+            // 
+            // flight_remove_button
+            // 
+            this.flight_remove_button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flight_remove_button.Location = new System.Drawing.Point(96, 3);
+            this.flight_remove_button.Name = "flight_remove_button";
+            this.flight_remove_button.Size = new System.Drawing.Size(88, 28);
+            this.flight_remove_button.TabIndex = 4;
+            this.flight_remove_button.Text = "Remove";
+            this.flight_remove_button.UseVisualStyleBackColor = true;
+            this.flight_remove_button.Click += new System.EventHandler(this.flight_remove_button_Click);
+            // 
+            // flight_modify_button
+            // 
+            this.flight_modify_button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flight_modify_button.Location = new System.Drawing.Point(3, 3);
+            this.flight_modify_button.Name = "flight_modify_button";
+            this.flight_modify_button.Size = new System.Drawing.Size(87, 28);
+            this.flight_modify_button.TabIndex = 3;
+            this.flight_modify_button.Text = "Modify";
+            this.flight_modify_button.UseVisualStyleBackColor = true;
+            this.flight_modify_button.Click += new System.EventHandler(this.flight_modify_button_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(435, 324);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage7.Size = new System.Drawing.Size(739, 334);
+            this.tabPage7.TabIndex = 2;
+            this.tabPage7.Text = "Transfer";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // tabPage8
+            // 
+            this.tabPage8.Location = new System.Drawing.Point(4, 22);
+            this.tabPage8.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage8.Size = new System.Drawing.Size(739, 334);
+            this.tabPage8.TabIndex = 3;
+            this.tabPage8.Text = "Promo";
+            this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // tabPage9
+            // 
+            this.tabPage9.Location = new System.Drawing.Point(4, 22);
+            this.tabPage9.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPage9.Name = "tabPage9";
+            this.tabPage9.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage9.Size = new System.Drawing.Size(739, 334);
+            this.tabPage9.TabIndex = 4;
+            this.tabPage9.Text = "Overview";
+            this.tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage4.Size = new System.Drawing.Size(751, 364);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Bookings";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // Form2
             // 
@@ -724,7 +750,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(759, 390);
             this.Controls.Add(this.tabControl1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(775, 429);
             this.Name = "Form2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -741,6 +767,7 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            this.tableLayoutPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -790,10 +817,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Button flight_add_button;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox flight_search_textBox;
-        private System.Windows.Forms.Button flight_search_button;
-        private System.Windows.Forms.Button flight_modify_button;
-        private System.Windows.Forms.Button flight_remove_button;
         private System.Windows.Forms.ComboBox flight_airline_combobox;
         private System.Windows.Forms.Label flight_airline_label;
         private System.Windows.Forms.Label flight_classtype_label;
@@ -801,5 +824,10 @@
         private System.Windows.Forms.ComboBox flight_country_combobox;
         private System.Windows.Forms.Label flight_country_label;
         private System.Windows.Forms.Label flight_filter_label;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Button flight_remove_button;
+        private System.Windows.Forms.Button flight_modify_button;
+        private System.Windows.Forms.TextBox flight_search_textBox;
+        private System.Windows.Forms.Button flight_search_button;
     }
 }
