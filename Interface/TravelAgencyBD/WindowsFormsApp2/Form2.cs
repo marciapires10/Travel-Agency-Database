@@ -17,6 +17,8 @@ namespace WindowsFormsApp2
 
         private SqlConnection cn;
         private int currentCustomer = 0;
+        private string acc_name;
+        private bool clicked = false;
         private BindingSource bindingSource1 = new BindingSource();
         private SqlDataAdapter dataAdapter = new SqlDataAdapter();
 
@@ -425,6 +427,8 @@ namespace WindowsFormsApp2
             comboBox2.Items.Add("Active");
             comboBox2.Items.Add("Not available");
 
+            textBox12.ReadOnly = true;
+
             loadAccommodation();
             loadPromo();
         }
@@ -478,6 +482,12 @@ namespace WindowsFormsApp2
                     Label lb5 = new Label();
                     Label lb6 = new Label();
                     Label lb7 = new Label();
+                    Button btn_Conf = new Button();
+
+                    btn_Conf.Location = new System.Drawing.Point(305, 150);
+                    btn_Conf.TabIndex = 3;
+                    btn_Conf.Text = "SELECT";
+                    btn_Conf.Click += new EventHandler(btn_Conf_Click);
 
                     lb7.AutoSize = true;
                     lb7.Location = new System.Drawing.Point(305, 130);
@@ -516,6 +526,7 @@ namespace WindowsFormsApp2
                     lb5.Name = "label5_" + tableLayoutPanel1.RowCount;
                     lb6.Name = "label6_" + tableLayoutPanel1.RowCount;
                     lb7.Name = "label7_" + tableLayoutPanel1.RowCount;
+                    acc_name = tableLayoutPanel1.RowCount.ToString();
 
                     lb2.Text = reader["Name"].ToString();
                     lb3.Text = reader["Description"].ToString();
@@ -526,6 +537,11 @@ namespace WindowsFormsApp2
                     lb6.Text = "Price per night:";
                     lb7.Text = reader["Price"].ToString() + " €";
 
+                    if(clicked)
+                    {
+                        acc_name = lb2.Text;
+                        clicked = false;
+                    }
 
                     x.Controls.Add(lb1);
                     x.Controls.Add(lb2);
@@ -534,13 +550,23 @@ namespace WindowsFormsApp2
                     x.Controls.Add(lb5);
                     x.Controls.Add(lb6);
                     x.Controls.Add(lb7);
+                    x.Controls.Add(btn_Conf);
 
+                    
                     tableLayoutPanel1.Controls.Add(x, 0, tableLayoutPanel1.RowCount - 1);
+                    
                     nAcc++;
                 }
             }
             cn.Close();
 
+        }
+
+        private void btn_Conf_Click(object sender, EventArgs e)
+        {
+           
+            textBox12.Text = acc_name;
+            clicked = true;
         }
 
         private void filterAcc(string option, string dest)
@@ -647,7 +673,7 @@ namespace WindowsFormsApp2
                     lb6.Text = "Price per night:";
                     lb7.Text = reader["Price"].ToString() + " €";
 
-
+                    
                     x.Controls.Add(lb1);
                     x.Controls.Add(lb2);
                     x.Controls.Add(lb3);
@@ -842,6 +868,26 @@ namespace WindowsFormsApp2
 
             loadPromo();
             cn.Close();
+        }
+
+        private void btn_ApplyPromo_Click(object sender, EventArgs e)
+        {
+            string chosenPromo = listBox2.SelectedItem.ToString();
+            string active = chosenPromo.Split('|')[1];
+            Debug.WriteLine(active);
+
+            //isto ainda não funciona, calma que a esta hora sou burra
+            if(active == "False")
+            {
+                MessageBox.Show("You cannot apply a promo if it isn't enabled", "Promo", MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show("You have applied the promo " + chosenPromo + " to the actual package.", "Promo", MessageBoxButtons.OK);
+                textBox10.Text = chosenPromo.Split('|')[0];
+                textBox10.ReadOnly = true;
+            }
+
         }
     }
 }

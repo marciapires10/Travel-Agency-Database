@@ -92,6 +92,20 @@
             this.btn_Enable = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
+            this.btn_ApplyPromo = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textBox12 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -102,6 +116,7 @@
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage8.SuspendLayout();
+            this.tabPage9.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -363,6 +378,8 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.textBox12);
+            this.tabPage5.Controls.Add(this.label15);
             this.tabPage5.Controls.Add(this.btn_addNew);
             this.tabPage5.Controls.Add(this.tableLayoutPanel1);
             this.tabPage5.Controls.Add(this.btn_Next);
@@ -382,7 +399,7 @@
             // 
             // btn_addNew
             // 
-            this.btn_addNew.Location = new System.Drawing.Point(832, 374);
+            this.btn_addNew.Location = new System.Drawing.Point(829, 406);
             this.btn_addNew.Name = "btn_addNew";
             this.btn_addNew.Size = new System.Drawing.Size(168, 70);
             this.btn_addNew.TabIndex = 16;
@@ -425,7 +442,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(876, 214);
+            this.button4.Location = new System.Drawing.Point(998, 187);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(62, 34);
             this.button4.TabIndex = 12;
@@ -689,6 +706,7 @@
             // 
             // tabPage8
             // 
+            this.tabPage8.Controls.Add(this.btn_ApplyPromo);
             this.tabPage8.Controls.Add(this.button2);
             this.tabPage8.Controls.Add(this.label8);
             this.tabPage8.Controls.Add(this.btn_Enable);
@@ -708,6 +726,17 @@
             // 
             // tabPage9
             // 
+            this.tabPage9.Controls.Add(this.textBox11);
+            this.tabPage9.Controls.Add(this.label14);
+            this.tabPage9.Controls.Add(this.label13);
+            this.tabPage9.Controls.Add(this.textBox10);
+            this.tabPage9.Controls.Add(this.label12);
+            this.tabPage9.Controls.Add(this.textBox9);
+            this.tabPage9.Controls.Add(this.label11);
+            this.tabPage9.Controls.Add(this.textBox8);
+            this.tabPage9.Controls.Add(this.label10);
+            this.tabPage9.Controls.Add(this.textBox7);
+            this.tabPage9.Controls.Add(this.label9);
             this.tabPage9.Location = new System.Drawing.Point(4, 29);
             this.tabPage9.Name = "tabPage9";
             this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
@@ -732,7 +761,7 @@
             this.listBox2.ItemHeight = 20;
             this.listBox2.Location = new System.Drawing.Point(61, 98);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(287, 344);
+            this.listBox2.Size = new System.Drawing.Size(287, 304);
             this.listBox2.TabIndex = 0;
             // 
             // label5
@@ -763,9 +792,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(696, 98);
+            this.button1.Location = new System.Drawing.Point(697, 89);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 28);
+            this.button1.Size = new System.Drawing.Size(75, 45);
             this.button1.TabIndex = 4;
             this.button1.Text = "OK";
             this.button1.UseVisualStyleBackColor = true;
@@ -809,6 +838,121 @@
             this.label8.TabIndex = 7;
             this.label8.Text = "Disable selected promotion";
             // 
+            // btn_ApplyPromo
+            // 
+            this.btn_ApplyPromo.Location = new System.Drawing.Point(130, 422);
+            this.btn_ApplyPromo.Name = "btn_ApplyPromo";
+            this.btn_ApplyPromo.Size = new System.Drawing.Size(160, 61);
+            this.btn_ApplyPromo.TabIndex = 9;
+            this.btn_ApplyPromo.Text = "Apply Promo";
+            this.btn_ApplyPromo.UseVisualStyleBackColor = true;
+            this.btn_ApplyPromo.Click += new System.EventHandler(this.btn_ApplyPromo_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(60, 31);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(30, 20);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "ID:";
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(96, 28);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(118, 26);
+            this.textBox7.TabIndex = 1;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(66, 143);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(148, 20);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "Number of persons:";
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(220, 140);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(120, 26);
+            this.textBox8.TabIndex = 3;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(66, 224);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(128, 20);
+            this.label11.TabIndex = 4;
+            this.label11.Text = "Accommodation:";
+            // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(220, 221);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(259, 26);
+            this.textBox9.TabIndex = 5;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(66, 279);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(59, 20);
+            this.label12.TabIndex = 6;
+            this.label12.Text = "Promo:";
+            // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(146, 279);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(214, 26);
+            this.textBox10.TabIndex = 7;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(66, 91);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(74, 20);
+            this.label13.TabIndex = 8;
+            this.label13.Text = "Duration:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(66, 359);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(87, 20);
+            this.label14.TabIndex = 9;
+            this.label14.Text = "Total Price:";
+            // 
+            // textBox11
+            // 
+            this.textBox11.Location = new System.Drawing.Point(176, 356);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(100, 26);
+            this.textBox11.TabIndex = 10;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(758, 275);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(192, 20);
+            this.label15.TabIndex = 17;
+            this.label15.Text = "Accommodation selected:";
+            // 
+            // textBox12
+            // 
+            this.textBox12.Location = new System.Drawing.Point(762, 311);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(298, 26);
+            this.textBox12.TabIndex = 18;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -836,6 +980,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage8.ResumeLayout(false);
             this.tabPage8.PerformLayout();
+            this.tabPage9.ResumeLayout(false);
+            this.tabPage9.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -905,5 +1051,19 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btn_ApplyPromo;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.Label label15;
     }
 }
