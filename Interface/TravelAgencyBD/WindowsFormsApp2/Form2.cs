@@ -134,7 +134,50 @@ namespace WindowsFormsApp2
 
         private void label3_Click(object sender, EventArgs e)
         {
+            if (!verifySGBDConnection())
+            {
+                return;
+            }
 
+
+        }
+
+        private void filterCustomer(string fname, string lname)
+        {
+
+            SqlCommand cmd = new SqlCommand
+            {
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "TravelAgency.spFilterCustomer"
+            };
+
+            cmd.Parameters.Add(new SqlParameter("@Fname", SqlDbType.VarChar));
+            cmd.Parameters.Add(new SqlParameter("@Lname", SqlDbType.VarChar));
+            cmd.Parameters["@fname"].Value = fname;
+            cmd.Parameters["@lname"].Value = lname;
+
+            if (!verifySGBDConnection())
+                return;
+            cmd.Connection = cn;
+
+            listBox1.Items.Clear();
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Customer p = new Customer();
+                    p.Email = reader["Email"].ToString();
+                    p.Fname = reader["Fname"].ToString();
+                    p.Lname = reader["Lname"].ToString();
+                    p.PhoneNo = reader["phoneNo"].ToString();
+                    p.NIF = reader["NIF"].ToString();
+                    listBox1.Items.Add(p);
+
+                }
+            }
+
+            cn.Close();
         }
 
         // add new Customer
@@ -356,6 +399,17 @@ namespace WindowsFormsApp2
 
         private void btn_Search_Click(object sender, EventArgs e)
         {
+            string name = textSearch.Text;
+            string fname = name.Split(' ')[0];
+            string lname = name.Split(' ')[1];
+
+            if (string.IsNullOrEmpty(fname))
+            {
+               fname = "None";
+            }
+
+            filterCustomer(fname, lname);
+
 
         }
 

@@ -31,8 +31,9 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btn_Historic = new System.Windows.Forms.Button();
             this.btn_Search = new System.Windows.Forms.Button();
-            this.lblSearch = new System.Windows.Forms.TextBox();
+            this.textSearch = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btn_Cancel = new System.Windows.Forms.Button();
             this.btn_OK = new System.Windows.Forms.Button();
@@ -54,6 +55,9 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.btn_cancelPack = new System.Windows.Forms.Button();
             this.btn_CustPack = new System.Windows.Forms.Button();
             this.btn_NewPack = new System.Windows.Forms.Button();
             this.textBox11 = new System.Windows.Forms.TextBox();
@@ -114,10 +118,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.btn_cancelPack = new System.Windows.Forms.Button();
-            this.label18 = new System.Windows.Forms.Label();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.btn_Historic = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -160,7 +160,7 @@
             // 
             this.tabPage2.Controls.Add(this.btn_Historic);
             this.tabPage2.Controls.Add(this.btn_Search);
-            this.tabPage2.Controls.Add(this.lblSearch);
+            this.tabPage2.Controls.Add(this.textSearch);
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.btn_Cancel);
             this.tabPage2.Controls.Add(this.btn_OK);
@@ -187,6 +187,16 @@
             this.tabPage2.Text = "Customers";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // btn_Historic
+            // 
+            this.btn_Historic.Location = new System.Drawing.Point(465, 371);
+            this.btn_Historic.Name = "btn_Historic";
+            this.btn_Historic.Size = new System.Drawing.Size(419, 49);
+            this.btn_Historic.TabIndex = 24;
+            this.btn_Historic.Text = "Search for Historic";
+            this.btn_Historic.UseVisualStyleBackColor = true;
+            this.btn_Historic.Click += new System.EventHandler(this.btn_Historic_Click);
+            // 
             // btn_Search
             // 
             this.btn_Search.Location = new System.Drawing.Point(934, 52);
@@ -197,12 +207,12 @@
             this.btn_Search.UseVisualStyleBackColor = true;
             this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
             // 
-            // lblSearch
+            // textSearch
             // 
-            this.lblSearch.Location = new System.Drawing.Point(556, 60);
-            this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(325, 26);
-            this.lblSearch.TabIndex = 22;
+            this.textSearch.Location = new System.Drawing.Point(556, 60);
+            this.textSearch.Name = "textSearch";
+            this.textSearch.Size = new System.Drawing.Size(325, 26);
+            this.textSearch.TabIndex = 22;
             // 
             // label4
             // 
@@ -415,6 +425,32 @@
             this.tabPage9.TabIndex = 4;
             this.tabPage9.Text = "Overview";
             this.tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // textBox14
+            // 
+            this.textBox14.Location = new System.Drawing.Point(168, 125);
+            this.textBox14.Name = "textBox14";
+            this.textBox14.Size = new System.Drawing.Size(110, 26);
+            this.textBox14.TabIndex = 15;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(58, 125);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(103, 20);
+            this.label18.TabIndex = 14;
+            this.label18.Text = "Customer ID:";
+            // 
+            // btn_cancelPack
+            // 
+            this.btn_cancelPack.Location = new System.Drawing.Point(918, 423);
+            this.btn_cancelPack.Name = "btn_cancelPack";
+            this.btn_cancelPack.Size = new System.Drawing.Size(147, 63);
+            this.btn_cancelPack.TabIndex = 13;
+            this.btn_cancelPack.Text = "Cancel";
+            this.btn_cancelPack.UseVisualStyleBackColor = true;
+            this.btn_cancelPack.Click += new System.EventHandler(this.btn_cancelPack_Click);
             // 
             // btn_CustPack
             // 
@@ -703,15 +739,15 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(288, 324);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(436, 512);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // flight_search_textBox
             // 
             this.flight_search_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.flight_search_textBox.Location = new System.Drawing.Point(98, 50);
+            this.flight_search_textBox.Location = new System.Drawing.Point(148, 47);
             this.flight_search_textBox.Name = "flight_search_textBox";
-            this.flight_search_textBox.Size = new System.Drawing.Size(187, 20);
+            this.flight_search_textBox.Size = new System.Drawing.Size(285, 26);
             this.flight_search_textBox.TabIndex = 16;
             // 
             // flight_search_button
@@ -719,7 +755,7 @@
             this.flight_search_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flight_search_button.Location = new System.Drawing.Point(3, 43);
             this.flight_search_button.Name = "flight_search_button";
-            this.flight_search_button.Size = new System.Drawing.Size(89, 34);
+            this.flight_search_button.Size = new System.Drawing.Size(139, 34);
             this.flight_search_button.TabIndex = 15;
             this.flight_search_button.Text = "Search";
             this.flight_search_button.UseVisualStyleBackColor = true;
@@ -730,7 +766,7 @@
             this.flight_add_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flight_add_button.Location = new System.Drawing.Point(3, 3);
             this.flight_add_button.Name = "flight_add_button";
-            this.flight_add_button.Size = new System.Drawing.Size(89, 34);
+            this.flight_add_button.Size = new System.Drawing.Size(139, 34);
             this.flight_add_button.TabIndex = 1;
             this.flight_add_button.Text = "Add New";
             this.flight_add_button.UseVisualStyleBackColor = true;
@@ -741,9 +777,9 @@
             this.flight_airline_combobox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flight_airline_combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.flight_airline_combobox.FormattingEnabled = true;
-            this.flight_airline_combobox.Location = new System.Drawing.Point(98, 96);
+            this.flight_airline_combobox.Location = new System.Drawing.Point(148, 103);
             this.flight_airline_combobox.Name = "flight_airline_combobox";
-            this.flight_airline_combobox.Size = new System.Drawing.Size(187, 21);
+            this.flight_airline_combobox.Size = new System.Drawing.Size(285, 28);
             this.flight_airline_combobox.TabIndex = 6;
             this.flight_airline_combobox.SelectedIndexChanged += new System.EventHandler(this.flight_airline_combobox_SelectedIndexChanged);
             // 
@@ -751,9 +787,9 @@
             // 
             this.flight_airline_label.AutoSize = true;
             this.flight_airline_label.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flight_airline_label.Location = new System.Drawing.Point(3, 93);
+            this.flight_airline_label.Location = new System.Drawing.Point(3, 100);
             this.flight_airline_label.Name = "flight_airline_label";
-            this.flight_airline_label.Size = new System.Drawing.Size(137, 38);
+            this.flight_airline_label.Size = new System.Drawing.Size(139, 34);
             this.flight_airline_label.TabIndex = 6;
             this.flight_airline_label.Text = "Select Airline";
             this.flight_airline_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -762,9 +798,9 @@
             // 
             this.flight_classtype_label.AutoSize = true;
             this.flight_classtype_label.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flight_classtype_label.Location = new System.Drawing.Point(3, 120);
+            this.flight_classtype_label.Location = new System.Drawing.Point(3, 134);
             this.flight_classtype_label.Name = "flight_classtype_label";
-            this.flight_classtype_label.Size = new System.Drawing.Size(137, 38);
+            this.flight_classtype_label.Size = new System.Drawing.Size(139, 34);
             this.flight_classtype_label.TabIndex = 7;
             this.flight_classtype_label.Text = "Select Class type";
             this.flight_classtype_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -778,9 +814,9 @@
             "Economy",
             "Business",
             "Executive"});
-            this.flight_classtype_combobox.Location = new System.Drawing.Point(98, 123);
+            this.flight_classtype_combobox.Location = new System.Drawing.Point(148, 137);
             this.flight_classtype_combobox.Name = "flight_classtype_combobox";
-            this.flight_classtype_combobox.Size = new System.Drawing.Size(187, 21);
+            this.flight_classtype_combobox.Size = new System.Drawing.Size(285, 28);
             this.flight_classtype_combobox.TabIndex = 7;
             this.flight_classtype_combobox.SelectedIndexChanged += new System.EventHandler(this.flight_classtype_combobox_SelectedIndexChanged);
             // 
@@ -789,9 +825,9 @@
             this.flight_country_combobox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flight_country_combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.flight_country_combobox.FormattingEnabled = true;
-            this.flight_country_combobox.Location = new System.Drawing.Point(98, 150);
+            this.flight_country_combobox.Location = new System.Drawing.Point(148, 171);
             this.flight_country_combobox.Name = "flight_country_combobox";
-            this.flight_country_combobox.Size = new System.Drawing.Size(187, 21);
+            this.flight_country_combobox.Size = new System.Drawing.Size(285, 28);
             this.flight_country_combobox.TabIndex = 8;
             this.flight_country_combobox.SelectedIndexChanged += new System.EventHandler(this.flight_country_combobox_SelectedIndexChanged);
             // 
@@ -799,9 +835,9 @@
             // 
             this.flight_country_label.AutoSize = true;
             this.flight_country_label.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flight_country_label.Location = new System.Drawing.Point(3, 147);
+            this.flight_country_label.Location = new System.Drawing.Point(3, 168);
             this.flight_country_label.Name = "flight_country_label";
-            this.flight_country_label.Size = new System.Drawing.Size(137, 38);
+            this.flight_country_label.Size = new System.Drawing.Size(139, 34);
             this.flight_country_label.TabIndex = 10;
             this.flight_country_label.Text = "Select City";
             this.flight_country_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -810,9 +846,9 @@
             // 
             this.flight_filter_label.AutoSize = true;
             this.flight_filter_label.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flight_filter_label.Location = new System.Drawing.Point(98, 80);
+            this.flight_filter_label.Location = new System.Drawing.Point(148, 80);
             this.flight_filter_label.Name = "flight_filter_label";
-            this.flight_filter_label.Size = new System.Drawing.Size(187, 13);
+            this.flight_filter_label.Size = new System.Drawing.Size(285, 20);
             this.flight_filter_label.TabIndex = 11;
             this.flight_filter_label.Text = "Filters:";
             this.flight_filter_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -825,20 +861,20 @@
             this.tableLayoutPanel4.Controls.Add(this.flight_remove_button, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.flight_modify_button, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(98, 3);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(148, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(187, 34);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(285, 34);
             this.tableLayoutPanel4.TabIndex = 12;
             // 
             // flight_remove_button
             // 
             this.flight_remove_button.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flight_remove_button.Location = new System.Drawing.Point(96, 3);
+            this.flight_remove_button.Location = new System.Drawing.Point(145, 3);
             this.flight_remove_button.Name = "flight_remove_button";
-            this.flight_remove_button.Size = new System.Drawing.Size(88, 28);
+            this.flight_remove_button.Size = new System.Drawing.Size(137, 28);
             this.flight_remove_button.TabIndex = 4;
             this.flight_remove_button.Text = "Remove";
             this.flight_remove_button.UseVisualStyleBackColor = true;
@@ -849,7 +885,7 @@
             this.flight_modify_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flight_modify_button.Location = new System.Drawing.Point(3, 3);
             this.flight_modify_button.Name = "flight_modify_button";
-            this.flight_modify_button.Size = new System.Drawing.Size(87, 28);
+            this.flight_modify_button.Size = new System.Drawing.Size(136, 28);
             this.flight_modify_button.TabIndex = 3;
             this.flight_modify_button.Text = "Modify";
             this.flight_modify_button.UseVisualStyleBackColor = true;
@@ -864,7 +900,8 @@
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(435, 324);
+            this.dataGridView1.RowHeadersWidth = 62;
+            this.dataGridView1.Size = new System.Drawing.Size(660, 516);
             this.dataGridView1.TabIndex = 0;
             // 
             // tabPage7
@@ -1049,42 +1086,6 @@
             this.tabPage4.Text = "Bookings";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // btn_cancelPack
-            // 
-            this.btn_cancelPack.Location = new System.Drawing.Point(918, 423);
-            this.btn_cancelPack.Name = "btn_cancelPack";
-            this.btn_cancelPack.Size = new System.Drawing.Size(147, 63);
-            this.btn_cancelPack.TabIndex = 13;
-            this.btn_cancelPack.Text = "Cancel";
-            this.btn_cancelPack.UseVisualStyleBackColor = true;
-            this.btn_cancelPack.Click += new System.EventHandler(this.btn_cancelPack_Click);
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(58, 125);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(103, 20);
-            this.label18.TabIndex = 14;
-            this.label18.Text = "Customer ID:";
-            // 
-            // textBox14
-            // 
-            this.textBox14.Location = new System.Drawing.Point(168, 125);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(110, 26);
-            this.textBox14.TabIndex = 15;
-            // 
-            // btn_Historic
-            // 
-            this.btn_Historic.Location = new System.Drawing.Point(465, 371);
-            this.btn_Historic.Name = "btn_Historic";
-            this.btn_Historic.Size = new System.Drawing.Size(419, 49);
-            this.btn_Historic.TabIndex = 24;
-            this.btn_Historic.Text = "Search for Historic";
-            this.btn_Historic.UseVisualStyleBackColor = true;
-            this.btn_Historic.Click += new System.EventHandler(this.btn_Historic_Click);
-            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -1156,7 +1157,7 @@
         private System.Windows.Forms.Button btn_Back;
         private System.Windows.Forms.Button btn_Next;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox lblSearch;
+        private System.Windows.Forms.TextBox textSearch;
         private System.Windows.Forms.Button btn_Search;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;

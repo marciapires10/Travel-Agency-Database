@@ -7,17 +7,17 @@ AS
 			DECLARE @tempTable table(
 				ID		INT not null,
 				Name	VARCHAR(max) not null,
-				Image	VARCHAR(max),
 				Description VARCHAR(max),
 				Price VARCHAR(max) not null,
-				CC_Location VARCHAR(max) not null
+				CC_Location VARCHAR(max) not null,
+				Image	VARCHAR(max)
 			)
 
 			SET NOCOUNT ON;
 
 			IF @dest <> 'None'
 			BEGIN
-					INSERT INTO @tempTable (ID, Name, Image, Description, Price, CC_Location)
+					INSERT INTO @tempTable (ID, Name, Description, Price, CC_Location, Image)
 					SELECT * FROM TravelAgency.Accommodation where CC_Location like '%'+@dest+'%'
 			END
 
@@ -50,4 +50,4 @@ AS
 
 GO
 
---exec TravelAgency.spFilterAcc PriceAsc, Madrid
+exec TravelAgency.spFilterAcc PriceAsc, Madrid
