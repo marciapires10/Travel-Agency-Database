@@ -18,7 +18,6 @@ namespace WindowsFormsApp2
         private SqlConnection cn;
         private int currentCustomer = 0;
         private string acc_name;
-        private bool clicked = false;
         private BindingSource bindingSource1 = new BindingSource();
         private SqlDataAdapter dataAdapter = new SqlDataAdapter();
 
@@ -37,6 +36,7 @@ namespace WindowsFormsApp2
             dataGridView1.DataSource = bindingSource1;
             GetData();
 
+            initialFieldsPack();
         }
 
         private SqlConnection getSGBDConnection()
@@ -413,13 +413,14 @@ namespace WindowsFormsApp2
 
         private void pack_selected(object sender, EventArgs e)
         {
-            Debug.WriteLine("pois");
             textBox1.Text = "";
+            comboBox1.Items.Clear();
             comboBox1.Text = "None";
             comboBox1.Items.Add("None");
             comboBox1.Items.Add("PriceAsc");
             comboBox1.Items.Add("PriceDesc");
 
+            comboBox2.Items.Clear();
             comboBox2.Text = "None";
             comboBox2.Items.Add("None");
             comboBox2.Items.Add("DiscountAsc");
@@ -428,6 +429,10 @@ namespace WindowsFormsApp2
             comboBox2.Items.Add("Not available");
 
             textBox12.ReadOnly = true;
+
+            comboBox3.Items.Clear();
+            comboBox3.Items.Add("True");
+            comboBox3.Items.Add("False");
 
             loadAccommodation();
             loadPromo();
@@ -440,7 +445,7 @@ namespace WindowsFormsApp2
             tableLayoutPanel1.RowStyles.Clear();
             tableLayoutPanel1.ColumnStyles.Clear();
             tableLayoutPanel1.ColumnCount = 1;
-            tableLayoutPanel1.RowCount = 0;
+            tableLayoutPanel1.RowCount = nAcc;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
 
             SqlCommand cmd = new SqlCommand
@@ -459,21 +464,205 @@ namespace WindowsFormsApp2
                 while (reader.Read())
                 {
                     tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 206));
+                    accImage accimg = new accImage();
+                    accimg.ID = (int)reader["ID"];
                     Panel x = new Panel();
 
                     tableLayoutPanel1.RowCount++;
-                    x.Location = new System.Drawing.Point(24, 111);
-                    x.Size = new System.Drawing.Size(1010, 204);
+                    x.Location = new System.Drawing.Point(25, 110);
+                    x.Size = new System.Drawing.Size(1010, 205);
                     x.TabIndex = 3;
 
-                    Label lb1 = new Label();
+                    try
+                    {
+                        byte[] bytes = System.Convert.FromBase64String(reader["Image"].ToString());
+                        var imageBytes = new System.IO.MemoryStream(bytes);
+                        Image imgStream = Image.FromStream(imageBytes);
+                        accimg.Image = imgStream;
+                        accimg.SizeMode = PictureBoxSizeMode.StretchImage;
+                        accimg.Location = new System.Drawing.Point(15, 25);
+                        accimg.Size = new System.Drawing.Size(160, 150);
+                        accimg.Name = "accimg_" + tableLayoutPanel2.RowCount;
+                        accimg.TabIndex = 3;
+                        //accimg.TabStop = false;
+                    }
+                    catch
+                    {
+                        accimg.Image = null;
+                        accimg.SizeMode = PictureBoxSizeMode.StretchImage;
+                        accimg.Location = new System.Drawing.Point(15, 25);
+                        accimg.Size = new System.Drawing.Size(160, 150);
+                        accimg.Name = "accimg_" + tableLayoutPanel2.RowCount;
+                        accimg.TabIndex = 3;
+                        //accimg.TabStop = false;
+                    }
+                    
 
-                    lb1.Location = new System.Drawing.Point(20, 28);
-                    lb1.Size = new System.Drawing.Size(150, 150);
-                    lb1.Name = "pic_" + tableLayoutPanel1.RowCount;
-                    lb1.TabIndex = 3;
-                    lb1.TabStop = false;
-                    lb1.Text = "OLA";
+                    
+
+                    Label lb2 = new Label();
+                    Label lb3 = new Label();
+                    Label lb4 = new Label();
+                    Label lb5 = new Label();
+                    Label lb6 = new Label();
+                    Label lb7 = new Label();
+                    Button btn_Conf = new Button();
+
+                    btn_Conf.Location = new System.Drawing.Point(305, 150);
+                    btn_Conf.TabIndex = 3;
+                    btn_Conf.Text = "SELECT";
+                    btn_Conf.Click += new EventHandler(btn_Conf_Click);
+
+                    Debug.WriteLine("load 3???");
+
+                    lb7.AutoSize = true;
+                    lb7.Location = new System.Drawing.Point(305, 130);
+                    lb7.TabIndex = 3;
+                    lb7.MaximumSize = new System.Drawing.Size(100, 20);
+
+                    lb6.AutoSize = true;
+                    lb6.Location = new System.Drawing.Point(180, 130);
+                    lb6.TabIndex = 3;
+                    lb6.MaximumSize = new System.Drawing.Size(100, 20);
+
+                    lb5.AutoSize = true;
+                    lb5.Location = new System.Drawing.Point(305, 100);
+                    lb5.TabIndex = 3;
+                    lb5.MaximumSize = new System.Drawing.Size(100, 20);
+
+                    lb4.AutoSize = true;
+                    lb4.Location = new System.Drawing.Point(180, 100);
+                    lb4.TabIndex = 3;
+                    lb4.MaximumSize = new System.Drawing.Size(100, 20);
+
+                    lb3.AutoSize = true;
+                    lb3.Location = new System.Drawing.Point(180, 53);
+                    lb3.TabIndex = 2;
+                    lb3.MaximumSize = new System.Drawing.Size(425, 80);
+
+                    lb2.AutoSize = true;
+                    lb2.Font = new Font(lb2.Font, FontStyle.Bold);
+                    lb2.Location = new System.Drawing.Point(180, 28);
+                    lb2.MaximumSize = new System.Drawing.Size(200, 15);
+                    lb2.TabIndex = 1;
+
+                    lb2.Name = "label2_" + nAcc;
+                    lb3.Name = "label3_" + nAcc;
+                    lb4.Name = "label4_" + nAcc;
+                    lb5.Name = "label5_" + nAcc;
+                    lb6.Name = "label6_" + nAcc;
+                    lb7.Name = "label7_" + nAcc;
+                    
+
+                    Debug.WriteLine(btn_Conf.Name);
+
+                    lb2.Text = reader["Name"].ToString();
+                    lb3.Text = reader["Description"].ToString();
+                    lb4.Font = new Font(lb4.Font, FontStyle.Bold);
+                    lb4.Text = "Location:";
+                    lb5.Text = reader["CC_Location"].ToString();
+                    lb6.Font = new Font(lb6.Font, FontStyle.Bold);
+                    lb6.Text = "Price per night:";
+                    lb7.Text = reader["Price"].ToString() + " €";
+
+                    btn_Conf.Name = lb2.Text;
+
+
+                    x.Controls.Add(accimg);
+                    x.Controls.Add(lb2);
+                    x.Controls.Add(lb3);
+                    x.Controls.Add(lb4);
+                    x.Controls.Add(lb5);
+                    x.Controls.Add(lb6);
+                    x.Controls.Add(lb7);
+                    x.Controls.Add(btn_Conf);
+
+                    
+                    tableLayoutPanel1.Controls.Add(x, 0, nAcc);
+                    
+                    nAcc++;
+                }
+            }
+            cn.Close();
+
+        }
+
+        private void btn_Conf_Click(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            acc_name = button.Name;
+            textBox12.Text = acc_name;
+            textBox9.Text = acc_name;
+            textBox9.ReadOnly = true;
+
+        }
+
+
+        private void filterAcc(string option, string dest)
+        {
+            int nAcc = 0;
+
+            tableLayoutPanel1.Controls.Clear();
+            tableLayoutPanel1.RowStyles.Clear();
+            tableLayoutPanel1.ColumnStyles.Clear();
+            tableLayoutPanel1.ColumnCount = 1;
+            tableLayoutPanel1.RowCount = 0;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+
+            SqlCommand cmd = new SqlCommand
+            {
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "TravelAgency.spFilterAcc"
+            };
+
+            cmd.Parameters.Add(new SqlParameter("@option", SqlDbType.VarChar));
+            cmd.Parameters.Add(new SqlParameter("@dest", SqlDbType.VarChar));
+            cmd.Parameters["@option"].Value = option;
+            cmd.Parameters["@dest"].Value = dest;
+
+
+            if (!verifySGBDConnection())
+                return;
+            cmd.Connection = cn;
+
+            
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 206));
+                    accImage accimg = new accImage();
+                    accimg.ID = (int)reader["ID"];
+                    Panel x = new Panel();
+
+                    tableLayoutPanel1.RowCount++;
+                    x.Location = new System.Drawing.Point(25, 110);
+                    x.Size = new System.Drawing.Size(1010, 205);
+                    x.TabIndex = 3;
+
+                    try
+                    {
+                        byte[] bytes = System.Convert.FromBase64String(reader["Image"].ToString());
+                        var imageBytes = new System.IO.MemoryStream(bytes);
+                        Image imgStream = Image.FromStream(imageBytes);
+                        accimg.Image = imgStream;
+                        accimg.SizeMode = PictureBoxSizeMode.StretchImage;
+                        accimg.Location = new System.Drawing.Point(15, 25);
+                        accimg.Size = new System.Drawing.Size(160, 150);
+                        accimg.Name = "accimg_" + tableLayoutPanel2.RowCount;
+                        accimg.TabIndex = 3;
+                    }
+                    catch
+                    {
+                        accimg.Image = null;
+                        accimg.SizeMode = PictureBoxSizeMode.StretchImage;
+                        accimg.Location = new System.Drawing.Point(15, 25);
+                        accimg.Size = new System.Drawing.Size(160, 150);
+                        accimg.Name = "accimg_" + tableLayoutPanel2.RowCount;
+                        accimg.TabIndex = 3;
+                    }
+
+
 
 
                     Label lb2 = new Label();
@@ -520,13 +709,13 @@ namespace WindowsFormsApp2
                     lb2.MaximumSize = new System.Drawing.Size(200, 15);
                     lb2.TabIndex = 1;
 
-                    lb2.Name = "label2_" + tableLayoutPanel1.RowCount;
-                    lb3.Name = "label3_" + tableLayoutPanel1.RowCount;
-                    lb4.Name = "label4_" + tableLayoutPanel1.RowCount;
-                    lb5.Name = "label5_" + tableLayoutPanel1.RowCount;
-                    lb6.Name = "label6_" + tableLayoutPanel1.RowCount;
-                    lb7.Name = "label7_" + tableLayoutPanel1.RowCount;
-                    acc_name = tableLayoutPanel1.RowCount.ToString();
+                    lb2.Name = "label2_" + nAcc;
+                    lb3.Name = "label3_" + nAcc;
+                    lb4.Name = "label4_" + nAcc;
+                    lb5.Name = "label5_" + nAcc;
+                    lb6.Name = "label6_" + nAcc;
+                    lb7.Name = "label7_" + nAcc;
+
 
                     lb2.Text = reader["Name"].ToString();
                     lb3.Text = reader["Description"].ToString();
@@ -537,13 +726,10 @@ namespace WindowsFormsApp2
                     lb6.Text = "Price per night:";
                     lb7.Text = reader["Price"].ToString() + " €";
 
-                    if(clicked)
-                    {
-                        acc_name = lb2.Text;
-                        clicked = false;
-                    }
+                    btn_Conf.Name = lb2.Text;
 
-                    x.Controls.Add(lb1);
+
+                    x.Controls.Add(accimg);
                     x.Controls.Add(lb2);
                     x.Controls.Add(lb3);
                     x.Controls.Add(lb4);
@@ -552,137 +738,9 @@ namespace WindowsFormsApp2
                     x.Controls.Add(lb7);
                     x.Controls.Add(btn_Conf);
 
-                    
-                    tableLayoutPanel1.Controls.Add(x, 0, tableLayoutPanel1.RowCount - 1);
-                    
-                    nAcc++;
-                }
-            }
-            cn.Close();
 
-        }
+                    tableLayoutPanel1.Controls.Add(x, 0, nAcc);
 
-        private void btn_Conf_Click(object sender, EventArgs e)
-        {
-           
-            textBox12.Text = acc_name;
-            clicked = true;
-        }
-
-        private void filterAcc(string option, string dest)
-        {
-            int nAcc = 0;
-
-            tableLayoutPanel1.Controls.Clear();
-            tableLayoutPanel1.RowStyles.Clear();
-            tableLayoutPanel1.ColumnStyles.Clear();
-            tableLayoutPanel1.ColumnCount = 1;
-            tableLayoutPanel1.RowCount = 0;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-
-            SqlCommand cmd = new SqlCommand
-            {
-                CommandType = CommandType.StoredProcedure,
-                CommandText = "TravelAgency.spFilterAcc"
-            };
-
-            cmd.Parameters.Add(new SqlParameter("@option", SqlDbType.VarChar));
-            cmd.Parameters.Add(new SqlParameter("@dest", SqlDbType.VarChar));
-            cmd.Parameters["@option"].Value = option;
-            cmd.Parameters["@dest"].Value = dest;
-
-
-            if (!verifySGBDConnection())
-                return;
-            cmd.Connection = cn;
-
-            
-            using (SqlDataReader reader = cmd.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 206));
-                    Panel x = new Panel();
-
-                    tableLayoutPanel1.RowCount++;
-                    x.Location = new System.Drawing.Point(24, 111);
-                    x.Size = new System.Drawing.Size(1010, 204);
-                    x.TabIndex = 3;
-
-                    Label lb1 = new Label();
-
-                    lb1.Location = new System.Drawing.Point(20, 28);
-                    lb1.Size = new System.Drawing.Size(150, 150);
-                    lb1.Name = "pic_" + tableLayoutPanel1.RowCount;
-                    lb1.TabIndex = 3;
-                    lb1.TabStop = false;
-                    lb1.Text = "OLA";
-
-
-                    Label lb2 = new Label();
-                    Label lb3 = new Label();
-                    Label lb4 = new Label();
-                    Label lb5 = new Label();
-                    Label lb6 = new Label();
-                    Label lb7 = new Label();
-
-                    lb7.AutoSize = true;
-                    lb7.Location = new System.Drawing.Point(305, 130);
-                    lb7.TabIndex = 3;
-                    lb7.MaximumSize = new System.Drawing.Size(100, 20);
-
-                    lb6.AutoSize = true;
-                    lb6.Location = new System.Drawing.Point(180, 130);
-                    lb6.TabIndex = 3;
-                    lb6.MaximumSize = new System.Drawing.Size(100, 20);
-
-                    lb5.AutoSize = true;
-                    lb5.Location = new System.Drawing.Point(305, 100);
-                    lb5.TabIndex = 3;
-                    lb5.MaximumSize = new System.Drawing.Size(100, 20);
-
-                    lb4.AutoSize = true;
-                    lb4.Location = new System.Drawing.Point(180, 100);
-                    lb4.TabIndex = 3;
-                    lb4.MaximumSize = new System.Drawing.Size(100, 20);
-
-                    lb3.AutoSize = true;
-                    lb3.Location = new System.Drawing.Point(180, 53);
-                    lb3.TabIndex = 2;
-                    lb3.MaximumSize = new System.Drawing.Size(425, 80);
-
-                    lb2.AutoSize = true;
-                    lb2.Font = new Font(lb2.Font, FontStyle.Bold);
-                    lb2.Location = new System.Drawing.Point(180, 28);
-                    lb2.MaximumSize = new System.Drawing.Size(200, 15);
-                    lb2.TabIndex = 1;
-
-                    lb2.Name = "label2_" + tableLayoutPanel1.RowCount;
-                    lb3.Name = "label3_" + tableLayoutPanel1.RowCount;
-                    lb4.Name = "label4_" + tableLayoutPanel1.RowCount;
-                    lb5.Name = "label5_" + tableLayoutPanel1.RowCount;
-                    lb6.Name = "label6_" + tableLayoutPanel1.RowCount;
-                    lb7.Name = "label7_" + tableLayoutPanel1.RowCount;
-
-                    lb2.Text = reader["Name"].ToString();
-                    lb3.Text = reader["Description"].ToString();
-                    lb4.Font = new Font(lb4.Font, FontStyle.Bold);
-                    lb4.Text = "Location:";
-                    lb5.Text = reader["CC_Location"].ToString();
-                    lb6.Font = new Font(lb6.Font, FontStyle.Bold);
-                    lb6.Text = "Price per night:";
-                    lb7.Text = reader["Price"].ToString() + " €";
-
-                    
-                    x.Controls.Add(lb1);
-                    x.Controls.Add(lb2);
-                    x.Controls.Add(lb3);
-                    x.Controls.Add(lb4);
-                    x.Controls.Add(lb5);
-                    x.Controls.Add(lb6);
-                    x.Controls.Add(lb7);
-
-                    tableLayoutPanel1.Controls.Add(x, 0, tableLayoutPanel1.RowCount - 1);
                     nAcc++;
                 }
             }
@@ -733,6 +791,57 @@ namespace WindowsFormsApp2
             cn.Close();
         }
 
+        private void addPromo()
+        {
+            string active = comboBox3.Text;
+            int active_bin;
+
+            if(active == "True")
+            {
+                active_bin = 1;
+            }
+            else
+            {
+                active_bin = 0;
+            }
+
+            int discount = Int32.Parse(textBox13.Text);
+
+            SqlCommand cmd = new SqlCommand
+            {
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "TravelAgency.spAddPromo"
+            };
+
+            cmd.Parameters.Add(new SqlParameter("@Active", SqlDbType.Bit));
+            cmd.Parameters.Add(new SqlParameter("@Discount", SqlDbType.Int));
+            cmd.Parameters.Add(new SqlParameter("@responseMsg", SqlDbType.NVarChar, 250));
+            cmd.Parameters["@Active"].Value = active_bin;
+            cmd.Parameters["@Discount"].Value = discount;
+            cmd.Parameters["@responseMsg"].Direction = ParameterDirection.Output;
+
+            if (!verifySGBDConnection())
+            {
+                return;
+            }
+
+            cmd.Connection = cn;
+            cmd.ExecuteNonQuery();
+
+            if ("" + cmd.Parameters["@responseMsg"].Value == "Success")
+            {
+                MessageBox.Show("Promo added");
+
+            }
+            else
+            {
+                MessageBox.Show("Promo already exists", "Promo Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            cn.Close();
+
+        }
+
         private void filterPromo(string option)
         {
             SqlCommand cmd = new SqlCommand
@@ -760,34 +869,7 @@ namespace WindowsFormsApp2
             cn.Close();
         }
 
-        // help functions
-        public void showButtonsCustomer()
-        {
-            btn_Add.Visible = true;
-            btn_Edit.Visible = true;
-            btn_Remove.Visible = true;
-            btn_OK.Visible = false;
-            btn_Cancel.Visible = false;
-        }
-
-
-        public void unlockControls()
-        {
-            textBox2.ReadOnly = false;
-            textBox3.ReadOnly = false;
-            textBox5.ReadOnly = false;
-            textBox6.ReadOnly = false;
-        }
-
-        public void clearFields()
-        {
-            textBox2.Text = "";
-            textBox3.Text = "";
-            textBox4.Text = "";
-            textBox5.Text = "";
-            textBox6.Text = "";
-        }
-
+        
         private void button1_Click_1(object sender, EventArgs e)
         {
             string option = comboBox2.Text;
@@ -887,6 +969,98 @@ namespace WindowsFormsApp2
                 textBox10.Text = chosenPromo.Split('|')[0];
                 textBox10.ReadOnly = true;
             }
+
+
+
+        }
+
+        private void btn_newPromo_Click(object sender, EventArgs e)
+        {
+            addPromo();
+            loadPromo();
+        }
+
+        // help functions
+        public void showButtonsCustomer()
+        {
+            btn_Add.Visible = true;
+            btn_Edit.Visible = true;
+            btn_Remove.Visible = true;
+            btn_OK.Visible = false;
+            btn_Cancel.Visible = false;
+        }
+
+
+        public void unlockControls()
+        {
+            textBox2.ReadOnly = false;
+            textBox3.ReadOnly = false;
+            textBox5.ReadOnly = false;
+            textBox6.ReadOnly = false;
+        }
+
+        public void clearFields()
+        {
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+            textBox5.Text = "";
+            textBox6.Text = "";
+        }
+
+        public void initialFieldsPack()
+        {
+            label9.Hide();
+            label10.Hide();
+            label11.Hide();
+            label12.Hide();
+            label13.Hide();
+            label14.Hide();
+            label18.Hide();
+            textBox7.Hide();
+            textBox8.Hide();
+            textBox9.Hide();
+            textBox10.Hide();
+            textBox11.Hide();
+            textBox14.Hide();
+
+            btn_NewPack.Show();
+            btn_CustPack.Show();
+        }
+
+        // PACKAGE TAB
+
+        private void btn_NewPack_Click(object sender, EventArgs e)
+        {
+            btn_NewPack.Hide();
+            btn_CustPack.Hide();
+
+            label9.Show();
+            label10.Show();
+            label11.Show();
+            label12.Show();
+            label13.Show();
+            label14.Show();
+            label18.Show();
+            textBox7.Show();
+            textBox8.Show();
+            textBox9.Show();
+            textBox10.Show();
+            textBox11.Show();
+            textBox14.Show();
+        }
+
+        private void btn_cancelPack_Click(object sender, EventArgs e)
+        {
+            initialFieldsPack();
+            btn_cancelPack.Hide();
+        }
+
+        private void btn_Historic_Click(object sender, EventArgs e)
+        {
+            string selCustomer = listBox1.SelectedItem.ToString();
+            Form3 historic = new Form3(selCustomer);
+            historic.ShowDialog();
 
         }
     }

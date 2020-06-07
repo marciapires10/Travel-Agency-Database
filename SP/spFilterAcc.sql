@@ -7,9 +7,9 @@ AS
 			DECLARE @tempTable table(
 				ID		INT not null,
 				Name	VARCHAR(max) not null,
-				Image	VARBINARY(max),
+				Image	VARCHAR(max),
 				Description VARCHAR(max),
-				Price SMALLMONEY not null,
+				Price VARCHAR(max) not null,
 				CC_Location VARCHAR(max) not null
 			)
 

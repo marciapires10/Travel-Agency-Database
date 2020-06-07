@@ -76,7 +76,7 @@ namespace WindowsFormsApp2
             };
 
             cmd.Parameters.Add(new SqlParameter("@name", SqlDbType.VarChar));
-            cmd.Parameters.Add(new SqlParameter("@image", SqlDbType.VarBinary));
+            cmd.Parameters.Add(new SqlParameter("@image", SqlDbType.VarChar));
             cmd.Parameters.Add(new SqlParameter("@description", SqlDbType.VarChar));
             cmd.Parameters.Add(new SqlParameter("@price", SqlDbType.VarChar));
             cmd.Parameters.Add(new SqlParameter("@location", SqlDbType.VarChar));

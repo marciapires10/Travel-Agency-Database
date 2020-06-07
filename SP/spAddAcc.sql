@@ -1,6 +1,6 @@
 CREATE PROCEDURE TravelAgency.spAddAcc
 	@name VARCHAR(max),
-	@image VARBINARY(max),
+	@image VARCHAR(max),
 	@description VARCHAR(max),
 	@price SMALLMONEY,
 	@location VARCHAR(max),
