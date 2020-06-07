@@ -767,5 +767,81 @@ namespace WindowsFormsApp2
             string option = comboBox2.Text;
             filterPromo(option);
         }
+
+        private void btn_Enable_Click(object sender, EventArgs e)
+        {
+            string promo = listBox2.SelectedItem.ToString();
+            string active = promo.Split('|')[0];
+
+            SqlCommand cmd = new SqlCommand
+            {
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "TravelAgency.spEnablePromo"
+            };
+
+            cmd.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int));
+            cmd.Parameters.Add(new SqlParameter("@responseMsg", SqlDbType.NVarChar, 250));
+            cmd.Parameters["@ID"].Value = active;
+            cmd.Parameters["@responseMsg"].Direction = ParameterDirection.Output;
+
+            if (!verifySGBDConnection())
+            {
+                return;
+            }
+
+            cmd.Connection = cn;
+            cmd.ExecuteNonQuery();
+
+            if ("" + cmd.Parameters["@responseMsg"].Value == "Success")
+            {
+                MessageBox.Show("Success");
+            }
+            else
+            {
+                MessageBox.Show("Error");
+            }
+
+            loadPromo();
+            cn.Close();
+
+            
+        }
+
+        private void btn_Disable(object sender, EventArgs e)
+        {
+            string promo = listBox2.SelectedItem.ToString();
+            string active = promo.Split('|')[0];
+
+            SqlCommand cmd = new SqlCommand
+            {
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "TravelAgency.spDisablePromo"
+            };
+
+            cmd.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int));
+            cmd.Parameters.Add(new SqlParameter("@responseMsg", SqlDbType.NVarChar, 250));
+            cmd.Parameters["@ID"].Value = active;
+            cmd.Parameters["@responseMsg"].Direction = ParameterDirection.Output;
+
+            if (!verifySGBDConnection())
+            {
+                return;
+            }
+
+            cmd.Connection = cn;
+            cmd.ExecuteNonQuery();
+
+            if ("" + cmd.Parameters["@responseMsg"].Value == "Success")
+            {
+                MessageBox.Show("Success");
+            }
+            else
+            {
+                MessageBox.Show("Error");
+            }
+
+            loadPromo();
+            cn.Close();
+        }
     }
 }
