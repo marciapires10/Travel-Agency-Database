@@ -18,6 +18,9 @@ namespace WindowsFormsApp2
         private SqlConnection cn;
         private int currentCustomer = 0;
         private string acc_name;
+        private bool add = false;
+        private bool edit = false;
+        private bool remove = false;
         private BindingSource bindingSource1 = new BindingSource();
         private SqlDataAdapter dataAdapter = new SqlDataAdapter();
 
@@ -364,30 +367,61 @@ namespace WindowsFormsApp2
             btn_Add.Visible = false;
             btn_Edit.Visible = false;
             btn_Remove.Visible = false;
+            btn_Historic.Visible = false;
             btn_OK.Visible = true;
             btn_Cancel.Visible = true;
+            
+
+            add = true;
         }
 
         // want to edit a Customer
         private void btn_Edit_Click(object sender, EventArgs e)
         {
             unlockControls();
-            editCustomer();
-            loadCustomers();
+            btn_OK.Visible = true;
+            btn_Cancel.Visible = true;
+            btn_Add.Visible = false;
+            btn_Edit.Visible = false;
+            btn_Historic.Visible = false;
+            btn_Remove.Visible = false;
+            clearFields();
+            edit = true;
+            
         }
 
         // want to delete a Customer
         private void btn_Remove_Click(object sender, EventArgs e)
         {
-            removeCustomer();
-            loadCustomers();
+            btn_OK.Visible = true;
+            btn_Cancel.Visible = true;
+            btn_Add.Visible = false;
+            btn_Edit.Visible = false;
+            btn_Remove.Visible = false;
+            btn_Historic.Visible = false;
+            clearFields();
+            remove = true;
 
         }
 
         // confirm
         private void btn_OK_Click(object sender, EventArgs e)
         {
-            addCustomer();
+            if (add)
+            {
+                addCustomer();
+                add = false;
+            }
+            else if (edit)
+            {
+                editCustomer();
+                edit = false;
+            }
+            else if (remove)
+            {
+                removeCustomer();
+                remove = false;
+            }
             loadCustomers();
         }
 
