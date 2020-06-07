@@ -48,3 +48,7 @@ insert into Accommodation (ID, Name, Description, Price, CC_Location) values (47
 insert into Accommodation (ID, Name, Description, Price, CC_Location) values (48, 'Schinner and Sons', null, '€237,24', 'Rome');
 insert into Accommodation (ID, Name, Description, Price, CC_Location) values (49, 'Kautzer and Sons', null, '€74,84', 'Berlin');
 insert into Accommodation (ID, Name, Description, Price, CC_Location) values (50, 'Wiza Group', null, '€83,14', 'São Paulo');
+
+insert into Accommodation (ID, Name, Image, Description, Price, CC_Location)
+SELECT 1, 'Bode LLC', BulkColumn, '€120,52', 'London'
+FROM Openrowset(Bulk 'C:\Users\marci\Desktop\BD_Projeto\BD_travel_agency\Images\hotel1.jpg', Single_Blob) as image

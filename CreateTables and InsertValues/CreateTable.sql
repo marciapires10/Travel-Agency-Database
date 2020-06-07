@@ -65,6 +65,7 @@ CREATE TABLE TravelAgency.Accommodation(
 	FOREIGN KEY(CC_Location) REFERENCES TravelAgency.CC(City),
 );
 
+
 CREATE TABLE TravelAgency.Promo(
 	ID			INT		NOT NULL,
 	ACTIVE		BIT		NOT NULL,
