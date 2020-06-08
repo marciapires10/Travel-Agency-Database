@@ -34,6 +34,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.btn_account = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
@@ -94,6 +95,16 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Travel Agency";
             // 
+            // btn_account
+            // 
+            this.btn_account.Location = new System.Drawing.Point(855, 486);
+            this.btn_account.Name = "btn_account";
+            this.btn_account.Size = new System.Drawing.Size(182, 71);
+            this.btn_account.TabIndex = 6;
+            this.btn_account.Text = "Create Account";
+            this.btn_account.UseVisualStyleBackColor = true;
+            this.btn_account.Click += new System.EventHandler(this.btn_account_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -101,12 +112,14 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1138, 600);
+            this.Controls.Add(this.btn_account);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
+            this.MinimumSize = new System.Drawing.Size(1152, 630);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Travel Agency";
@@ -123,6 +136,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btn_account;
     }
 }
 
