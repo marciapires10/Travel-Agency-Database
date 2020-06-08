@@ -18,6 +18,9 @@ namespace WindowsFormsApp2
         private SqlConnection cn;
         private int currentCustomer = 0;
         private string acc_name;
+        private bool add = false;
+        private bool edit = false;
+        private bool remove = false;
         private BindingSource bindingSource1 = new BindingSource();
         private SqlDataAdapter dataAdapter = new SqlDataAdapter();
         private BindingSource bindingSource2 = new BindingSource();
@@ -138,7 +141,50 @@ namespace WindowsFormsApp2
 
         private void label3_Click(object sender, EventArgs e)
         {
+            if (!verifySGBDConnection())
+            {
+                return;
+            }
 
+
+        }
+
+        private void filterCustomer(string fname, string lname)
+        {
+
+            SqlCommand cmd = new SqlCommand
+            {
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "TravelAgency.spFilterCustomer"
+            };
+
+            cmd.Parameters.Add(new SqlParameter("@Fname", SqlDbType.VarChar));
+            cmd.Parameters.Add(new SqlParameter("@Lname", SqlDbType.VarChar));
+            cmd.Parameters["@fname"].Value = fname;
+            cmd.Parameters["@lname"].Value = lname;
+
+            if (!verifySGBDConnection())
+                return;
+            cmd.Connection = cn;
+
+            listBox1.Items.Clear();
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Customer p = new Customer();
+                    p.Email = reader["Email"].ToString();
+                    p.Fname = reader["Fname"].ToString();
+                    p.Lname = reader["Lname"].ToString();
+                    p.PhoneNo = reader["phoneNo"].ToString();
+                    p.NIF = reader["NIF"].ToString();
+                    listBox1.Items.Add(p);
+
+                }
+            }
+
+            cn.Close();
         }
 
         // add new Customer
@@ -325,30 +371,61 @@ namespace WindowsFormsApp2
             btn_Add.Visible = false;
             btn_Edit.Visible = false;
             btn_Remove.Visible = false;
+            btn_Historic.Visible = false;
             btn_OK.Visible = true;
             btn_Cancel.Visible = true;
+            
+
+            add = true;
         }
 
         // want to edit a Customer
         private void btn_Edit_Click(object sender, EventArgs e)
         {
             unlockControls();
-            editCustomer();
-            loadCustomers();
+            btn_OK.Visible = true;
+            btn_Cancel.Visible = true;
+            btn_Add.Visible = false;
+            btn_Edit.Visible = false;
+            btn_Historic.Visible = false;
+            btn_Remove.Visible = false;
+            clearFields();
+            edit = true;
+            
         }
 
         // want to delete a Customer
         private void btn_Remove_Click(object sender, EventArgs e)
         {
-            removeCustomer();
-            loadCustomers();
+            btn_OK.Visible = true;
+            btn_Cancel.Visible = true;
+            btn_Add.Visible = false;
+            btn_Edit.Visible = false;
+            btn_Remove.Visible = false;
+            btn_Historic.Visible = false;
+            clearFields();
+            remove = true;
 
         }
 
         // confirm
         private void btn_OK_Click(object sender, EventArgs e)
         {
-            addCustomer();
+            if (add)
+            {
+                addCustomer();
+                add = false;
+            }
+            else if (edit)
+            {
+                editCustomer();
+                edit = false;
+            }
+            else if (remove)
+            {
+                removeCustomer();
+                remove = false;
+            }
             loadCustomers();
         }
 
@@ -360,6 +437,17 @@ namespace WindowsFormsApp2
 
         private void btn_Search_Click(object sender, EventArgs e)
         {
+            string name = textSearch.Text;
+            string fname = name.Split(' ')[0];
+            string lname = name.Split(' ')[1];
+
+            if (string.IsNullOrEmpty(fname))
+            {
+               fname = "None";
+            }
+
+            filterCustomer(fname, lname);
+
 
         }
 
@@ -1064,6 +1152,7 @@ namespace WindowsFormsApp2
         private void btn_Historic_Click(object sender, EventArgs e)
         {
             string selCustomer = listBox1.SelectedItem.ToString();
+
             Form3 historic = new Form3(selCustomer);
             historic.ShowDialog();
 

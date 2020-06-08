@@ -33,7 +33,7 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btn_Historic = new System.Windows.Forms.Button();
             this.btn_Search = new System.Windows.Forms.Button();
-            this.lblSearch = new System.Windows.Forms.TextBox();
+            this.textSearch = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btn_Cancel = new System.Windows.Forms.Button();
             this.btn_OK = new System.Windows.Forms.Button();
@@ -181,7 +181,7 @@
             // 
             this.tabPage2.Controls.Add(this.btn_Historic);
             this.tabPage2.Controls.Add(this.btn_Search);
-            this.tabPage2.Controls.Add(this.lblSearch);
+            this.tabPage2.Controls.Add(this.textSearch);
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.btn_Cancel);
             this.tabPage2.Controls.Add(this.btn_OK);
@@ -211,10 +211,9 @@
             // 
             // btn_Historic
             // 
-            this.btn_Historic.Location = new System.Drawing.Point(310, 241);
-            this.btn_Historic.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Historic.Location = new System.Drawing.Point(465, 371);
             this.btn_Historic.Name = "btn_Historic";
-            this.btn_Historic.Size = new System.Drawing.Size(279, 32);
+            this.btn_Historic.Size = new System.Drawing.Size(419, 49);
             this.btn_Historic.TabIndex = 24;
             this.btn_Historic.Text = "Search for Historic";
             this.btn_Historic.UseVisualStyleBackColor = true;
@@ -231,13 +230,12 @@
             this.btn_Search.UseVisualStyleBackColor = true;
             this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
             // 
-            // lblSearch
+            // textSearch
             // 
-            this.lblSearch.Location = new System.Drawing.Point(371, 39);
-            this.lblSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(218, 20);
-            this.lblSearch.TabIndex = 22;
+            this.textSearch.Location = new System.Drawing.Point(556, 60);
+            this.textSearch.Name = "textSearch";
+            this.textSearch.Size = new System.Drawing.Size(325, 26);
+            this.textSearch.TabIndex = 22;
             // 
             // label4
             // 
@@ -473,28 +471,25 @@
             // 
             // textBox14
             // 
-            this.textBox14.Location = new System.Drawing.Point(112, 81);
-            this.textBox14.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox14.Location = new System.Drawing.Point(168, 125);
             this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(75, 20);
+            this.textBox14.Size = new System.Drawing.Size(110, 26);
             this.textBox14.TabIndex = 15;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(39, 81);
-            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label18.Location = new System.Drawing.Point(58, 125);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(68, 13);
+            this.label18.Size = new System.Drawing.Size(103, 20);
             this.label18.TabIndex = 14;
             this.label18.Text = "Customer ID:";
             // 
             // btn_cancelPack
             // 
-            this.btn_cancelPack.Location = new System.Drawing.Point(612, 275);
-            this.btn_cancelPack.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_cancelPack.Location = new System.Drawing.Point(918, 423);
             this.btn_cancelPack.Name = "btn_cancelPack";
-            this.btn_cancelPack.Size = new System.Drawing.Size(98, 41);
+            this.btn_cancelPack.Size = new System.Drawing.Size(147, 63);
             this.btn_cancelPack.TabIndex = 13;
             this.btn_cancelPack.Text = "Cancel";
             this.btn_cancelPack.UseVisualStyleBackColor = true;
@@ -811,7 +806,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(288, 324);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(436, 512);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // flight_search_textBox
@@ -1445,7 +1440,7 @@
         private System.Windows.Forms.Button btn_Back;
         private System.Windows.Forms.Button btn_Next;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox lblSearch;
+        private System.Windows.Forms.TextBox textSearch;
         private System.Windows.Forms.Button btn_Search;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
