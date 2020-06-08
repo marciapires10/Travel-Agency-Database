@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Diagnostics;
 
 namespace WindowsFormsApp2
 {
@@ -50,6 +51,13 @@ namespace WindowsFormsApp2
             string phoneNo = textBox6.Text;
             string password = textBox1.Text;
 
+            Debug.WriteLine(fname + " " + lname + " " + email + " " + phoneNo + " " + password);
+
+            if (!verifySGBDConnection())
+            {
+                return;
+            }
+
             SqlCommand cmd = new SqlCommand
             {
                 CommandType = CommandType.StoredProcedure,
@@ -69,12 +77,6 @@ namespace WindowsFormsApp2
             cmd.Parameters["@NewAccountPwd"].Value = password;
             cmd.Parameters["@PhoneNo"].Value = phoneNo;
             cmd.Parameters["@responseMsg"].Direction = ParameterDirection.Output;
-
-
-            if (!verifySGBDConnection())
-            {
-                return;
-            }
 
             cmd.Connection = cn;
             cmd.ExecuteNonQuery();
