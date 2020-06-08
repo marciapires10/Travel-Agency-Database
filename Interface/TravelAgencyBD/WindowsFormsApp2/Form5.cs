@@ -45,10 +45,28 @@ namespace WindowsFormsApp2
 
         private void createAccount()
         {
+            if(textBox2.TextLength == 0|| textBox3.TextLength == 0 || textBox4.TextLength == 0 || textBox6.TextLength == 0 || textBox1.TextLength == 0)
+            {
+                MessageBox.Show("All camps must be filled.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            int phoneNo;
+            if (!Int32.TryParse(textBox6.Text,out phoneNo))
+            {
+                Debug.WriteLine(phoneNo);
+                MessageBox.Show("Phone Number must be a number wiwdwdith 9 digits.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else if (phoneNo < 100000000 || phoneNo > 1000000000)
+            {
+                Debug.WriteLine(phoneNo+"dwdw");
+                MessageBox.Show("Phone Number must be a number with 9 digits.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             string fname = textBox2.Text;
             string lname = textBox3.Text;
             string email = textBox4.Text;
-            string phoneNo = textBox6.Text;
             string password = textBox1.Text;
 
             Debug.WriteLine(fname + " " + lname + " " + email + " " + phoneNo + " " + password);
@@ -87,6 +105,7 @@ namespace WindowsFormsApp2
             }
 
             cn.Close();
+            this.Close();
 
         }
 
@@ -98,7 +117,6 @@ namespace WindowsFormsApp2
         private void btn_create_Click(object sender, EventArgs e)
         {
             createAccount();
-            this.Close();
         }
     }
 }
