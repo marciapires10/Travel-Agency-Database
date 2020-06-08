@@ -20,6 +20,7 @@ namespace WindowsFormsApp2
         private string acc_name;
         private BindingSource bindingSource1 = new BindingSource();
         private SqlDataAdapter dataAdapter = new SqlDataAdapter();
+        private BindingSource bindingSource2 = new BindingSource();
 
         public Form2()
         {
@@ -34,8 +35,11 @@ namespace WindowsFormsApp2
             cn = getSGBDConnection();
             loadCustomers();
             dataGridView1.DataSource = bindingSource1;
-            GetData();
+            dataGridView2.DataSource = bindingSource2;
+            get_flight_data();
+            get_transfer_data();
             loadFlights();
+            load_transfer();
 
             initialFieldsPack();
         }
@@ -373,10 +377,10 @@ namespace WindowsFormsApp2
         {
             add_flight add_new_flight = new add_flight();
             add_new_flight.ShowDialog();
-            GetData();
+            get_flight_data();
         }
 
-        private void GetData()
+        private void get_flight_data()
         {
             try
             {
@@ -1071,7 +1075,7 @@ namespace WindowsFormsApp2
             System.Diagnostics.Debug.WriteLine(flight_id);
             mod_flight edit_flight = new mod_flight(flight_id);
             edit_flight.ShowDialog();
-            GetData();
+            get_flight_data();
         }
 
         private void flight_remove_button_Click(object sender, EventArgs e)
@@ -1098,12 +1102,12 @@ namespace WindowsFormsApp2
 
             cn.Close();
 
-            GetData();
+            get_flight_data();
         }
 
         private void flight_search_button_Click(object sender, EventArgs e)
         {
-            GetData();
+            get_flight_data();
             String search = flight_search_textBox.Text;
             search = search.ToLower();
             if(search == "")
@@ -1132,11 +1136,11 @@ namespace WindowsFormsApp2
 
         private void flight_classtype_combobox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            GetData();
+            get_flight_data();
 
             if (flight_classtype_combobox == null)
             {
-                GetData();
+                get_flight_data();
                 return;
             }
             String class_type = flight_classtype_combobox.Text;
@@ -1178,11 +1182,11 @@ namespace WindowsFormsApp2
 
         private void flight_airline_combobox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            GetData();
+            get_flight_data();
 
             if (flight_airline_combobox == null)
             {
-                GetData();
+                get_flight_data();
                 return;
             }
             String airline = flight_airline_combobox.Text;
@@ -1264,12 +1268,12 @@ namespace WindowsFormsApp2
 
         private void flight_country_combobox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            GetData();
+            get_flight_data();
 
 
             if (flight_country_combobox == null)
             {
-                GetData();
+                get_flight_data();
                 return;
             }
             String city = flight_country_combobox.Text;
@@ -1308,5 +1312,245 @@ namespace WindowsFormsApp2
             }
 
         }
+
+        private void transfer_add_button_Click(object sender, EventArgs e)
+        {
+            add_transfer add_new_transfer = new add_transfer();
+            add_new_transfer.ShowDialog();
+            get_transfer_data();
+            load_transfer();
+
+        }
+
+        private void transfer_edit_button_Click(object sender, EventArgs e)
+        {
+            int transfer_id = (int) dataGridView2.CurrentRow.Cells["ID"].Value;
+            edit_transfer transfer_edit = new edit_transfer(transfer_id);
+            transfer_edit.ShowDialog();
+            load_transfer();
+            get_transfer_data();
+        }
+
+        private void transfer_remove_button_Click(object sender, EventArgs e)
+        {
+            int transfer_id = (int) dataGridView2.CurrentRow.Cells["ID"].Value;
+            Debug.WriteLine(transfer_id);
+            DialogResult dr = MessageBox.Show("This Transfer will be removed", "Remove Transfer", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dr == DialogResult.No) return;
+
+            if (!verifySGBDConnection())
+            {
+                return;
+            }
+
+
+            SqlCommand cmd = new SqlCommand("DELETE FROM [TravelAgency].[Transfer] WHERE ID = @ID", cn);
+
+            SqlParameter _id = new SqlParameter("@ID", SqlDbType.Int);
+
+            cmd.Parameters.Add(_id);
+            cmd.Parameters["@ID"].Value = transfer_id;
+
+            cmd.ExecuteNonQuery();
+
+            cn.Close();
+
+            load_transfer();
+            get_transfer_data();
+
+        }
+
+        private void transfer_search_button_Click(object sender, EventArgs e)
+        {
+            get_transfer_data();
+            String search = transfer_search_textbox.Text;
+            search = search.ToLower();
+            if(search == "")
+            {
+                return;
+            }
+
+            for(int i = dataGridView2.Rows.Count - 1; i>=0; i--)
+            {
+                DataGridViewRow r = dataGridView2.Rows[i];
+                String s = "";
+                foreach (DataGridViewCell c in r.Cells)
+                {
+                    s += c.Value.ToString();
+                }
+                s = s.ToLower();
+                if (!s.Contains(search))
+                {
+                    dataGridView2.Rows.Remove(r);
+                    
+                }
+                Debug.WriteLine(s);
+
+            }
+
+
+        }
+
+        private void transfer_company_combobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            get_transfer_data();
+
+            if (transfer_company_combobox == null)
+            {
+                return;
+            }
+            String company = transfer_company_combobox.Text;
+
+            try
+            {
+                if (!verifySGBDConnection())
+                {
+                    return;
+                }
+
+                // Create a new data adapter based on the specified query.
+                dataAdapter = new SqlDataAdapter("Select * from TravelAgency.Transfer WHERE Company = @company", cn);
+
+                dataAdapter.SelectCommand.Parameters.Add(new SqlParameter("@company", SqlDbType.NVarChar,250));
+                dataAdapter.SelectCommand.Parameters["@company"].Value = company;
+
+                // Create a command builder to generate SQL update, insert, and
+                // delete commands based on selectCommand.
+                SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
+
+                // Populate a new data table and bind it to the BindingSource.
+                DataTable table = new DataTable();
+
+                dataAdapter.Fill(table);
+                bindingSource2.DataSource = table;
+
+                // Resize the DataGridView columns to fit the newly loaded content.
+                dataGridView2.AutoResizeColumns(
+                    DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader);
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Error");
+            }
+
+        }
+
+        private void transfer_city_combobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            get_transfer_data();
+
+
+            if (transfer_city_combobox == null)
+            {
+                return;
+            }
+            String city = transfer_city_combobox.Text;
+            city = city.Split(',')[0];
+
+            try
+            {
+                if (!verifySGBDConnection())
+                {
+                    return;
+                }
+
+                // Create a new data adapter based on the specified query.
+                dataAdapter = new SqlDataAdapter("Select * from TravelAgency.Transfer WHERE CC_Depart = @city or CC_Arriv = @city", cn);
+
+                dataAdapter.SelectCommand.Parameters.Add(new SqlParameter("@city", SqlDbType.NVarChar,250));
+                dataAdapter.SelectCommand.Parameters["@city"].Value = city;
+
+                // Create a command builder to generate SQL update, insert, and
+                // delete commands based on selectCommand.
+                SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
+
+                // Populate a new data table and bind it to the BindingSource.
+                DataTable table = new DataTable();
+
+                dataAdapter.Fill(table);
+                bindingSource2.DataSource = table;
+
+                // Resize the DataGridView columns to fit the newly loaded content.
+                dataGridView1.AutoResizeColumns(
+                    DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader);
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Error");
+            }
+
+        }
+
+        private void load_transfer()
+        {
+            if (!verifySGBDConnection())
+            {
+                return;
+            }
+
+            SqlCommand cmd = new SqlCommand("SELECT Company FROM TravelAgency.Transfer", cn);
+            SqlDataReader reader = cmd.ExecuteReader();
+            transfer_company_combobox.Items.Clear();
+
+
+            while (reader.Read())
+            {
+                transfer_company_combobox.Items.Add(reader["Company"].ToString());
+            }
+
+            cn.Close();
+
+            if (!verifySGBDConnection())
+            {
+                return;
+            }
+
+
+            transfer_city_combobox.Items.Clear();
+
+            cmd = new SqlCommand("SELECT City+', '+Country AS Location FROM TravelAgency.CC", cn);
+            reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                transfer_city_combobox.Items.Add(reader["Location"].ToString());
+            }
+
+            cn.Close();
+
+        }
+
+        private void get_transfer_data()
+        {
+            try
+            {
+                if (!verifySGBDConnection())
+                {
+                    return;
+                }
+
+                // Create a new data adapter based on the specified query.
+                dataAdapter = new SqlDataAdapter("Select * from TravelAgency.Transfer", cn);
+
+                // Create a command builder to generate SQL update, insert, and
+                // delete commands based on selectCommand.
+                SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
+
+                // Populate a new data table and bind it to the BindingSource.
+                DataTable table = new DataTable();
+
+                dataAdapter.Fill(table);
+                bindingSource2.DataSource = table;
+
+                // Resize the DataGridView columns to fit the newly loaded content.
+                dataGridView2.AutoResizeColumns(
+                    DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader);
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Error");
+            }
+        }
+
     }
 }
