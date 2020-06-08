@@ -1,4 +1,6 @@
 CREATE PROCEDURE TravelAgency.spFilterAcc
+		@size int,
+		@noPage int,
 		@option VARCHAR(20),
 		@dest	VARCHAR(20)
 
@@ -32,6 +34,9 @@ AS
 					SELECT tt.* FROM @tempTable tt
 					WHERE tt.Price IS NOT NULL
 					ORDER BY tt.Price ASC
+
+					OFFSET @size * (@noPage - 1) ROWS
+					FETCH NEXT @size ROWS ONLY OPTION (RECOMPILE)
 			END
 
 			IF @option = 'PriceDesc'
@@ -39,15 +44,21 @@ AS
 					SELECT tt.* FROM @tempTable tt
 					WHERE tt.Price IS NOT NULL
 					ORDER BY tt.Price DESC
+
+					OFFSET @size * (@noPage - 1) ROWS
+					FETCH NEXT @size ROWS ONLY OPTION (RECOMPILE)
 			END
 
 			IF @option = 'None'
 			BEGIN
 					SELECT tt.* FROM @tempTable tt
 					ORDER BY ID
+
+					OFFSET @size * (@noPage - 1) ROWS
+					FETCH NEXT @size ROWS ONLY OPTION (RECOMPILE)
 			END
 	END
 
 GO
 
-exec TravelAgency.spFilterAcc PriceAsc, Madrid
+--exec TravelAgency.spFilterAcc PriceAsc, Madrid

@@ -21,6 +21,8 @@ namespace WindowsFormsApp2
         private bool add = false;
         private bool edit = false;
         private bool remove = false;
+        private int size = 12;
+        private int noPage = 1;
         private BindingSource bindingSource1 = new BindingSource();
         private SqlDataAdapter dataAdapter = new SqlDataAdapter();
         private BindingSource bindingSource2 = new BindingSource();
@@ -36,7 +38,7 @@ namespace WindowsFormsApp2
         private void Form2_Load(object sender, EventArgs e)
         {
             cn = getSGBDConnection();
-            loadCustomers();
+            loadCustomers(noPage);
             dataGridView1.DataSource = bindingSource1;
             dataGridView2.DataSource = bindingSource2;
             get_flight_data();
@@ -75,15 +77,32 @@ namespace WindowsFormsApp2
         // CUSTOMER TAB
 
         // load Customers
-        private void loadCustomers()
+        private void loadCustomers(int page)
         {
+            int nCustomer = 0;
+
+            if (page == 1)
+            {
+                btn_NextC.Enabled = true;
+            }
+
             if (!verifySGBDConnection())
             {
                 return;
             }
 
+            SqlCommand cmd = new SqlCommand
+            {
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "TravelAgency.spLoadCustomer"
+            };
 
-            SqlCommand cmd = new SqlCommand("Select Person.Email, Person.Fname, Person.Lname, Person.phoneNo, CustID, NIF from TravelAgency.Customer Join TravelAgency.Person ON TravelAgency.Customer.Email = TravelAgency.Person.Email;", cn);
+            cmd.Parameters.Add(new SqlParameter("@size", SqlDbType.Int));
+            cmd.Parameters.Add(new SqlParameter("@noPage", SqlDbType.Int));
+            cmd.Parameters["@size"].Value = size;
+            cmd.Parameters["@noPage"].Value = page;
+
+            cmd.Connection = cn;
             SqlDataReader reader = cmd.ExecuteReader();
             listBox1.Items.Clear();
 
@@ -96,6 +115,13 @@ namespace WindowsFormsApp2
                 p.PhoneNo = reader["phoneNo"].ToString();
                 p.NIF = reader["NIF"].ToString();
                 listBox1.Items.Add(p);
+
+                nCustomer++;
+            }
+
+            if (nCustomer < size)
+            {
+                btn_BackC.Enabled = false;
             }
 
             cn.Close();
@@ -149,8 +175,14 @@ namespace WindowsFormsApp2
 
         }
 
-        private void filterCustomer(string fname, string lname)
+        private void filterCustomer(int page, string fname, string lname)
         {
+            int nCustomer = 0;
+
+            if (page == 1)
+            {
+                btn_NextC.Enabled = true;
+            }
 
             SqlCommand cmd = new SqlCommand
             {
@@ -160,6 +192,10 @@ namespace WindowsFormsApp2
 
             cmd.Parameters.Add(new SqlParameter("@Fname", SqlDbType.VarChar));
             cmd.Parameters.Add(new SqlParameter("@Lname", SqlDbType.VarChar));
+            cmd.Parameters.Add(new SqlParameter("@size", SqlDbType.Int));
+            cmd.Parameters.Add(new SqlParameter("@noPage", SqlDbType.Int));
+            cmd.Parameters["@size"].Value = size;
+            cmd.Parameters["@noPage"].Value = page;
             cmd.Parameters["@fname"].Value = fname;
             cmd.Parameters["@lname"].Value = lname;
 
@@ -181,7 +217,13 @@ namespace WindowsFormsApp2
                     p.NIF = reader["NIF"].ToString();
                     listBox1.Items.Add(p);
 
+                    nCustomer++;
                 }
+            }
+
+            if (nCustomer < size)
+            {
+                btn_BackC.Enabled = false;
             }
 
             cn.Close();
@@ -426,7 +468,7 @@ namespace WindowsFormsApp2
                 removeCustomer();
                 remove = false;
             }
-            loadCustomers();
+            loadCustomers(noPage);
         }
 
         // cancel
@@ -446,7 +488,7 @@ namespace WindowsFormsApp2
                fname = "None";
             }
 
-            filterCustomer(fname, lname);
+            filterCustomer(noPage, fname, lname);
 
 
         }
@@ -527,12 +569,19 @@ namespace WindowsFormsApp2
             comboBox3.Items.Add("True");
             comboBox3.Items.Add("False");
 
-            loadAccommodation();
+            loadAccommodation(noPage);
             loadPromo();
         }
 
-        private void loadAccommodation()
+        private void loadAccommodation(int page)
         {
+
+            if(page == 1)
+            {
+                btn_Next.Enabled = true;
+            }
+
+
             int nAcc = 0;
             tableLayoutPanel1.Controls.Clear();
             tableLayoutPanel1.RowStyles.Clear();
@@ -547,6 +596,10 @@ namespace WindowsFormsApp2
                 CommandText = "TravelAgency.spLoadAcc"
             };
 
+            cmd.Parameters.Add(new SqlParameter("@size", SqlDbType.Int));
+            cmd.Parameters.Add(new SqlParameter("@noPage", SqlDbType.Int));
+            cmd.Parameters["@size"].Value = size;
+            cmd.Parameters["@noPage"].Value = page;
 
             if (!verifySGBDConnection())
                 return;
@@ -676,6 +729,12 @@ namespace WindowsFormsApp2
                     nAcc++;
                 }
             }
+
+            if (nAcc < size)
+            {
+                btn_Next.Enabled = false;
+            }
+
             cn.Close();
 
         }
@@ -691,9 +750,14 @@ namespace WindowsFormsApp2
         }
 
 
-        private void filterAcc(string option, string dest)
+        private void filterAcc(int page, string option, string dest)
         {
             int nAcc = 0;
+
+            if (page == 1)
+            {
+                btn_Next.Enabled = true;
+            }
 
             tableLayoutPanel1.Controls.Clear();
             tableLayoutPanel1.RowStyles.Clear();
@@ -710,6 +774,10 @@ namespace WindowsFormsApp2
 
             cmd.Parameters.Add(new SqlParameter("@option", SqlDbType.VarChar));
             cmd.Parameters.Add(new SqlParameter("@dest", SqlDbType.VarChar));
+            cmd.Parameters.Add(new SqlParameter("@size", SqlDbType.Int));
+            cmd.Parameters.Add(new SqlParameter("@noPage", SqlDbType.Int));
+            cmd.Parameters["@size"].Value = size;
+            cmd.Parameters["@noPage"].Value = page;
             cmd.Parameters["@option"].Value = option;
             cmd.Parameters["@dest"].Value = dest;
 
@@ -837,6 +905,12 @@ namespace WindowsFormsApp2
                     nAcc++;
                 }
             }
+
+            if (nAcc < size)
+            {
+                btn_Back.Enabled = false;
+            }
+
             cn.Close();
 
         }
@@ -850,7 +924,7 @@ namespace WindowsFormsApp2
                 dest = "None";
             }
             
-            filterAcc(option, dest);
+            filterAcc(noPage, option, dest);
         }
 
         private void btn_addNew_Click(object sender, EventArgs e)
@@ -1641,5 +1715,85 @@ namespace WindowsFormsApp2
             }
         }
 
+        private void btn_Next_Click(object sender, EventArgs e)
+        {
+            noPage++;
+            string dest = textBox1.Text;
+            string opt = comboBox1.Text;
+
+
+            if (string.IsNullOrEmpty(dest))
+            {
+                dest = "None";
+            }
+
+            filterAcc(noPage, opt, dest);
+
+            if(noPage > 1)
+            {
+                btn_Back.Enabled = true;
+            }
+        }
+
+        private void btn_Back_Click(object sender, EventArgs e)
+        {
+            noPage--;
+
+            string dest = textBox1.Text;
+            string opt = comboBox1.Text;
+
+
+            if (string.IsNullOrEmpty(dest))
+            {
+                dest = "None";
+            }
+
+            filterAcc(noPage, opt, dest);
+
+            if (noPage == 1)
+            {
+                btn_Back.Enabled = false;
+            }
+        }
+
+        private void btn_NextC_Click(object sender, EventArgs e)
+        {
+            noPage++;
+            string cust = textSearch.Text;
+            string fname = cust.Split(' ')[0];
+            string lname = "";
+
+            if (string.IsNullOrEmpty(fname))
+            {
+                fname = "None";
+            }
+
+            filterCustomer(noPage, fname, lname);
+
+            if (noPage > 1)
+            {
+                btn_BackC.Enabled = true;
+            }
+        }
+
+        private void btn_BackC_Click(object sender, EventArgs e)
+        {
+            noPage--;
+            string cust = textSearch.Text;
+            string fname = cust.Split(' ')[0];
+            string lname = "";
+
+            if (string.IsNullOrEmpty(fname))
+            {
+                fname = "None";
+            }
+
+            filterCustomer(noPage, fname, lname);
+
+            if (noPage == 1)
+            {
+                btn_BackC.Enabled = false;
+            }
+        }
     }
 }

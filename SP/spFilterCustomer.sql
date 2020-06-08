@@ -1,4 +1,6 @@
 CREATE PROCEDURE TravelAgency.spFilterCustomer
+		@size int,
+		@noPage int,
 		@Fname VARCHAR(20), 
 		@Lname VARCHAR(20)
 
@@ -28,6 +30,10 @@ AS
 			END
 
 			SELECT tt.* FROM @tempTable tt
+			ORDER BY tt.CustID
+
+			OFFSET @size * (@noPage - 1) ROWS
+			FETCH NEXT @size ROWS ONLY OPTION (RECOMPILE)
 	END
 
 --exec TravelAgency.spFilterCustomer Marcia, Pires
