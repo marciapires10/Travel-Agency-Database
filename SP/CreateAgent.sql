@@ -1,11 +1,13 @@
 CREATE UNIQUE INDEX NDX_SecurityAccounts_AccountName 
     ON TravelAgency.Agent (AgID) INCLUDE (Salt, Password);
 GO 
-
 CREATE PROC TravelAgency.CreateAgent
-  @NewAgID int,
-  @NewAccountPwd VARCHAR(100),
-  @Email	VARCHAR(60)
+	@Fname VARCHAR(20),
+	@Lname VARCHAR(20),
+	@PhoneNo INT,
+	@NewAccountPwd VARCHAR(100),
+	@Email VARCHAR(60),
+	@responseMsg nvarchar(250) output
 AS
 BEGIN
 
@@ -28,18 +30,46 @@ BEGIN
   WHILE (@LCV < 25)
   BEGIN
     SET @Salt = @Salt + CHAR(ROUND((RAND() * 94.0) + 32, 3));
- SET @LCV = @LCV + 1;
+	SET @LCV = @LCV + 1;
   END;
 
 
   SET @PwdWithSalt = @Salt + @NewAccountPwd;
+  
+  BEGIN TRY
+	 
+	  IF EXISTS(Select Email from [TravelAgency].[Agent] Where @Email=Email)
+		BEGIN
+			PRINT('Already exists Agent with this Email')
+		END
+	  ELSE
+		BEGIN
+			INSERT INTO TravelAgency.Agent 
+			(Salt, Password, Email)
+			VALUES (@Salt, HASHBYTES('SHA1', @PwdWithSalt), @Email)
+		END
 
-  INSERT INTO TravelAgency.Agent 
-  (AgID, Salt, Password, Email)
-  VALUES (@NewAgID, @Salt, HASHBYTES('SHA1', @PwdWithSalt), @Email);
+		
+	  IF EXISTS (Select Email From TravelAgency.Person Where @Email=Email)
+		BEGIN
+		  PRINT('Already exists')
+		  SET @responseMsg = error_message()
+		END
+	  ELSE
+		BEGIN
+		  INSERT INTO TravelAgency.Person (Email, Fname, Lname, PhoneNo)
+		  VALUES (@Email, @Fname, @Lname, @PhoneNo)
+		END
+
+	  SET @responseMsg = 'Success'
+
+   END TRY
+
+   BEGIN CATCH
+      SET @responseMsg = error_message()
+   END CATCH
+
 END;
-GO 
+GO
 
-
-
-
+exec TravelAgency.CreateAgent Marcia, Jesus, 918573945, projetodebd, 'marcia.pires@ua.pt', 'Success'

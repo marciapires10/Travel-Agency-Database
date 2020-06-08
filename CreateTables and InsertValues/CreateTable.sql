@@ -22,7 +22,7 @@ CREATE TABLE TravelAgency.Agent(
 
 -- New Agent Table
 CREATE TABLE [TravelAgency].[Agent](
-	[AgID] [int] NOT NULL,
+	[AgID] [int] NOT NULL	identity(1,1),
 	[Password] [varbinary](20),
 	[Salt] CHAR(25),
 	[Email] [varchar](60) NOT NULL,
@@ -137,9 +137,10 @@ CREATE TABLE TravelAgency.Booking(
 	Cust_ID		INT				NOT NULL,
 	PRIMARY KEY(ID),
 	FOREIGN KEY(Pack_ID) REFERENCES TravelAgency.Package(ID),
-	FOREIGN KEY(Ag_ID) REFERENCES TravelAgency.Agent(AgID),
+	FOREIGN KEY(Ag_ID) REFERENCES [TravelAgency].[Agent]([AgID]),
 	FOREIGN KEY(Cust_ID) REFERENCES TravelAgency.Customer(CustID),
 );
+
 
 CREATE TABLE TravelAgency.Review(
 	ID			INT				NOT NULL,

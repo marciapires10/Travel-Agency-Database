@@ -118,6 +118,10 @@ namespace WindowsFormsApp2
 
         }
 
-        
+        private void btn_account_Click(object sender, EventArgs e)
+        {
+            Form5 newAccount = new Form5();
+            newAccount.ShowDialog();
+        }
     }
 }
