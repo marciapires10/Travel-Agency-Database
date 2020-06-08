@@ -31,6 +31,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btn_NextC = new System.Windows.Forms.Button();
+            this.btn_BackC = new System.Windows.Forms.Button();
             this.btn_Historic = new System.Windows.Forms.Button();
             this.btn_Search = new System.Windows.Forms.Button();
             this.textSearch = new System.Windows.Forms.TextBox();
@@ -55,6 +57,23 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.textBox19 = new System.Windows.Forms.TextBox();
+            this.btn_crtPack = new System.Windows.Forms.Button();
+            this.textBox18 = new System.Windows.Forms.TextBox();
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.label22 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label21 = new System.Windows.Forms.Label();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.textBox14 = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.btn_cancelPack = new System.Windows.Forms.Button();
@@ -69,8 +88,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.textBox12 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -115,6 +132,8 @@
             this.transfer_city_label = new System.Windows.Forms.Label();
             this.transfer_company_combobox = new System.Windows.Forms.ComboBox();
             this.transfer_city_combobox = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.textBox13 = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -132,8 +151,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.btn_BackC = new System.Windows.Forms.Button();
-            this.btn_NextC = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -171,7 +188,7 @@
             // 
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(1130, 567);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Profile";
@@ -204,11 +221,33 @@
             this.tabPage2.Controls.Add(this.btn_Add);
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(1130, 567);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Customers";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btn_NextC
+            // 
+            this.btn_NextC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btn_NextC.Location = new System.Drawing.Point(349, 51);
+            this.btn_NextC.Name = "btn_NextC";
+            this.btn_NextC.Size = new System.Drawing.Size(56, 34);
+            this.btn_NextC.TabIndex = 26;
+            this.btn_NextC.Text = ">";
+            this.btn_NextC.UseVisualStyleBackColor = true;
+            this.btn_NextC.Click += new System.EventHandler(this.btn_NextC_Click);
+            // 
+            // btn_BackC
+            // 
+            this.btn_BackC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btn_BackC.Location = new System.Drawing.Point(39, 52);
+            this.btn_BackC.Name = "btn_BackC";
+            this.btn_BackC.Size = new System.Drawing.Size(56, 34);
+            this.btn_BackC.TabIndex = 25;
+            this.btn_BackC.Text = "<";
+            this.btn_BackC.UseVisualStyleBackColor = true;
+            this.btn_BackC.Click += new System.EventHandler(this.btn_BackC_Click);
             // 
             // btn_Historic
             // 
@@ -223,13 +262,11 @@
             // 
             // btn_Search
             // 
-            this.btn_Search.Location = new System.Drawing.Point(934, 52);
+            this.btn_Search.Location = new System.Drawing.Point(463, 375);
             this.btn_Search.Name = "btn_Search";
-            this.btn_Search.Size = new System.Drawing.Size(102, 45);
-            this.btn_Search.TabIndex = 23;
-            this.btn_Search.Text = "Search";
-            this.btn_Search.UseVisualStyleBackColor = true;
-            this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
+            this.btn_Search.Size = new System.Drawing.Size(421, 44);
+            this.btn_Search.TabIndex = 28;
+            this.btn_Search.Text = "List of Bookings";
             // 
             // textSearch
             // 
@@ -329,7 +366,7 @@
             this.listBox1.ItemHeight = 20;
             this.listBox1.Location = new System.Drawing.Point(39, 92);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(366, 464);
+            this.listBox1.Size = new System.Drawing.Size(366, 284);
             this.listBox1.TabIndex = 5;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -405,7 +442,7 @@
             this.tabPage3.Controls.Add(this.tabControl2);
             this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(1130, 567);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Packages";
@@ -427,6 +464,23 @@
             // 
             // tabPage9
             // 
+            this.tabPage9.Controls.Add(this.textBox19);
+            this.tabPage9.Controls.Add(this.btn_crtPack);
+            this.tabPage9.Controls.Add(this.textBox18);
+            this.tabPage9.Controls.Add(this.comboBox5);
+            this.tabPage9.Controls.Add(this.label25);
+            this.tabPage9.Controls.Add(this.textBox17);
+            this.tabPage9.Controls.Add(this.textBox16);
+            this.tabPage9.Controls.Add(this.label24);
+            this.tabPage9.Controls.Add(this.label23);
+            this.tabPage9.Controls.Add(this.dateTimePicker2);
+            this.tabPage9.Controls.Add(this.label22);
+            this.tabPage9.Controls.Add(this.dateTimePicker1);
+            this.tabPage9.Controls.Add(this.label21);
+            this.tabPage9.Controls.Add(this.richTextBox1);
+            this.tabPage9.Controls.Add(this.label20);
+            this.tabPage9.Controls.Add(this.textBox15);
+            this.tabPage9.Controls.Add(this.label19);
             this.tabPage9.Controls.Add(this.textBox14);
             this.tabPage9.Controls.Add(this.label18);
             this.tabPage9.Controls.Add(this.btn_cancelPack);
@@ -441,19 +495,155 @@
             this.tabPage9.Controls.Add(this.label11);
             this.tabPage9.Controls.Add(this.textBox8);
             this.tabPage9.Controls.Add(this.label10);
-            this.tabPage9.Controls.Add(this.textBox7);
-            this.tabPage9.Controls.Add(this.label9);
             this.tabPage9.Location = new System.Drawing.Point(4, 29);
             this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage9.Size = new System.Drawing.Size(1116, 528);
             this.tabPage9.TabIndex = 4;
             this.tabPage9.Text = "Overview";
             this.tabPage9.UseVisualStyleBackColor = true;
             // 
+            // textBox19
+            // 
+            this.textBox19.Location = new System.Drawing.Point(156, 183);
+            this.textBox19.Name = "textBox19";
+            this.textBox19.Size = new System.Drawing.Size(163, 26);
+            this.textBox19.TabIndex = 33;
+            // 
+            // btn_crtPack
+            // 
+            this.btn_crtPack.Location = new System.Drawing.Point(580, 459);
+            this.btn_crtPack.Name = "btn_crtPack";
+            this.btn_crtPack.Size = new System.Drawing.Size(119, 45);
+            this.btn_crtPack.TabIndex = 32;
+            this.btn_crtPack.Text = "CREATE";
+            this.btn_crtPack.UseVisualStyleBackColor = true;
+            this.btn_crtPack.Click += new System.EventHandler(this.btn_crtPack_Click);
+            // 
+            // textBox18
+            // 
+            this.textBox18.Location = new System.Drawing.Point(793, 355);
+            this.textBox18.Name = "textBox18";
+            this.textBox18.Size = new System.Drawing.Size(154, 26);
+            this.textBox18.TabIndex = 31;
+            // 
+            // comboBox5
+            // 
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Location = new System.Drawing.Point(655, 355);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(121, 28);
+            this.comboBox5.TabIndex = 30;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(576, 361);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(72, 20);
+            this.label25.TabIndex = 29;
+            this.label25.Text = "Transfer:";
+            // 
+            // textBox17
+            // 
+            this.textBox17.Location = new System.Drawing.Point(680, 296);
+            this.textBox17.Name = "textBox17";
+            this.textBox17.Size = new System.Drawing.Size(267, 26);
+            this.textBox17.TabIndex = 28;
+            // 
+            // textBox16
+            // 
+            this.textBox16.Location = new System.Drawing.Point(712, 242);
+            this.textBox16.Name = "textBox16";
+            this.textBox16.Size = new System.Drawing.Size(235, 26);
+            this.textBox16.TabIndex = 27;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(576, 299);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(94, 20);
+            this.label24.TabIndex = 26;
+            this.label24.Text = "Arrival flight:";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(576, 246);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(123, 20);
+            this.label23.TabIndex = 25;
+            this.label23.Text = "Departure flight:";
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(156, 299);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(239, 26);
+            this.dateTimePicker2.TabIndex = 24;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(58, 299);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(78, 20);
+            this.label22.TabIndex = 23;
+            this.label22.Text = "End date:";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(156, 240);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(239, 26);
+            this.dateTimePicker1.TabIndex = 22;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(58, 245);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(84, 20);
+            this.label21.TabIndex = 21;
+            this.label21.Text = "Start date:";
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(675, 89);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(272, 122);
+            this.richTextBox1.TabIndex = 19;
+            this.richTextBox1.Text = "";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(576, 89);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(93, 20);
+            this.label20.TabIndex = 18;
+            this.label20.Text = "Description:";
+            // 
+            // textBox15
+            // 
+            this.textBox15.Location = new System.Drawing.Point(625, 36);
+            this.textBox15.Name = "textBox15";
+            this.textBox15.Size = new System.Drawing.Size(322, 26);
+            this.textBox15.TabIndex = 17;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(576, 37);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(42, 20);
+            this.label19.TabIndex = 16;
+            this.label19.Text = "Title:";
+            // 
             // textBox14
             // 
-            this.textBox14.Location = new System.Drawing.Point(252, 192);
+            this.textBox14.Location = new System.Drawing.Point(156, 37);
             this.textBox14.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox14.Name = "textBox14";
             this.textBox14.Size = new System.Drawing.Size(163, 26);
@@ -462,7 +652,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(87, 192);
+            this.label18.Location = new System.Drawing.Point(54, 40);
             this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(103, 20);
@@ -482,7 +672,7 @@
             // 
             // btn_CustPack
             // 
-            this.btn_CustPack.Location = new System.Drawing.Point(590, 178);
+            this.btn_CustPack.Location = new System.Drawing.Point(608, 190);
             this.btn_CustPack.Name = "btn_CustPack";
             this.btn_CustPack.Size = new System.Drawing.Size(232, 68);
             this.btn_CustPack.TabIndex = 12;
@@ -491,7 +681,7 @@
             // 
             // btn_NewPack
             // 
-            this.btn_NewPack.Location = new System.Drawing.Point(314, 178);
+            this.btn_NewPack.Location = new System.Drawing.Point(306, 197);
             this.btn_NewPack.Name = "btn_NewPack";
             this.btn_NewPack.Size = new System.Drawing.Size(232, 68);
             this.btn_NewPack.TabIndex = 11;
@@ -501,7 +691,7 @@
             // 
             // textBox11
             // 
-            this.textBox11.Location = new System.Drawing.Point(168, 468);
+            this.textBox11.Location = new System.Drawing.Point(921, 457);
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(100, 26);
             this.textBox11.TabIndex = 10;
@@ -509,16 +699,17 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(58, 469);
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label14.Location = new System.Drawing.Point(779, 453);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(87, 20);
+            this.label14.Size = new System.Drawing.Size(136, 29);
             this.label14.TabIndex = 9;
             this.label14.Text = "Total Price:";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(58, 202);
+            this.label13.Location = new System.Drawing.Point(58, 186);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(74, 20);
             this.label13.TabIndex = 8;
@@ -526,15 +717,15 @@
             // 
             // textBox10
             // 
-            this.textBox10.Location = new System.Drawing.Point(138, 389);
+            this.textBox10.Location = new System.Drawing.Point(116, 426);
             this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(214, 26);
+            this.textBox10.Size = new System.Drawing.Size(309, 26);
             this.textBox10.TabIndex = 7;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(58, 389);
+            this.label12.Location = new System.Drawing.Point(51, 427);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(59, 20);
             this.label12.TabIndex = 6;
@@ -542,15 +733,15 @@
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(212, 332);
+            this.textBox9.Location = new System.Drawing.Point(188, 365);
             this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(259, 26);
+            this.textBox9.Size = new System.Drawing.Size(237, 26);
             this.textBox9.TabIndex = 5;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(58, 335);
+            this.label11.Location = new System.Drawing.Point(54, 368);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(128, 20);
             this.label11.TabIndex = 4;
@@ -558,35 +749,19 @@
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(212, 251);
+            this.textBox8.Location = new System.Drawing.Point(212, 128);
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(120, 26);
+            this.textBox8.Size = new System.Drawing.Size(107, 26);
             this.textBox8.TabIndex = 3;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(58, 254);
+            this.label10.Location = new System.Drawing.Point(58, 131);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(148, 20);
             this.label10.TabIndex = 2;
             this.label10.Text = "Number of persons:";
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(160, 68);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(118, 26);
-            this.textBox7.TabIndex = 1;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(58, 68);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(96, 20);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Package ID:";
             // 
             // tabPage5
             // 
@@ -603,7 +778,7 @@
             this.tabPage5.Controls.Add(this.label2);
             this.tabPage5.Location = new System.Drawing.Point(4, 29);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage5.Size = new System.Drawing.Size(1116, 528);
             this.tabPage5.TabIndex = 0;
             this.tabPage5.Text = "Accommodation";
@@ -719,8 +894,8 @@
             this.tabPage6.Controls.Add(this.tableLayoutPanel2);
             this.tabPage6.Location = new System.Drawing.Point(4, 29);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage6.Size = new System.Drawing.Size(1112, 521);
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(1116, 528);
             this.tabPage6.TabIndex = 1;
             this.tabPage6.Text = "Flight";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -738,7 +913,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1106, 515);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1110, 522);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // tableLayoutPanel3
@@ -758,7 +933,7 @@
             this.tableLayoutPanel3.Controls.Add(this.flight_filter_label, 1, 2);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(667, 5);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(670, 5);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 7;
@@ -769,13 +944,13 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(435, 505);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(436, 512);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // flight_search_textBox
             // 
             this.flight_search_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.flight_search_textBox.Location = new System.Drawing.Point(147, 50);
+            this.flight_search_textBox.Location = new System.Drawing.Point(148, 50);
             this.flight_search_textBox.Name = "flight_search_textBox";
             this.flight_search_textBox.Size = new System.Drawing.Size(285, 26);
             this.flight_search_textBox.TabIndex = 16;
@@ -785,7 +960,7 @@
             this.flight_search_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flight_search_button.Location = new System.Drawing.Point(3, 43);
             this.flight_search_button.Name = "flight_search_button";
-            this.flight_search_button.Size = new System.Drawing.Size(138, 40);
+            this.flight_search_button.Size = new System.Drawing.Size(139, 40);
             this.flight_search_button.TabIndex = 15;
             this.flight_search_button.Text = "Search";
             this.flight_search_button.UseVisualStyleBackColor = true;
@@ -796,7 +971,7 @@
             this.flight_add_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flight_add_button.Location = new System.Drawing.Point(3, 3);
             this.flight_add_button.Name = "flight_add_button";
-            this.flight_add_button.Size = new System.Drawing.Size(138, 34);
+            this.flight_add_button.Size = new System.Drawing.Size(139, 34);
             this.flight_add_button.TabIndex = 1;
             this.flight_add_button.Text = "Add New";
             this.flight_add_button.UseVisualStyleBackColor = true;
@@ -807,7 +982,7 @@
             this.flight_airline_combobox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flight_airline_combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.flight_airline_combobox.FormattingEnabled = true;
-            this.flight_airline_combobox.Location = new System.Drawing.Point(147, 109);
+            this.flight_airline_combobox.Location = new System.Drawing.Point(148, 109);
             this.flight_airline_combobox.Name = "flight_airline_combobox";
             this.flight_airline_combobox.Size = new System.Drawing.Size(285, 28);
             this.flight_airline_combobox.TabIndex = 6;
@@ -819,7 +994,7 @@
             this.flight_airline_label.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flight_airline_label.Location = new System.Drawing.Point(3, 106);
             this.flight_airline_label.Name = "flight_airline_label";
-            this.flight_airline_label.Size = new System.Drawing.Size(138, 34);
+            this.flight_airline_label.Size = new System.Drawing.Size(139, 34);
             this.flight_airline_label.TabIndex = 6;
             this.flight_airline_label.Text = "Select Airline";
             this.flight_airline_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -830,7 +1005,7 @@
             this.flight_classtype_label.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flight_classtype_label.Location = new System.Drawing.Point(3, 140);
             this.flight_classtype_label.Name = "flight_classtype_label";
-            this.flight_classtype_label.Size = new System.Drawing.Size(138, 34);
+            this.flight_classtype_label.Size = new System.Drawing.Size(139, 34);
             this.flight_classtype_label.TabIndex = 7;
             this.flight_classtype_label.Text = "Select Class type";
             this.flight_classtype_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -844,7 +1019,7 @@
             "Economy",
             "Business",
             "Executive"});
-            this.flight_classtype_combobox.Location = new System.Drawing.Point(147, 143);
+            this.flight_classtype_combobox.Location = new System.Drawing.Point(148, 143);
             this.flight_classtype_combobox.Name = "flight_classtype_combobox";
             this.flight_classtype_combobox.Size = new System.Drawing.Size(285, 28);
             this.flight_classtype_combobox.TabIndex = 7;
@@ -855,7 +1030,7 @@
             this.flight_country_combobox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flight_country_combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.flight_country_combobox.FormattingEnabled = true;
-            this.flight_country_combobox.Location = new System.Drawing.Point(147, 177);
+            this.flight_country_combobox.Location = new System.Drawing.Point(148, 177);
             this.flight_country_combobox.Name = "flight_country_combobox";
             this.flight_country_combobox.Size = new System.Drawing.Size(285, 28);
             this.flight_country_combobox.TabIndex = 8;
@@ -867,7 +1042,7 @@
             this.flight_country_label.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flight_country_label.Location = new System.Drawing.Point(3, 174);
             this.flight_country_label.Name = "flight_country_label";
-            this.flight_country_label.Size = new System.Drawing.Size(138, 34);
+            this.flight_country_label.Size = new System.Drawing.Size(139, 34);
             this.flight_country_label.TabIndex = 10;
             this.flight_country_label.Text = "Select City";
             this.flight_country_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -876,7 +1051,7 @@
             // 
             this.flight_filter_label.AutoSize = true;
             this.flight_filter_label.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flight_filter_label.Location = new System.Drawing.Point(147, 86);
+            this.flight_filter_label.Location = new System.Drawing.Point(148, 86);
             this.flight_filter_label.Name = "flight_filter_label";
             this.flight_filter_label.Size = new System.Drawing.Size(285, 20);
             this.flight_filter_label.TabIndex = 11;
@@ -891,7 +1066,7 @@
             this.tableLayoutPanel4.Controls.Add(this.flight_remove_button, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.flight_modify_button, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(144, 0);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(145, 0);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
@@ -932,7 +1107,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.Size = new System.Drawing.Size(657, 509);
+            this.dataGridView1.Size = new System.Drawing.Size(660, 516);
             this.dataGridView1.TabIndex = 0;
             // 
             // tabPage7
@@ -940,8 +1115,8 @@
             this.tabPage7.Controls.Add(this.tableLayoutPanel5);
             this.tabPage7.Location = new System.Drawing.Point(4, 29);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage7.Size = new System.Drawing.Size(1112, 521);
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage7.Size = new System.Drawing.Size(1116, 528);
             this.tabPage7.TabIndex = 2;
             this.tabPage7.Text = "Transfer";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -959,7 +1134,7 @@
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(1106, 515);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(1110, 522);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // dataGridView2
@@ -973,7 +1148,7 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersWidth = 62;
-            this.dataGridView2.Size = new System.Drawing.Size(655, 505);
+            this.dataGridView2.Size = new System.Drawing.Size(658, 512);
             this.dataGridView2.TabIndex = 0;
             // 
             // tableLayoutPanel6
@@ -990,8 +1165,10 @@
             this.tableLayoutPanel6.Controls.Add(this.transfer_city_label, 0, 4);
             this.tableLayoutPanel6.Controls.Add(this.transfer_company_combobox, 1, 3);
             this.tableLayoutPanel6.Controls.Add(this.transfer_city_combobox, 1, 4);
+            this.tableLayoutPanel6.Controls.Add(this.label9, 0, 5);
+            this.tableLayoutPanel6.Controls.Add(this.textBox7, 1, 5);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(667, 5);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(670, 5);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 7;
@@ -1002,7 +1179,7 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(435, 505);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(436, 512);
             this.tableLayoutPanel6.TabIndex = 1;
             // 
             // tableLayoutPanel7
@@ -1013,19 +1190,19 @@
             this.tableLayoutPanel7.Controls.Add(this.transfer_edit_button, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.transfer_remove_button, 1, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(144, 0);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(145, 0);
             this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 69F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(291, 72);
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 73F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(291, 73);
             this.tableLayoutPanel7.TabIndex = 0;
             // 
             // transfer_edit_button
             // 
             this.transfer_edit_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.transfer_edit_button.Location = new System.Drawing.Point(4, 18);
+            this.transfer_edit_button.Location = new System.Drawing.Point(4, 19);
             this.transfer_edit_button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.transfer_edit_button.Name = "transfer_edit_button";
             this.transfer_edit_button.Size = new System.Drawing.Size(137, 35);
@@ -1037,7 +1214,7 @@
             // transfer_remove_button
             // 
             this.transfer_remove_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.transfer_remove_button.Location = new System.Drawing.Point(149, 18);
+            this.transfer_remove_button.Location = new System.Drawing.Point(149, 19);
             this.transfer_remove_button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.transfer_remove_button.Name = "transfer_remove_button";
             this.transfer_remove_button.Size = new System.Drawing.Size(138, 35);
@@ -1049,10 +1226,10 @@
             // transfer_add_button
             // 
             this.transfer_add_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.transfer_add_button.Location = new System.Drawing.Point(4, 18);
+            this.transfer_add_button.Location = new System.Drawing.Point(4, 19);
             this.transfer_add_button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.transfer_add_button.Name = "transfer_add_button";
-            this.transfer_add_button.Size = new System.Drawing.Size(136, 35);
+            this.transfer_add_button.Size = new System.Drawing.Size(137, 35);
             this.transfer_add_button.TabIndex = 1;
             this.transfer_add_button.Text = "Add New";
             this.transfer_add_button.UseVisualStyleBackColor = true;
@@ -1061,10 +1238,10 @@
             // transfer_search_button
             // 
             this.transfer_search_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.transfer_search_button.Location = new System.Drawing.Point(4, 90);
+            this.transfer_search_button.Location = new System.Drawing.Point(4, 92);
             this.transfer_search_button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.transfer_search_button.Name = "transfer_search_button";
-            this.transfer_search_button.Size = new System.Drawing.Size(136, 35);
+            this.transfer_search_button.Size = new System.Drawing.Size(137, 35);
             this.transfer_search_button.TabIndex = 2;
             this.transfer_search_button.Text = "Search:";
             this.transfer_search_button.UseVisualStyleBackColor = true;
@@ -1073,7 +1250,7 @@
             // transfer_search_textbox
             // 
             this.transfer_search_textbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.transfer_search_textbox.Location = new System.Drawing.Point(148, 95);
+            this.transfer_search_textbox.Location = new System.Drawing.Point(149, 96);
             this.transfer_search_textbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.transfer_search_textbox.Name = "transfer_search_textbox";
             this.transfer_search_textbox.Size = new System.Drawing.Size(283, 26);
@@ -1083,7 +1260,7 @@
             // 
             this.transfer_filters_label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.transfer_filters_label.AutoSize = true;
-            this.transfer_filters_label.Location = new System.Drawing.Point(148, 170);
+            this.transfer_filters_label.Location = new System.Drawing.Point(149, 172);
             this.transfer_filters_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.transfer_filters_label.Name = "transfer_filters_label";
             this.transfer_filters_label.Size = new System.Drawing.Size(283, 20);
@@ -1094,10 +1271,10 @@
             // 
             this.transfer_company_label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.transfer_company_label.AutoSize = true;
-            this.transfer_company_label.Location = new System.Drawing.Point(4, 242);
+            this.transfer_company_label.Location = new System.Drawing.Point(4, 245);
             this.transfer_company_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.transfer_company_label.Name = "transfer_company_label";
-            this.transfer_company_label.Size = new System.Drawing.Size(136, 20);
+            this.transfer_company_label.Size = new System.Drawing.Size(137, 20);
             this.transfer_company_label.TabIndex = 5;
             this.transfer_company_label.Text = "Select Company:";
             this.transfer_company_label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1106,10 +1283,10 @@
             // 
             this.transfer_city_label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.transfer_city_label.AutoSize = true;
-            this.transfer_city_label.Location = new System.Drawing.Point(4, 314);
+            this.transfer_city_label.Location = new System.Drawing.Point(4, 318);
             this.transfer_city_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.transfer_city_label.Name = "transfer_city_label";
-            this.transfer_city_label.Size = new System.Drawing.Size(136, 20);
+            this.transfer_city_label.Size = new System.Drawing.Size(137, 20);
             this.transfer_city_label.TabIndex = 6;
             this.transfer_city_label.Text = "Select City:";
             this.transfer_city_label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1119,7 +1296,7 @@
             this.transfer_company_combobox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.transfer_company_combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.transfer_company_combobox.FormattingEnabled = true;
-            this.transfer_company_combobox.Location = new System.Drawing.Point(148, 238);
+            this.transfer_company_combobox.Location = new System.Drawing.Point(149, 241);
             this.transfer_company_combobox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.transfer_company_combobox.Name = "transfer_company_combobox";
             this.transfer_company_combobox.Size = new System.Drawing.Size(283, 28);
@@ -1131,12 +1308,32 @@
             this.transfer_city_combobox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.transfer_city_combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.transfer_city_combobox.FormattingEnabled = true;
-            this.transfer_city_combobox.Location = new System.Drawing.Point(148, 310);
+            this.transfer_city_combobox.Location = new System.Drawing.Point(149, 314);
             this.transfer_city_combobox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.transfer_city_combobox.Name = "transfer_city_combobox";
             this.transfer_city_combobox.Size = new System.Drawing.Size(283, 28);
             this.transfer_city_combobox.TabIndex = 9;
             this.transfer_city_combobox.SelectedIndexChanged += new System.EventHandler(this.transfer_city_combobox_SelectedIndexChanged);
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(4, 381);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(137, 40);
+            this.label9.TabIndex = 10;
+            this.label9.Text = "Selected Transfer:";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // textBox7
+            // 
+            this.textBox7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBox7.Location = new System.Drawing.Point(148, 388);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(284, 26);
+            this.textBox7.TabIndex = 11;
             // 
             // tabPage8
             // 
@@ -1157,8 +1354,8 @@
             this.tabPage8.Controls.Add(this.listBox2);
             this.tabPage8.Location = new System.Drawing.Point(4, 29);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage8.Size = new System.Drawing.Size(1112, 521);
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage8.Size = new System.Drawing.Size(1116, 528);
             this.tabPage8.TabIndex = 3;
             this.tabPage8.Text = "Promo";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -1304,33 +1501,11 @@
             // 
             this.tabPage4.Location = new System.Drawing.Point(4, 29);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage4.Size = new System.Drawing.Size(1130, 567);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Bookings";
             this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // btn_BackC
-            // 
-            this.btn_BackC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btn_BackC.Location = new System.Drawing.Point(39, 52);
-            this.btn_BackC.Name = "btn_BackC";
-            this.btn_BackC.Size = new System.Drawing.Size(56, 34);
-            this.btn_BackC.TabIndex = 25;
-            this.btn_BackC.Text = "<";
-            this.btn_BackC.UseVisualStyleBackColor = true;
-            this.btn_BackC.Click += new System.EventHandler(this.btn_BackC_Click);
-            // 
-            // btn_NextC
-            // 
-            this.btn_NextC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btn_NextC.Location = new System.Drawing.Point(349, 51);
-            this.btn_NextC.Name = "btn_NextC";
-            this.btn_NextC.Size = new System.Drawing.Size(56, 34);
-            this.btn_NextC.TabIndex = 26;
-            this.btn_NextC.Text = ">";
-            this.btn_NextC.UseVisualStyleBackColor = true;
-            this.btn_NextC.Click += new System.EventHandler(this.btn_NextC_Click);
             // 
             // Form2
             // 
@@ -1439,7 +1614,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btn_ApplyPromo;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
@@ -1449,7 +1623,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button btn_newPromo;
@@ -1479,5 +1652,24 @@
         private System.Windows.Forms.ComboBox transfer_city_combobox;
         private System.Windows.Forms.Button btn_BackC;
         private System.Windows.Forms.Button btn_NextC;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox textBox15;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox textBox18;
+        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox textBox17;
+        private System.Windows.Forms.TextBox textBox16;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Button btn_crtPack;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox textBox19;
     }
 }

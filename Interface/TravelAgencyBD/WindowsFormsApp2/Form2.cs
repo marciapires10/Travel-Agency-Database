@@ -489,8 +489,55 @@ namespace WindowsFormsApp2
             }
 
             filterCustomer(noPage, fname, lname);
+        }
 
+        private void btn_Historic_Click(object sender, EventArgs e)
+        {
+            string selCustomer = listBox1.SelectedItem.ToString();
 
+            Form3 historic = new Form3(selCustomer);
+            historic.ShowDialog();
+
+        }
+
+        private void btn_NextC_Click(object sender, EventArgs e)
+        {
+            noPage++;
+            string cust = textSearch.Text;
+            string fname = cust.Split(' ')[0];
+            string lname = "";
+
+            if (string.IsNullOrEmpty(fname))
+            {
+                fname = "None";
+            }
+
+            filterCustomer(noPage, fname, lname);
+
+            if (noPage > 1)
+            {
+                btn_BackC.Enabled = true;
+            }
+        }
+
+        private void btn_BackC_Click(object sender, EventArgs e)
+        {
+            noPage--;
+            string cust = textSearch.Text;
+            string fname = cust.Split(' ')[0];
+            string lname = "";
+
+            if (string.IsNullOrEmpty(fname))
+            {
+                fname = "None";
+            }
+
+            filterCustomer(noPage, fname, lname);
+
+            if (noPage == 1)
+            {
+                btn_BackC.Enabled = false;
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -568,6 +615,10 @@ namespace WindowsFormsApp2
             comboBox3.Items.Clear();
             comboBox3.Items.Add("True");
             comboBox3.Items.Add("False");
+
+            comboBox5.Items.Clear();
+            comboBox5.Items.Add("Yes");
+            comboBox5.Items.Add("No");
 
             loadAccommodation(noPage);
             loadPromo();
@@ -933,6 +984,47 @@ namespace WindowsFormsApp2
             newAcc.ShowDialog();
         }
 
+        private void btn_Next_Click(object sender, EventArgs e)
+        {
+            noPage++;
+            string dest = textBox1.Text;
+            string opt = comboBox1.Text;
+
+
+            if (string.IsNullOrEmpty(dest))
+            {
+                dest = "None";
+            }
+
+            filterAcc(noPage, opt, dest);
+
+            if (noPage > 1)
+            {
+                btn_Back.Enabled = true;
+            }
+        }
+
+        private void btn_Back_Click(object sender, EventArgs e)
+        {
+            noPage--;
+
+            string dest = textBox1.Text;
+            string opt = comboBox1.Text;
+
+
+            if (string.IsNullOrEmpty(dest))
+            {
+                dest = "None";
+            }
+
+            filterAcc(noPage, opt, dest);
+
+            if (noPage == 1)
+            {
+                btn_Back.Enabled = false;
+            }
+        }
+
         // PROMO TAB
         private void loadPromo()
         {
@@ -1177,14 +1269,12 @@ namespace WindowsFormsApp2
 
         public void initialFieldsPack()
         {
-            label9.Hide();
             label10.Hide();
             label11.Hide();
             label12.Hide();
             label13.Hide();
             label14.Hide();
             label18.Hide();
-            textBox7.Hide();
             textBox8.Hide();
             textBox9.Hide();
             textBox10.Hide();
@@ -1196,6 +1286,82 @@ namespace WindowsFormsApp2
         }
 
         // PACKAGE TAB
+
+        private void createPackage()
+        {
+            string title = textBox15.Text;
+            string descr = richTextBox1.Text;
+            int duration = Int32.Parse(textBox19.Text);
+            dateTimePicker1.Format = DateTimePickerFormat.Short;
+            DateTime startDate = dateTimePicker1.Value;
+            dateTimePicker2.Format = DateTimePickerFormat.Short;
+            DateTime endDate = dateTimePicker2.Value;
+            int noPersons = Int32.Parse(textBox8.Text);
+            int totalPrice = Int32.Parse(textBox11.Text);
+            int accID = Int32.Parse(textBox9.Text);
+            int promoID = Int32.Parse(textBox10.Text);
+            int flightID1 = Int32.Parse(textBox16.Text);
+            int flightID2 = Int32.Parse(textBox17.Text);
+            string opt = comboBox5.SelectedItem.ToString();
+            int transfID = Int32.Parse(textBox18.Text);
+
+
+            SqlCommand cmd = new SqlCommand
+            {
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "TravelAgency.spAddPackage"
+            };
+
+
+            cmd.Parameters.Add(new SqlParameter("@Title", SqlDbType.VarChar));
+            cmd.Parameters.Add(new SqlParameter("@Description", SqlDbType.VarChar));
+            cmd.Parameters.Add(new SqlParameter("@Duration", SqlDbType.Int));
+            cmd.Parameters.Add(new SqlParameter("@startDate", SqlDbType.Date));
+            cmd.Parameters.Add(new SqlParameter("@endDate", SqlDbType.Date));
+            cmd.Parameters.Add(new SqlParameter("@noPersons", SqlDbType.Int));
+            cmd.Parameters.Add(new SqlParameter("@totalPrice", SqlDbType.SmallMoney));
+            cmd.Parameters.Add(new SqlParameter("@Acomm_ID", SqlDbType.Int));
+            cmd.Parameters.Add(new SqlParameter("@Promo_ID", SqlDbType.Int));
+            cmd.Parameters.Add(new SqlParameter("@Flight_ID1", SqlDbType.Int));
+            cmd.Parameters.Add(new SqlParameter("@Flight_ID2", SqlDbType.Int));
+            cmd.Parameters.Add(new SqlParameter("@Transf_ID", SqlDbType.Int));
+            cmd.Parameters.Add(new SqlParameter("@opt1", SqlDbType.VarChar));
+            //cmd.Parameters.Add(new SqlParameter("@responseMsg", SqlDbType.NVarChar, 250));
+
+
+            cmd.Parameters["@Title"].Value = title;
+            cmd.Parameters["@Description"].Value = descr;
+            cmd.Parameters["@Duration"].Value = duration;
+            cmd.Parameters["@startDate"].Value = startDate;
+            cmd.Parameters["@endDate"].Value = endDate;
+            cmd.Parameters["@noPersons"].Value = noPersons;
+            cmd.Parameters["@totalPrice"].Value = totalPrice;
+            cmd.Parameters["@Acomm_ID"].Value = accID;
+            cmd.Parameters["@Promo_ID"].Value = promoID;
+            cmd.Parameters["@Flight_ID1"].Value = flightID1;
+            cmd.Parameters["@Flight_ID2"].Value = flightID2;
+            cmd.Parameters["@Transf_ID"].Value = transfID;
+            cmd.Parameters["@opt1"].Value = opt;
+            //cmd.Parameters["@responseMsg"].Direction = ParameterDirection.Output;
+
+
+            if (!verifySGBDConnection())
+            {
+                return;
+            }
+
+            cmd.Connection = cn;
+            cmd.ExecuteNonQuery();
+
+            
+
+            cn.Close();
+        }
+
+        private void btn_crtPack_Click(object sender, EventArgs e)
+        {
+            createPackage();
+        }
 
         private void btn_NewPack_Click(object sender, EventArgs e)
         {
@@ -1223,15 +1389,7 @@ namespace WindowsFormsApp2
             btn_cancelPack.Hide();
         }
 
-        private void btn_Historic_Click(object sender, EventArgs e)
-        {
-            string selCustomer = listBox1.SelectedItem.ToString();
-
-            Form3 historic = new Form3(selCustomer);
-            historic.ShowDialog();
-
-        }
-
+        
         private void flight_modify_button_Click(object sender, EventArgs e)
         {
             int flight_id = (int) dataGridView1.CurrentRow.Cells["ID"].Value;
@@ -1715,85 +1873,6 @@ namespace WindowsFormsApp2
             }
         }
 
-        private void btn_Next_Click(object sender, EventArgs e)
-        {
-            noPage++;
-            string dest = textBox1.Text;
-            string opt = comboBox1.Text;
-
-
-            if (string.IsNullOrEmpty(dest))
-            {
-                dest = "None";
-            }
-
-            filterAcc(noPage, opt, dest);
-
-            if(noPage > 1)
-            {
-                btn_Back.Enabled = true;
-            }
-        }
-
-        private void btn_Back_Click(object sender, EventArgs e)
-        {
-            noPage--;
-
-            string dest = textBox1.Text;
-            string opt = comboBox1.Text;
-
-
-            if (string.IsNullOrEmpty(dest))
-            {
-                dest = "None";
-            }
-
-            filterAcc(noPage, opt, dest);
-
-            if (noPage == 1)
-            {
-                btn_Back.Enabled = false;
-            }
-        }
-
-        private void btn_NextC_Click(object sender, EventArgs e)
-        {
-            noPage++;
-            string cust = textSearch.Text;
-            string fname = cust.Split(' ')[0];
-            string lname = "";
-
-            if (string.IsNullOrEmpty(fname))
-            {
-                fname = "None";
-            }
-
-            filterCustomer(noPage, fname, lname);
-
-            if (noPage > 1)
-            {
-                btn_BackC.Enabled = true;
-            }
-        }
-
-        private void btn_BackC_Click(object sender, EventArgs e)
-        {
-            noPage--;
-            string cust = textSearch.Text;
-            string fname = cust.Split(' ')[0];
-            string lname = "";
-
-            if (string.IsNullOrEmpty(fname))
-            {
-                fname = "None";
-            }
-
-            filterCustomer(noPage, fname, lname);
-
-            if (noPage == 1)
-            {
-                btn_BackC.Enabled = false;
-            }
-        }
+        
     }
 }

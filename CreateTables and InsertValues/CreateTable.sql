@@ -76,7 +76,7 @@ CREATE TABLE TravelAgency.Promo(
 );
 
 CREATE TABLE TravelAgency.Package(
-	ID				INT				NOT NULL,
+	ID				INT				NOT NULL	identity(1,1),
 	Title			VARCHAR(40)		NOT NULL,
 	Description		VARCHAR(500),
 	Duration		INT				NOT NULL,
@@ -98,7 +98,7 @@ CREATE TABLE TravelAgency.Airline(
 );
 
 CREATE TABLE TravelAgency.Flight(
-	ID			INT				NOT NULL,
+	ID			INT				NOT NULL	identity(1,1),
 	departTime	SMALLDATETIME	NOT NULL,
 	arrivalTime	SMALLDATETIME	NOT NULL,
 	Airline		VARCHAR(20)		NOT NULL,
@@ -116,7 +116,7 @@ ALTER TABLE TravelAgency.Flight ADD FOREIGN KEY(Airline) REFERENCES TravelAgency
 
 
 CREATE TABLE TravelAgency.Transfer(
-	ID			INT			NOT NULL,
+	ID			INT			NOT NULL	identity(1,1),
 	Company		VARCHAR(20)	NOT NULL,
 	Price		SMALLMONEY	NOT NULL,
 	Included	BIT			NOT NULL,
@@ -128,7 +128,7 @@ CREATE TABLE TravelAgency.Transfer(
 );
 
 CREATE TABLE TravelAgency.Booking(
-	ID			INT				NOT NULL,
+	ID			INT				NOT NULL	identity(1,1),
 	Paid		BIT				NOT NULL,
 	bookDate	DATE			NOT NULL,
 	Details		VARCHAR(500),
@@ -141,9 +141,8 @@ CREATE TABLE TravelAgency.Booking(
 	FOREIGN KEY(Cust_ID) REFERENCES TravelAgency.Customer(CustID),
 );
 
-
 CREATE TABLE TravelAgency.Review(
-	ID			INT				NOT NULL,
+	ID			INT				NOT NULL	identity(1,1),
 	Description	VARCHAR(500),
 	Score		INT				NOT NULL,
 	Pack_ID		INT				NOT NULL,
@@ -153,6 +152,7 @@ CREATE TABLE TravelAgency.Review(
 	FOREIGN KEY(Cust_ID) REFERENCES TravelAgency.Customer(CustID),
 );
 
+
 CREATE TABLE TravelAgency.Contains_Transf(
 	Pack_ID		INT		NOT NULL,
 	Transf_ID	INT		NOT NULL,
@@ -160,6 +160,7 @@ CREATE TABLE TravelAgency.Contains_Transf(
 	FOREIGN KEY(Pack_ID) REFERENCES TravelAgency.Package(ID),
 	FOREIGN KEY(Transf_ID) REFERENCES TravelAgency.Transfer(ID),
 );
+
 
 CREATE TABLE TravelAgency.Contains_Flight(
 	Pack_ID		INT		NOT NULL,
