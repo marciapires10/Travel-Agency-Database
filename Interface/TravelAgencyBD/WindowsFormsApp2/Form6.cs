@@ -14,11 +14,18 @@ namespace WindowsFormsApp2
     public partial class Form6 : Form
     {
         private SqlConnection cn;
+        private int pack_ID = 0;
+        private int ag_ID = 0;
+        private int cust_ID = 0;
 
         public Form6(int packID, int agID, int cusID)
         {
             InitializeComponent();
             cn = getSGBDConnection();
+            pack_ID = packID;
+            textBox1.Text = pack_ID.ToString();
+            ag_ID = agID;
+            cust_ID = cusID;
         }
 
         private SqlConnection getSGBDConnection()
@@ -60,7 +67,6 @@ namespace WindowsFormsApp2
                 paid_bin = 0;
             }
 
-            int packID = Int32.Parse(textBox1.Text);
             DateTime bookDate = Convert.ToDateTime(textBox2.Text);
             string details = richTextBox1.Text;
 
@@ -82,9 +88,9 @@ namespace WindowsFormsApp2
             cmd.Parameters["@Paid"].Value = paid_bin;
             cmd.Parameters["@bookDate"].Value = bookDate;
             cmd.Parameters["@Details"].Value = details;
-            cmd.Parameters["@Pack_ID"].Value = packID;
-            cmd.Parameters["@Ag_ID"].Value = discount;
-            cmd.Parameters["@Cust_ID"].Value = discount;
+            cmd.Parameters["@Pack_ID"].Value = pack_ID;
+            cmd.Parameters["@Ag_ID"].Value = ag_ID;
+            cmd.Parameters["@Cust_ID"].Value = cust_ID;
             cmd.Parameters["@responseMsg"].Direction = ParameterDirection.Output;
 
             if (!verifySGBDConnection())
@@ -116,7 +122,9 @@ namespace WindowsFormsApp2
             comboBox1.Items.Add("False");
             comboBox1.Items.Add("True");
 
-            textBox2.Text = Convert.ToString(DateTime.Today);
+
+            var dateAndTime = DateTime.Now;
+            textBox2.Text = Convert.ToString(dateAndTime.ToShortDateString());
 
         }
     }

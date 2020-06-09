@@ -24,6 +24,8 @@ namespace WindowsFormsApp2
         private int size = 12;
         private int noPage = 1;
         private string curr_agent = "";
+        private int packID = 0;
+        private int custID = 0;
         private BindingSource bindingSource1 = new BindingSource();
         private SqlDataAdapter dataAdapter = new SqlDataAdapter();
         private BindingSource bindingSource2 = new BindingSource();
@@ -542,14 +544,6 @@ namespace WindowsFormsApp2
             filterCustomer(noPage, fname, lname);
         }
 
-        private void btn_Historic_Click(object sender, EventArgs e)
-        {
-            string selCustomer = listBox1.SelectedItem.ToString();
-
-            Form3 historic = new Form3(selCustomer);
-            historic.ShowDialog();
-
-        }
 
         private void btn_NextC_Click(object sender, EventArgs e)
         {
@@ -589,6 +583,21 @@ namespace WindowsFormsApp2
             {
                 btn_BackC.Enabled = false;
             }
+        }
+
+        private int getCustID(string email)
+        {
+            if (!verifySGBDConnection())
+            {
+                return 0;
+            }
+
+            SqlCommand cmd;
+            cmd = new SqlCommand("Select TravelAgency.GetCustID('" + email + "')", cn);
+
+            int id = (int)cmd.ExecuteScalar();
+
+            return id;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -1380,7 +1389,22 @@ namespace WindowsFormsApp2
         private void btn_crtPack_Click(object sender, EventArgs e)
         {
             createPackage();
+
             MessageBox.Show("You have created a package!");
+        }
+
+        private int getPackID(string title)
+        {
+            if (!verifySGBDConnection())
+            {
+                return 0;
+            }
+
+            SqlCommand cmd;
+            cmd = new SqlCommand("Select TravelAgency.GetPackID('" + title + "')", cn);
+
+            int id = (int)cmd.ExecuteScalar();
+            return id;
         }
         
         // ----------------------------- FLIGHT TAB ---------------------------------
@@ -2050,8 +2074,20 @@ namespace WindowsFormsApp2
 
         private void btn_Book_Click(object sender, EventArgs e)
         {
-            Form6 book = new Form6(curr_agent,);
+            string pack = listBox3.SelectedItem.ToString();
+            packID = Int32.Parse(pack.Split(' ')[0]);
+            int agID = Int32.Parse(textBox20.Text);
+            custID = getCustID(textBox4.Text);
+
+            Form6 book = new Form6(packID, agID, custID);
             book.ShowDialog();
+        }
+
+        private void btn_Search_Click_1(object sender, EventArgs e)
+        {
+            custID = getCustID(textBox4.Text);
+            Form3 listBooks = new Form3(custID);
+            listBooks.ShowDialog();
         }
     }
 }

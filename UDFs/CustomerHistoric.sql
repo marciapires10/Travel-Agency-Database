@@ -4,4 +4,4 @@ AS
 	RETURN (SELECT * FROM TravelAgency.Booking
 			WHERE TravelAgency.Booking.Cust_ID = @CustID)
 
-SELECT * FROM TravelAgency.CustomerHistoric (1);
+SELECT * FROM TravelAgency.CustomerHistoric(95)

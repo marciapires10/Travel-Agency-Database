@@ -169,10 +169,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.btn_Book = new System.Windows.Forms.Button();
-            this.listBox3 = new System.Windows.Forms.ListBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.btn_showDetails = new System.Windows.Forms.Button();
             this.textBox14 = new System.Windows.Forms.TextBox();
             this.textBox28 = new System.Windows.Forms.TextBox();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
@@ -198,6 +194,10 @@
             this.label44 = new System.Windows.Forms.Label();
             this.textBox35 = new System.Windows.Forms.TextBox();
             this.label45 = new System.Windows.Forms.Label();
+            this.btn_showDetails = new System.Windows.Forms.Button();
+            this.btn_Book = new System.Windows.Forms.Button();
+            this.listBox3 = new System.Windows.Forms.ListBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -457,7 +457,6 @@
             this.btn_Historic.TabIndex = 24;
             this.btn_Historic.Text = "Search for Historic";
             this.btn_Historic.UseVisualStyleBackColor = true;
-            this.btn_Historic.Click += new System.EventHandler(this.btn_Historic_Click);
             // 
             // btn_Search
             // 
@@ -466,6 +465,7 @@
             this.btn_Search.Size = new System.Drawing.Size(366, 44);
             this.btn_Search.TabIndex = 28;
             this.btn_Search.Text = "List of Bookings";
+            this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click_1);
             // 
             // textSearch
             // 
@@ -1786,46 +1786,6 @@
             this.tabPage4.Text = "Bookings";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // btn_Book
-            // 
-            this.btn_Book.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btn_Book.Location = new System.Drawing.Point(224, 454);
-            this.btn_Book.Name = "btn_Book";
-            this.btn_Book.Size = new System.Drawing.Size(111, 54);
-            this.btn_Book.TabIndex = 2;
-            this.btn_Book.Text = "BOOK";
-            this.btn_Book.UseVisualStyleBackColor = true;
-            this.btn_Book.Click += new System.EventHandler(this.btn_Book_Click);
-            // 
-            // listBox3
-            // 
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.ItemHeight = 20;
-            this.listBox3.Location = new System.Drawing.Point(61, 113);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(274, 304);
-            this.listBox3.TabIndex = 1;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label18.Location = new System.Drawing.Point(56, 49);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(192, 29);
-            this.label18.TabIndex = 0;
-            this.label18.Text = "List of packages:";
-            // 
-            // btn_showDetails
-            // 
-            this.btn_showDetails.Location = new System.Drawing.Point(61, 453);
-            this.btn_showDetails.Name = "btn_showDetails";
-            this.btn_showDetails.Size = new System.Drawing.Size(118, 56);
-            this.btn_showDetails.TabIndex = 3;
-            this.btn_showDetails.Text = "Show details";
-            this.btn_showDetails.UseVisualStyleBackColor = true;
-            this.btn_showDetails.Click += new System.EventHandler(this.btn_showDetails_Click);
-            // 
             // textBox14
             // 
             this.textBox14.Location = new System.Drawing.Point(480, 142);
@@ -2037,6 +1997,46 @@
             this.label45.Size = new System.Drawing.Size(148, 20);
             this.label45.TabIndex = 34;
             this.label45.Text = "Number of persons:";
+            // 
+            // btn_showDetails
+            // 
+            this.btn_showDetails.Location = new System.Drawing.Point(61, 453);
+            this.btn_showDetails.Name = "btn_showDetails";
+            this.btn_showDetails.Size = new System.Drawing.Size(118, 56);
+            this.btn_showDetails.TabIndex = 3;
+            this.btn_showDetails.Text = "Show details";
+            this.btn_showDetails.UseVisualStyleBackColor = true;
+            this.btn_showDetails.Click += new System.EventHandler(this.btn_showDetails_Click);
+            // 
+            // btn_Book
+            // 
+            this.btn_Book.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btn_Book.Location = new System.Drawing.Point(224, 454);
+            this.btn_Book.Name = "btn_Book";
+            this.btn_Book.Size = new System.Drawing.Size(111, 54);
+            this.btn_Book.TabIndex = 2;
+            this.btn_Book.Text = "BOOK";
+            this.btn_Book.UseVisualStyleBackColor = true;
+            this.btn_Book.Click += new System.EventHandler(this.btn_Book_Click);
+            // 
+            // listBox3
+            // 
+            this.listBox3.FormattingEnabled = true;
+            this.listBox3.ItemHeight = 20;
+            this.listBox3.Location = new System.Drawing.Point(61, 113);
+            this.listBox3.Name = "listBox3";
+            this.listBox3.Size = new System.Drawing.Size(274, 304);
+            this.listBox3.TabIndex = 1;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label18.Location = new System.Drawing.Point(56, 49);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(192, 29);
+            this.label18.TabIndex = 0;
+            this.label18.Text = "List of packages:";
             // 
             // Form2
             // 

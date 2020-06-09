@@ -15,11 +15,11 @@ namespace WindowsFormsApp2
     {
         private SqlConnection cn;
 
-        public Form3(string CustID)
+        public Form3(int CustID)
         {
             InitializeComponent();
             cn = getSGBDConnection();
-            textBox1.Text = CustID;
+            textBox1.Text = CustID.ToString();
             textBox1.ReadOnly = true;
             loadBookHistoric(CustID);
         }
@@ -50,7 +50,7 @@ namespace WindowsFormsApp2
         }
 
 
-        private void loadBookHistoric(string custID)
+        private void loadBookHistoric(int custID)
         {
             
             SqlCommand cmd = new SqlCommand("select * from TravelAgency.CustomerHistoric ('" + custID + "')", cn);
@@ -70,7 +70,7 @@ namespace WindowsFormsApp2
                 {
                     string ID = reader["ID"].ToString();
                     string paid = reader["Paid"].ToString();
-                    string bookDate = reader["bookDate"].ToString().Split(' ')[0].ToString(); ;
+                    string bookDate = reader["bookDate"].ToString().Split(' ')[0].ToString();
                     string details = reader["Details"].ToString();
                     string pack_id = reader["Pack_ID"].ToString();
                     string ag_id = reader["Ag_ID"].ToString();
@@ -80,6 +80,8 @@ namespace WindowsFormsApp2
                     listView1.Items.Add(list);
                 }
             }
+
+            cn.Close();
 
         }
     }
