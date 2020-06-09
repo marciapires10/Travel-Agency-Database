@@ -23,13 +23,14 @@ namespace WindowsFormsApp2
         private bool remove = false;
         private int size = 12;
         private int noPage = 1;
+        private string curr_agent = "";
         private BindingSource bindingSource1 = new BindingSource();
         private SqlDataAdapter dataAdapter = new SqlDataAdapter();
         private BindingSource bindingSource2 = new BindingSource();
 
-        public Form2()
+        public Form2(string agent_mail)
         {
-
+            curr_agent = agent_mail;
             this.AutoSize = true;
             this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             InitializeComponent();
@@ -46,7 +47,58 @@ namespace WindowsFormsApp2
             loadFlights();
             load_transfer();
 
-            initialFieldsPack();
+            textBox23.Text = curr_agent;
+
+            if (!verifySGBDConnection())
+            {
+                return;
+            }
+
+            SqlCommand cmd;
+            cmd = new SqlCommand("select * from TravelAgency.AgentProf ('" + curr_agent + "')", cn);
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    textBox20.Text = reader["AgID"].ToString();
+                    textBox21.Text = reader["Fname"].ToString();
+                    textBox22.Text = reader["Lname"].ToString();
+                    textBox25.Text = reader["PhoneNo"].ToString();
+
+                }
+            }
+
+            cn.Close();
+
+            textBox1.Text = "";
+            comboBox1.Items.Clear();
+            comboBox1.Text = "None";
+            comboBox1.Items.Add("None");
+            comboBox1.Items.Add("PriceAsc");
+            comboBox1.Items.Add("PriceDesc");
+
+            comboBox2.Items.Clear();
+            comboBox2.Text = "None";
+            comboBox2.Items.Add("None");
+            comboBox2.Items.Add("DiscountAsc");
+            comboBox2.Items.Add("DiscountDesc");
+            comboBox2.Items.Add("Active");
+            comboBox2.Items.Add("Not available");
+
+            textBox12.ReadOnly = true;
+
+            comboBox3.Items.Clear();
+            comboBox3.Items.Add("True");
+            comboBox3.Items.Add("False");
+
+            comboBox5.Items.Clear();
+            comboBox5.Items.Add("Yes");
+            comboBox5.Items.Add("No");
+
+            loadAccommodation(noPage);
+            loadPromo();
+
         }
 
         private SqlConnection getSGBDConnection()
@@ -74,7 +126,7 @@ namespace WindowsFormsApp2
             
         }
 
-        // CUSTOMER TAB
+        // ----------------------- CUSTOMER TAB -------------------------------
 
         // load Customers
         private void loadCustomers(int page)
@@ -431,7 +483,6 @@ namespace WindowsFormsApp2
             btn_Edit.Visible = false;
             btn_Historic.Visible = false;
             btn_Remove.Visible = false;
-            clearFields();
             edit = true;
             
         }
@@ -591,38 +642,7 @@ namespace WindowsFormsApp2
 
 
 
-        // ACCOMMODATION TAB
-
-        private void pack_selected(object sender, EventArgs e)
-        {
-            textBox1.Text = "";
-            comboBox1.Items.Clear();
-            comboBox1.Text = "None";
-            comboBox1.Items.Add("None");
-            comboBox1.Items.Add("PriceAsc");
-            comboBox1.Items.Add("PriceDesc");
-
-            comboBox2.Items.Clear();
-            comboBox2.Text = "None";
-            comboBox2.Items.Add("None");
-            comboBox2.Items.Add("DiscountAsc");
-            comboBox2.Items.Add("DiscountDesc");
-            comboBox2.Items.Add("Active");
-            comboBox2.Items.Add("Not available");
-
-            textBox12.ReadOnly = true;
-
-            comboBox3.Items.Clear();
-            comboBox3.Items.Add("True");
-            comboBox3.Items.Add("False");
-
-            comboBox5.Items.Clear();
-            comboBox5.Items.Add("Yes");
-            comboBox5.Items.Add("No");
-
-            loadAccommodation(noPage);
-            loadPromo();
-        }
+        // --------------------------- ACCOMMODATION TAB ------------------------------
 
         private void loadAccommodation(int page)
         {
@@ -757,7 +777,7 @@ namespace WindowsFormsApp2
                     lb3.Text = reader["Description"].ToString();
                     lb4.Font = new Font(lb4.Font, FontStyle.Bold);
                     lb4.Text = "Location:";
-                    lb5.Text = reader["CC_Location"].ToString();
+                    lb5.Text = reader["City"].ToString() + ", " + reader["Country"].ToString();
                     lb6.Font = new Font(lb6.Font, FontStyle.Bold);
                     lb6.Text = "Price per night:";
                     lb7.Text = reader["Price"].ToString() + " €";
@@ -797,6 +817,7 @@ namespace WindowsFormsApp2
             textBox12.Text = acc_name;
             textBox9.Text = acc_name;
             textBox9.ReadOnly = true;
+            MessageBox.Show(acc_name + " is now on your package!");
 
         }
 
@@ -1025,7 +1046,7 @@ namespace WindowsFormsApp2
             }
         }
 
-        // PROMO TAB
+        // ----------------------------- PROMO TAB -----------------------------------
         private void loadPromo()
         {
             if (!verifySGBDConnection())
@@ -1267,28 +1288,26 @@ namespace WindowsFormsApp2
             textBox6.Text = "";
         }
 
-        public void initialFieldsPack()
-        {
-            label10.Hide();
-            label11.Hide();
-            label12.Hide();
-            label13.Hide();
-            label14.Hide();
-            label18.Hide();
-            textBox8.Hide();
-            textBox9.Hide();
-            textBox10.Hide();
-            textBox11.Hide();
-            textBox14.Hide();
+        // --------------------------------- PACKAGE TAB ------------------------------
 
-            btn_NewPack.Show();
-            btn_CustPack.Show();
+        private int getAccID(string acc)
+        {
+            if (!verifySGBDConnection())
+            {
+                return 0;
+            }
+
+            SqlCommand cmd;
+            cmd = new SqlCommand("Select TravelAgency.GetAccID('" + acc + "')", cn);
+
+            int id = (int)cmd.ExecuteScalar();
+            return id;
         }
 
-        // PACKAGE TAB
 
         private void createPackage()
         {
+            
             string title = textBox15.Text;
             string descr = richTextBox1.Text;
             int duration = Int32.Parse(textBox19.Text);
@@ -1298,7 +1317,7 @@ namespace WindowsFormsApp2
             DateTime endDate = dateTimePicker2.Value;
             int noPersons = Int32.Parse(textBox8.Text);
             int totalPrice = Int32.Parse(textBox11.Text);
-            int accID = Int32.Parse(textBox9.Text);
+            int accID = getAccID(textBox9.Text);
             int promoID = Int32.Parse(textBox10.Text);
             int flightID1 = Int32.Parse(textBox16.Text);
             int flightID2 = Int32.Parse(textBox17.Text);
@@ -1361,35 +1380,10 @@ namespace WindowsFormsApp2
         private void btn_crtPack_Click(object sender, EventArgs e)
         {
             createPackage();
+            MessageBox.Show("You have created a package!");
         }
-
-        private void btn_NewPack_Click(object sender, EventArgs e)
-        {
-            btn_NewPack.Hide();
-            btn_CustPack.Hide();
-
-            label9.Show();
-            label10.Show();
-            label11.Show();
-            label12.Show();
-            label13.Show();
-            label14.Show();
-            label18.Show();
-            textBox7.Show();
-            textBox8.Show();
-            textBox9.Show();
-            textBox10.Show();
-            textBox11.Show();
-            textBox14.Show();
-        }
-
-        private void btn_cancelPack_Click(object sender, EventArgs e)
-        {
-            initialFieldsPack();
-            btn_cancelPack.Hide();
-        }
-
         
+        // ----------------------------- FLIGHT TAB ---------------------------------
         private void flight_modify_button_Click(object sender, EventArgs e)
         {
             int flight_id = (int) dataGridView1.CurrentRow.Cells["ID"].Value;
@@ -1634,6 +1628,24 @@ namespace WindowsFormsApp2
 
         }
 
+        private void btn_FlightsSel_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("You have added the selected departure flight to your package!");
+            string id_flight1 = Convert.ToString(dataGridView1.CurrentRow.Cells["ID"].Value);
+            textBox26.Text = id_flight1;
+            textBox16.Text = id_flight1;
+        }
+
+        private void btn_Flight2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("You have added the selected arrival flight to your package!");
+            string id_flight2 = Convert.ToString(dataGridView1.CurrentRow.Cells["ID"].Value);
+            textBox27.Text = id_flight2;
+            textBox17.Text = id_flight2;
+        }
+
+        // ------------------------ TRANSFER TAB -------------------------------
+
         private void transfer_add_button_Click(object sender, EventArgs e)
         {
             add_transfer add_new_transfer = new add_transfer();
@@ -1839,6 +1851,7 @@ namespace WindowsFormsApp2
 
             cn.Close();
 
+
         }
 
         private void get_transfer_data()
@@ -1873,6 +1886,172 @@ namespace WindowsFormsApp2
             }
         }
 
+        private void btn_SelectTransfer_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("You have added the selected transfer to your package!");
+            string id_transf_selected = Convert.ToString(dataGridView2.CurrentRow.Cells["ID"].Value);
+            textBox7.Text = id_transf_selected;
+            textBox18.Text = id_transf_selected;
+            textBox7.ReadOnly = true;
+            textBox18.ReadOnly = true;
+        }
+
+
+        // ---------------------------- PROFILE TAB ------------------------------------
+        private void btn_EditProfile_Click(object sender, EventArgs e)
+        {
+            string fname = textBox21.Text;
+            string lname = textBox22.Text;
+            string email = textBox23.Text;
+            string password = textBox24.Text;
+            string phoneNo = textBox25.Text;
+
+            SqlCommand cmd = new SqlCommand
+            {
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "TravelAgency.spEditAgent"
+            };
+
+
+            cmd.Parameters.Add(new SqlParameter("@Fname", SqlDbType.VarChar));
+            cmd.Parameters.Add(new SqlParameter("@Lname", SqlDbType.VarChar));
+            cmd.Parameters.Add(new SqlParameter("@Email", SqlDbType.VarChar));
+            cmd.Parameters.Add(new SqlParameter("@Password", SqlDbType.VarChar));
+            cmd.Parameters.Add(new SqlParameter("@PhoneNo", SqlDbType.Int));
+            cmd.Parameters.Add(new SqlParameter("@responseMsg", SqlDbType.NVarChar, 250));
+            cmd.Parameters["@Fname"].Value = fname;
+            cmd.Parameters["@Lname"].Value = lname;
+            cmd.Parameters["@Email"].Value = email;
+            cmd.Parameters["@Password"].Value = password;
+            cmd.Parameters["@PhoneNo"].Value = phoneNo;
+            cmd.Parameters["@responseMsg"].Direction = ParameterDirection.Output;
+
+            if (!verifySGBDConnection())
+            {
+                return;
+            }
+
+
+            cmd.Connection = cn;
+            cmd.ExecuteNonQuery();
+
+            if ("" + cmd.Parameters["@responseMsg"].Value == "Success")
+            {
+                MessageBox.Show("Success");
+            }
+            else
+            {
+                MessageBox.Show("Error");
+            }
+
+            cn.Close();
+        }
+
+
+        // -------------------------------- LOGOUT -----------------------------------
+        private void btn_logout_Click(object sender, EventArgs e)
+        {
+            Form1 login = new Form1();
+            login.Show();
+            this.Close();
+        }
+
+
+        // ----------------------------- BOOKING TAB ---------------------------------
         
+        private void loadPackages()
+        {
+            if (!verifySGBDConnection())
+                return;
+
+
+            SqlCommand cmd = new SqlCommand
+            {
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "TravelAgency.spLoadPackage"
+            };
+
+            cmd.Connection = cn;
+            SqlDataReader reader = cmd.ExecuteReader();
+            listBox3.Items.Clear();
+
+            while (reader.Read())
+            {
+                listBox3.Items.Add(reader["ID"] + " - " + reader["Title"]);
+            }
+
+            cn.Close();
+        }
+
+        private void btn_showDetails_Click(object sender, EventArgs e)
+        {
+            textBox31.Show();
+            textBox35.Show();
+            textBox14.Show();
+            dateTimePicker4.Show();
+            dateTimePicker3.Show();
+            textBox34.Show();
+            textBox30.Show();
+            textBox29.Show();
+            textBox28.Show();
+            comboBox4.Show();
+            textBox33.Show();
+            textBox32.Show();
+            richTextBox2.Show();
+            label40.Show();
+            label45.Show();
+            label42.Show();
+            label38.Show();
+            label37.Show();
+            label44.Show();
+            label36.Show();
+            label35.Show();
+            label34.Show();
+            label43.Show();
+            label39.Show();
+            label41.Show();
+
+
+        }
+
+        private void tabControl1_Selected(object sender, TabControlEventArgs e)
+        {
+            if (tabControl1.SelectedTab == tabPage4)
+            {
+                loadPackages();
+
+                textBox31.Hide();
+                textBox35.Hide();
+                textBox14.Hide();
+                dateTimePicker4.Hide();
+                dateTimePicker3.Hide();
+                textBox34.Hide();
+                textBox30.Hide();
+                textBox29.Hide();
+                textBox28.Hide();
+                comboBox4.Hide();
+                textBox33.Hide();
+                textBox32.Hide();
+                richTextBox2.Hide();
+                label40.Hide();
+                label45.Hide();
+                label42.Hide();
+                label38.Hide();
+                label37.Hide();
+                label44.Hide();
+                label36.Hide();
+                label35.Hide();
+                label34.Hide();
+                label43.Hide();
+                label39.Hide();
+                label41.Hide();
+            }
+        }
+
+        private void btn_Book_Click(object sender, EventArgs e)
+        {
+            Form6 book = new Form6(curr_agent,);
+            book.ShowDialog();
+        }
     }
 }

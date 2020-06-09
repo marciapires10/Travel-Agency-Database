@@ -99,7 +99,7 @@ namespace WindowsFormsApp2
                 {
                     MessageBox.Show("You have logged in successfully\n" + email);
                     this.Hide();
-                    Form2 menu = new Form2();
+                    Form2 menu = new Form2(email);
                     menu.ShowDialog();
                 }
 

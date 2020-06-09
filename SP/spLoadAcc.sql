@@ -5,7 +5,7 @@ AS
 	BEGIN
 			SET NOCOUNT ON
 
-			SELECT * FROM TravelAgency.Accommodation
+			SELECT * FROM TravelAgency.Accommodation_list
 			ORDER BY ID
 
 			OFFSET @size * (@noPage - 1) ROWS

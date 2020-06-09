@@ -57,7 +57,7 @@ CREATE TABLE TravelAgency.CC(
 
 CREATE TABLE TravelAgency.Accommodation(
 	ID			INT				NOT NULL	identity(1,1),
-	Name		VARCHAR(40)		NOT NULL,
+	Name		VARCHAR(40)		NOT NULL	unique,
 	Image		VARCHAR(MAX),
 	Description VARCHAR(500),
 	Price		SMALLMONEY		NOT NULL,
