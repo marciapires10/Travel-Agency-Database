@@ -26,6 +26,7 @@ namespace WindowsFormsApp2
         private string curr_agent = "";
         private int packID = 0;
         private int custID = 0;
+        private int bookID = 0;
         private BindingSource bindingSource1 = new BindingSource();
         private SqlDataAdapter dataAdapter = new SqlDataAdapter();
         private BindingSource bindingSource2 = new BindingSource();
@@ -2092,7 +2093,7 @@ namespace WindowsFormsApp2
             label39.Show();
             label41.Show();
 
-            button10.Enabled = true;
+            button10.Visible = true;
             panel1.Visible = false;
 
             if (!verifySGBDConnection())
@@ -2155,7 +2156,8 @@ namespace WindowsFormsApp2
             label39.Hide();
             label41.Hide();
 
-            button10.Enabled = false;
+            button10.Visible = false;
+            panel1.Visible = true;
         }
 
         private void loadBookings()
@@ -2384,6 +2386,42 @@ namespace WindowsFormsApp2
             Form8 reviewHistoric = new Form8(packID);
             reviewHistoric.ShowDialog();
 
+            cn.Close();
+        }
+
+        private void btn_EditBook_Click(object sender, EventArgs e)
+        {
+            string ID = listBox2.SelectedItem.ToString();
+
+            SqlCommand cmd = new SqlCommand
+            {
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "TravelAgency.spEnablePromo"
+            };
+
+            cmd.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int));
+            cmd.Parameters.Add(new SqlParameter("@responseMsg", SqlDbType.NVarChar, 250));
+            cmd.Parameters["@ID"].Value = ID;
+            cmd.Parameters["@responseMsg"].Direction = ParameterDirection.Output;
+
+            if (!verifySGBDConnection())
+            {
+                return;
+            }
+
+            cmd.Connection = cn;
+            cmd.ExecuteNonQuery();
+
+            if ("" + cmd.Parameters["@responseMsg"].Value == "Success")
+            {
+                MessageBox.Show("Book paid");
+            }
+            else
+            {
+                MessageBox.Show("Error");
+            }
+
+            loadBookings();
             cn.Close();
         }
     }

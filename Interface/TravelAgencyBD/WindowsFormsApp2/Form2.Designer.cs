@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btn_logout = new System.Windows.Forms.Button();
@@ -217,6 +217,8 @@
             this.button11 = new System.Windows.Forms.Button();
             this.btn_addReview = new System.Windows.Forms.Button();
             this.btn_showReviews = new System.Windows.Forms.Button();
+            this.btn_EditBook = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -2039,17 +2041,17 @@
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
             this.chart1.Location = new System.Drawing.Point(502, 47);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chart1.Series.Add(series3);
             this.chart1.Size = new System.Drawing.Size(562, 374);
             this.chart1.TabIndex = 14;
             this.chart1.Text = "chart1";
@@ -2141,6 +2143,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button13);
+            this.panel1.Controls.Add(this.btn_EditBook);
             this.panel1.Controls.Add(this.button11);
             this.panel1.Controls.Add(this.splitter1);
             this.panel1.Controls.Add(this.comboBox4);
@@ -2226,6 +2230,25 @@
             this.btn_showReviews.Text = "Show Reviews";
             this.btn_showReviews.UseVisualStyleBackColor = true;
             this.btn_showReviews.Click += new System.EventHandler(this.btn_showReviews_Click);
+            // 
+            // btn_EditBook
+            // 
+            this.btn_EditBook.Location = new System.Drawing.Point(193, 415);
+            this.btn_EditBook.Name = "btn_EditBook";
+            this.btn_EditBook.Size = new System.Drawing.Size(96, 50);
+            this.btn_EditBook.TabIndex = 7;
+            this.btn_EditBook.Text = "Paid";
+            this.btn_EditBook.UseVisualStyleBackColor = true;
+            this.btn_EditBook.Click += new System.EventHandler(this.btn_EditBook_Click);
+            // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(336, 417);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(131, 48);
+            this.button13.TabIndex = 8;
+            this.button13.Text = "Remove";
+            this.button13.UseVisualStyleBackColor = true;
             // 
             // Form2
             // 
@@ -2461,5 +2484,7 @@
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button btn_addReview;
         private System.Windows.Forms.Button btn_showReviews;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button btn_EditBook;
     }
 }
