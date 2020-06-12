@@ -41,66 +41,21 @@ namespace WindowsFormsApp2
         private void Form2_Load(object sender, EventArgs e)
         {
             cn = getSGBDConnection();
-            loadCustomers(noPage);
+
+            loadProfile();
+
             dataGridView1.DataSource = bindingSource1;
             dataGridView2.DataSource = bindingSource2;
-            get_flight_data();
-            get_transfer_data();
-            loadFlights();
-            load_transfer();
-
-            textBox23.Text = curr_agent;
-
-            if (!verifySGBDConnection())
-            {
-                return;
-            }
-
-            SqlCommand cmd;
-            cmd = new SqlCommand("select * from TravelAgency.AgentProf ('" + curr_agent + "')", cn);
-
-            using (SqlDataReader reader = cmd.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    textBox20.Text = reader["AgID"].ToString();
-                    textBox21.Text = reader["Fname"].ToString();
-                    textBox22.Text = reader["Lname"].ToString();
-                    textBox25.Text = reader["PhoneNo"].ToString();
-
-                }
-            }
-
-            cn.Close();
-
-            textBox1.Text = "";
-            comboBox1.Items.Clear();
-            comboBox1.Text = "None";
-            comboBox1.Items.Add("None");
-            comboBox1.Items.Add("PriceAsc");
-            comboBox1.Items.Add("PriceDesc");
-
-            comboBox2.Items.Clear();
-            comboBox2.Text = "None";
-            comboBox2.Items.Add("None");
-            comboBox2.Items.Add("DiscountAsc");
-            comboBox2.Items.Add("DiscountDesc");
-            comboBox2.Items.Add("Active");
-            comboBox2.Items.Add("Not available");
+            
 
             textBox12.ReadOnly = true;
-
-            comboBox3.Items.Clear();
-            comboBox3.Items.Add("True");
-            comboBox3.Items.Add("False");
 
             comboBox5.Items.Clear();
             comboBox5.Items.Add("Yes");
             comboBox5.Items.Add("No");
+            comboBox5.SelectedItem = "No";
 
-            loadAccommodation(noPage);
-            loadPromo();
-
+            
         }
 
         private SqlConnection getSGBDConnection()
@@ -320,14 +275,12 @@ namespace WindowsFormsApp2
                 cmd.Parameters.Add(new SqlParameter("@Email", SqlDbType.VarChar));
                 cmd.Parameters.Add(new SqlParameter("@NIF", SqlDbType.Int));
                 cmd.Parameters.Add(new SqlParameter("@PhoneNo", SqlDbType.Int));
-                //cmd.Parameters.Add(new SqlParameter("@CustID", SqlDbType.Int));
                 cmd.Parameters.Add(new SqlParameter("@responseMsg", SqlDbType.NVarChar, 250));
                 cmd.Parameters["@Fname"].Value = fname;
                 cmd.Parameters["@Lname"].Value = lname;
                 cmd.Parameters["@Email"].Value = email;
                 cmd.Parameters["@NIF"].Value = NIF;
                 cmd.Parameters["@PhoneNo"].Value = phoneNo;
-                //cmd.Parameters["@CustID"].Value = custID;
                 cmd.Parameters["@responseMsg"].Direction = ParameterDirection.Output;
 
                 if (!verifySGBDConnection())
@@ -656,12 +609,6 @@ namespace WindowsFormsApp2
         private void loadAccommodation(int page)
         {
 
-            if(page == 1)
-            {
-                btn_Next.Enabled = true;
-            }
-
-
             int nAcc = 0;
             tableLayoutPanel1.Controls.Clear();
             tableLayoutPanel1.RowStyles.Clear();
@@ -710,7 +657,6 @@ namespace WindowsFormsApp2
                         accimg.Size = new System.Drawing.Size(160, 150);
                         accimg.Name = "accimg_" + tableLayoutPanel2.RowCount;
                         accimg.TabIndex = 3;
-                        //accimg.TabStop = false;
                     }
                     catch
                     {
@@ -720,12 +666,8 @@ namespace WindowsFormsApp2
                         accimg.Size = new System.Drawing.Size(160, 150);
                         accimg.Name = "accimg_" + tableLayoutPanel2.RowCount;
                         accimg.TabIndex = 3;
-                        //accimg.TabStop = false;
                     }
                     
-
-                    
-
                     Label lb2 = new Label();
                     Label lb3 = new Label();
                     Label lb4 = new Label();
@@ -970,7 +912,6 @@ namespace WindowsFormsApp2
 
                     btn_Conf.Name = lb2.Text;
 
-
                     x.Controls.Add(accimg);
                     x.Controls.Add(lb2);
                     x.Controls.Add(lb3);
@@ -998,13 +939,16 @@ namespace WindowsFormsApp2
 
         private void button4_Click(object sender, EventArgs e)
         {
+            this.btn_Back.Enabled = false;
             string dest = textBox1.Text;
             string option = comboBox1.Text;
+
             if (string.IsNullOrEmpty(dest))
             {
                 dest = "None";
             }
-            
+
+
             filterAcc(noPage, option, dest);
         }
 
@@ -1019,7 +963,6 @@ namespace WindowsFormsApp2
             noPage++;
             string dest = textBox1.Text;
             string opt = comboBox1.Text;
-
 
             if (string.IsNullOrEmpty(dest))
             {
@@ -1040,7 +983,6 @@ namespace WindowsFormsApp2
 
             string dest = textBox1.Text;
             string opt = comboBox1.Text;
-
 
             if (string.IsNullOrEmpty(dest))
             {
@@ -1069,12 +1011,21 @@ namespace WindowsFormsApp2
             };
 
             cmd.Connection = cn;
-            SqlDataReader reader = cmd.ExecuteReader();
-            listBox2.Items.Clear();
 
-            while (reader.Read())
+            listView1.Items.Clear();
+            using (SqlDataReader reader = cmd.ExecuteReader())
             {
-                listBox2.Items.Add(reader["ID"] + " | " + reader["Active"] + " | " + reader["Discount"] + "%");
+
+                while (reader.Read())
+                {
+                    string ID = reader["ID"].ToString();
+                    string active = reader["Active"].ToString();
+                    string discount = reader["Discount"].ToString();
+                    var row = new string[] { ID, active, discount };
+                    var list = new ListViewItem(row);
+                    listView1.View = View.Details;
+                    listView1.Items.Add(list);
+                }
             }
 
             cn.Close();
@@ -1147,12 +1098,22 @@ namespace WindowsFormsApp2
                 return;
 
             cmd.Connection = cn;
-            SqlDataReader reader = cmd.ExecuteReader();
-            listBox2.Items.Clear();
 
-            while (reader.Read())
+            listView1.Items.Clear();
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
             {
-                listBox2.Items.Add(reader["ID"] + " | " + reader["Active"] + " | " + reader["Discount"] + "%");
+
+                while (reader.Read())
+                {
+                    string ID = reader["ID"].ToString();
+                    string active = reader["Active"].ToString();
+                    string discount = reader["Discount"].ToString();
+                    var row = new string[] { ID, active, discount };
+                    var list = new ListViewItem(row);
+                    listView1.View = View.Details;
+                    listView1.Items.Add(list);
+                }
             }
 
             cn.Close();
@@ -1167,8 +1128,9 @@ namespace WindowsFormsApp2
 
         private void btn_Enable_Click(object sender, EventArgs e)
         {
-            string promo = listBox2.SelectedItem.ToString();
-            string active = promo.Split('|')[0];
+
+            string active = listView1.SelectedItems[0].SubItems[1].Text;
+            Debug.WriteLine(active);
 
             SqlCommand cmd = new SqlCommand
             {
@@ -1206,8 +1168,8 @@ namespace WindowsFormsApp2
 
         private void btn_Disable(object sender, EventArgs e)
         {
-            string promo = listBox2.SelectedItem.ToString();
-            string active = promo.Split('|')[0];
+            string active = listView1.SelectedItems[0].SubItems[1].Text;
+            Debug.WriteLine(active);
 
             SqlCommand cmd = new SqlCommand
             {
@@ -1243,11 +1205,11 @@ namespace WindowsFormsApp2
 
         private void btn_ApplyPromo_Click(object sender, EventArgs e)
         {
-            string chosenPromo = listBox2.SelectedItem.ToString();
-            string active = chosenPromo.Split('|')[1];
+            string chosenPromo = listView1.SelectedItems[0].SubItems[0].Text;
+            string active = listView1.SelectedItems[0].SubItems[1].Text;
+            string discount = listView1.SelectedItems[0].SubItems[2].Text;
             Debug.WriteLine(active);
 
-            //isto ainda não funciona, calma que a esta hora sou burra
             if(active == "False")
             {
                 MessageBox.Show("You cannot apply a promo if it isn't enabled", "Promo", MessageBoxButtons.OK);
@@ -1255,7 +1217,7 @@ namespace WindowsFormsApp2
             else
             {
                 MessageBox.Show("You have applied the promo " + chosenPromo + " to the actual package.", "Promo", MessageBoxButtons.OK);
-                textBox10.Text = chosenPromo.Split('|')[0];
+                textBox10.Text = chosenPromo + " - Discount: " + discount + "%";
                 textBox10.ReadOnly = true;
             }
 
@@ -1327,11 +1289,15 @@ namespace WindowsFormsApp2
             int noPersons = Int32.Parse(textBox8.Text);
             //int totalPrice = Int32.Parse(textBox11.Text);
             int accID = getAccID(textBox9.Text);
-            int promoID = Int32.Parse(textBox10.Text);
-            int flightID1 = Int32.Parse(textBox16.Text);
-            int flightID2 = Int32.Parse(textBox17.Text);
+            string promoComplete = textBox10.Text;
+            int promoID = Int32.Parse(promoComplete.Split('-')[0]);
+            string flight1 = textBox16.Text;
+            int flightID1 = Int32.Parse(flight1.Split('|')[0]);
+            string flight2 = textBox17.Text;
+            int flightID2 = Int32.Parse(flight2.Split('|')[0]);
             string opt = comboBox5.SelectedItem.ToString();
-            int transfID = Int32.Parse(textBox18.Text);
+            string transfer = textBox18.Text;
+            int transfID = Int32.Parse(transfer.Split('|')[0]);
 
 
             SqlCommand cmd = new SqlCommand
@@ -1379,9 +1345,22 @@ namespace WindowsFormsApp2
             }
 
             cmd.Connection = cn;
-            cmd.ExecuteNonQuery();
 
-            
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch { }
+
+            if ("" + cmd.Parameters["@responseMsg"].Value == "Success")
+            {
+                MessageBox.Show("You have createad a package!");
+            }
+            else
+            {
+                MessageBox.Show("Error");
+            }
+
 
             cn.Close();
         }
@@ -1389,8 +1368,6 @@ namespace WindowsFormsApp2
         private void btn_crtPack_Click(object sender, EventArgs e)
         {
             createPackage();
-
-            MessageBox.Show("You have created a package!");
         }
 
         private int getPackID(string title)
@@ -1655,7 +1632,7 @@ namespace WindowsFormsApp2
         private void btn_FlightsSel_Click(object sender, EventArgs e)
         {
             MessageBox.Show("You have added the selected departure flight to your package!");
-            string id_flight1 = Convert.ToString(dataGridView1.CurrentRow.Cells["ID"].Value);
+            string id_flight1 = Convert.ToString(dataGridView1.CurrentRow.Cells["ID"].Value) + " | " + Convert.ToString(dataGridView1.CurrentRow.Cells["CC_Depart"].Value) + " - " + Convert.ToString(dataGridView1.CurrentRow.Cells["CC_Arriv"].Value);
             textBox26.Text = id_flight1;
             textBox16.Text = id_flight1;
         }
@@ -1663,7 +1640,7 @@ namespace WindowsFormsApp2
         private void btn_Flight2_Click(object sender, EventArgs e)
         {
             MessageBox.Show("You have added the selected arrival flight to your package!");
-            string id_flight2 = Convert.ToString(dataGridView1.CurrentRow.Cells["ID"].Value);
+            string id_flight2 = Convert.ToString(dataGridView1.CurrentRow.Cells["ID"].Value) + " | " + Convert.ToString(dataGridView1.CurrentRow.Cells["CC_Depart"].Value) + " - " + Convert.ToString(dataGridView1.CurrentRow.Cells["CC_Arriv"].Value);
             textBox27.Text = id_flight2;
             textBox17.Text = id_flight2;
         }
@@ -1912,16 +1889,55 @@ namespace WindowsFormsApp2
 
         private void btn_SelectTransfer_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("You have added the selected transfer to your package!");
-            string id_transf_selected = Convert.ToString(dataGridView2.CurrentRow.Cells["ID"].Value);
-            textBox7.Text = id_transf_selected;
-            textBox18.Text = id_transf_selected;
-            textBox7.ReadOnly = true;
-            textBox18.ReadOnly = true;
+            if (comboBox5.SelectedItem.Equals("Yes"))
+            {
+                MessageBox.Show("You have added the selected transfer to your package!");
+                string id_transf_selected = Convert.ToString(dataGridView2.CurrentRow.Cells["ID"].Value) + " | " + Convert.ToString(dataGridView2.CurrentRow.Cells["CC_Depart"].Value) + " - " + Convert.ToString(dataGridView2.CurrentRow.Cells["CC_Arriv"].Value);
+                textBox7.Text = id_transf_selected;
+                textBox18.Text = id_transf_selected;
+                textBox7.ReadOnly = true;
+                textBox18.ReadOnly = true;
+            }
+
+            else
+            {
+                MessageBox.Show("You have to change Transfer option to Yes");
+            }
+            
         }
 
 
         // ---------------------------- PROFILE TAB ------------------------------------
+       
+        private void loadProfile()
+        {
+            textBox23.Text = curr_agent;
+
+            if (!verifySGBDConnection())
+            {
+                return;
+            }
+
+            SqlCommand cmd;
+            cmd = new SqlCommand("select * from TravelAgency.AgentProf ('" + curr_agent + "')", cn);
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    textBox20.Text = reader["AgID"].ToString();
+                    textBox21.Text = reader["Fname"].ToString();
+                    textBox22.Text = reader["Lname"].ToString();
+                    textBox25.Text = reader["PhoneNo"].ToString();
+
+                }
+            }
+
+            fillChart();
+
+            cn.Close();
+        }
+        
         private void btn_EditProfile_Click(object sender, EventArgs e)
         {
             string fname = textBox21.Text;
@@ -1971,6 +1987,23 @@ namespace WindowsFormsApp2
             cn.Close();
         }
 
+        private void fillChart()
+        {
+            chart1.Series["Series1"].Points.AddXY("January", "1000");
+            chart1.Series["Series1"].Points.AddXY("February", "1000");
+            chart1.Series["Series1"].Points.AddXY("March", "1000");
+            chart1.Series["Series1"].Points.AddXY("April", "1000");
+            chart1.Series["Series1"].Points.AddXY("May", "1000");
+            chart1.Series["Series1"].Points.AddXY("June", "1000");
+            chart1.Series["Series1"].Points.AddXY("July", "1000");
+            chart1.Series["Series1"].Points.AddXY("August", "1000");
+            chart1.Series["Series1"].Points.AddXY("September", "1000");
+            chart1.Series["Series1"].Points.AddXY("October", "1000");
+            chart1.Series["Series1"].Points.AddXY("November", "1000");
+            chart1.Series["Series1"].Points.AddXY("December", "1000");
+            chart1.Titles.Add("Alguma coisa");
+        }
+
 
         // -------------------------------- LOGOUT -----------------------------------
         private void btn_logout_Click(object sender, EventArgs e)
@@ -2003,6 +2036,7 @@ namespace WindowsFormsApp2
             {
                 listBox3.Items.Add(reader["ID"] + " - " + reader["Title"]);
             }
+
 
             cn.Close();
         }
@@ -2040,6 +2074,11 @@ namespace WindowsFormsApp2
 
         private void tabControl1_Selected(object sender, TabControlEventArgs e)
         {
+            if(tabControl1.SelectedTab == tabPage2)
+            {
+                loadCustomers(noPage);
+            }
+
             if (tabControl1.SelectedTab == tabPage4)
             {
                 loadPackages();
@@ -2089,5 +2128,58 @@ namespace WindowsFormsApp2
             Form3 listBooks = new Form3(custID);
             listBooks.ShowDialog();
         }
+
+        private void tabControl2_Selected(object sender, TabControlEventArgs e)
+        {
+            if(noPage == 1)
+            {
+                btn_Back.Enabled = false;
+                btn_BackC.Enabled = false;
+            }
+
+
+            if (tabControl2.SelectedTab == tabPage5)
+            {
+                noPage = 1;
+                textBox1.Text = "";
+                comboBox1.Items.Clear();
+                comboBox1.Items.Add("None");
+                comboBox1.Items.Add("PriceAsc");
+                comboBox1.Items.Add("PriceDesc");
+                comboBox1.SelectedItem = "None";
+
+                loadAccommodation(noPage);
+            }
+
+            if (tabControl2.SelectedTab == tabPage6)
+            {
+                get_flight_data();
+                loadFlights();
+            }
+
+            if (tabControl2.SelectedTab == tabPage7)
+            {
+                get_transfer_data();
+                load_transfer();
+            }
+
+            if (tabControl2.SelectedTab == tabPage8)
+            {
+                comboBox2.Items.Clear();
+                comboBox2.Items.Add("None");
+                comboBox2.Items.Add("DiscountAsc");
+                comboBox2.Items.Add("DiscountDesc");
+                comboBox2.Items.Add("Active");
+                comboBox2.Items.Add("Not available");
+                comboBox2.SelectedItem = "None";
+
+                comboBox3.Items.Clear();
+                comboBox3.Items.Add("True");
+                comboBox3.Items.Add("False");
+
+                loadPromo();
+            }
+        }
+
     }
 }

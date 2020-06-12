@@ -11,13 +11,15 @@ CREATE PROCEDURE TravelAgency.spAddPackage
 		@Flight_ID1 INT,
 		@Flight_ID2 INT,
 		@Transf_ID INT,
-		@opt1 VARCHAR(max)
+		@opt1 VARCHAR(max),
+		@responseMsg NVARCHAR(250) output
 
 AS
 	BEGIN
 			SET NOCOUNT ON;
+			BEGIN TRAN
 
-			BEGIN 
+				BEGIN TRY
 					IF @Description = ''
 					BEGIN
 							SET @Description = NULL
@@ -29,9 +31,6 @@ AS
 						VALUES (@Title, @Description, @Duration, @startDate, @endDate, @noPersons, @totalPrice, @Acomm_ID, @Promo_ID)
 					END
 
-			END
-
-			BEGIN
 					DECLARE @Pack_ID INT
 					SET @Pack_ID = SCOPE_IDENTITY()
 
@@ -41,13 +40,23 @@ AS
 							VALUES (@Pack_ID, @Transf_ID)
 					END
 
-					INSERT INTO TravelAgency.Contains_Flight(Pack_ID, Flight_ID)
-					VALUES (@Pack_ID, @Flight_ID1)
+					BEGIN
+							INSERT INTO TravelAgency.Contains_Flight(Pack_ID, Flight_ID)
+							VALUES (@Pack_ID, @Flight_ID1)
 
-					INSERT INTO TravelAgency.Contains_Flight(Pack_ID, Flight_ID)
-					VALUES (@Pack_ID, @Flight_ID2)
+							INSERT INTO TravelAgency.Contains_Flight(Pack_ID, Flight_ID)
+							VALUES (@Pack_ID, @Flight_ID2)
+					END
+					
+					SET @responseMsg='Success'
 
-			END	
+				END TRY
+
+				BEGIN CATCH
+					SET @responseMsg=error_message()
+				END CATCH
+
+			COMMIT TRAN
 	END
 go
 
