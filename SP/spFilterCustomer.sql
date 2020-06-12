@@ -21,7 +21,7 @@ AS
 			BEGIN
 					INSERT INTO @tempTable (Email, Fname, Lname, PhoneNO, CustID, NIF)
 					SELECT Person.Email, Person.Fname, Person.Lname, Person.phoneNo, CustID, NIF FROM TravelAgency.Customer Join TravelAgency.Person ON TravelAgency.Customer.Email = TravelAgency.Person.Email
-					WHERE Fname like '%'+@fname+'%'
+					WHERE Fname + ' ' + Lname like '%'+@fname + ' ' + @lname +'%'
 			END
 
 			ELSE
@@ -36,4 +36,3 @@ AS
 			FETCH NEXT @size ROWS ONLY OPTION (RECOMPILE)
 	END
 
---exec TravelAgency.spFilterCustomer Marcia, Pires

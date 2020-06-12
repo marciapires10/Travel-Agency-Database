@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -282,18 +282,18 @@
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(497, 49);
             this.chart1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(603, 340);
             this.chart1.TabIndex = 14;
             this.chart1.Text = "chart1";
@@ -1880,7 +1880,7 @@
             // 
             // btn_showReviews
             // 
-            this.btn_showReviews.Location = new System.Drawing.Point(213, 501);
+            this.btn_showReviews.Location = new System.Drawing.Point(214, 472);
             this.btn_showReviews.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_showReviews.Name = "btn_showReviews";
             this.btn_showReviews.Size = new System.Drawing.Size(130, 51);
@@ -1906,7 +1906,7 @@
             // 
             // button13
             // 
-            this.button13.Location = new System.Drawing.Point(239, 448);
+            this.button13.Location = new System.Drawing.Point(233, 434);
             this.button13.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(160, 50);
@@ -1916,7 +1916,7 @@
             // 
             // btn_EditBook
             // 
-            this.btn_EditBook.Location = new System.Drawing.Point(100, 449);
+            this.btn_EditBook.Location = new System.Drawing.Point(94, 435);
             this.btn_EditBook.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_EditBook.Name = "btn_EditBook";
             this.btn_EditBook.Size = new System.Drawing.Size(108, 49);
@@ -1927,7 +1927,7 @@
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(599, 165);
+            this.button11.Location = new System.Drawing.Point(593, 151);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(56, 38);
             this.button11.TabIndex = 6;
@@ -1947,7 +1947,7 @@
             // 
             this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(449, 112);
+            this.comboBox4.Location = new System.Drawing.Point(443, 98);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(206, 28);
             this.comboBox4.TabIndex = 4;
@@ -1955,7 +1955,7 @@
             // label46
             // 
             this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(445, 77);
+            this.label46.Location = new System.Drawing.Point(439, 63);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(44, 20);
             this.label46.TabIndex = 3;
@@ -1965,7 +1965,7 @@
             // 
             this.listBox2.FormattingEnabled = true;
             this.listBox2.ItemHeight = 20;
-            this.listBox2.Location = new System.Drawing.Point(92, 78);
+            this.listBox2.Location = new System.Drawing.Point(86, 64);
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(316, 344);
             this.listBox2.TabIndex = 2;
@@ -1974,7 +1974,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label14.Location = new System.Drawing.Point(87, 35);
+            this.label14.Location = new System.Drawing.Point(81, 21);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(187, 29);
             this.label14.TabIndex = 1;
@@ -1982,7 +1982,7 @@
             // 
             // btn_addReview
             // 
-            this.btn_addReview.Location = new System.Drawing.Point(61, 499);
+            this.btn_addReview.Location = new System.Drawing.Point(62, 470);
             this.btn_addReview.Name = "btn_addReview";
             this.btn_addReview.Size = new System.Drawing.Size(120, 53);
             this.btn_addReview.TabIndex = 7;
@@ -2206,7 +2206,7 @@
             // 
             // btn_showDetails
             // 
-            this.btn_showDetails.Location = new System.Drawing.Point(61, 436);
+            this.btn_showDetails.Location = new System.Drawing.Point(62, 407);
             this.btn_showDetails.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_showDetails.Name = "btn_showDetails";
             this.btn_showDetails.Size = new System.Drawing.Size(120, 55);
@@ -2218,7 +2218,7 @@
             // btn_Book
             // 
             this.btn_Book.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btn_Book.Location = new System.Drawing.Point(213, 438);
+            this.btn_Book.Location = new System.Drawing.Point(214, 409);
             this.btn_Book.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_Book.Name = "btn_Book";
             this.btn_Book.Size = new System.Drawing.Size(130, 53);
@@ -2231,7 +2231,7 @@
             // 
             this.listBox3.FormattingEnabled = true;
             this.listBox3.ItemHeight = 20;
-            this.listBox3.Location = new System.Drawing.Point(61, 83);
+            this.listBox3.Location = new System.Drawing.Point(62, 54);
             this.listBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.listBox3.Name = "listBox3";
             this.listBox3.Size = new System.Drawing.Size(282, 344);
@@ -2241,7 +2241,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label18.Location = new System.Drawing.Point(56, 49);
+            this.label18.Location = new System.Drawing.Point(57, 20);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(192, 29);
             this.label18.TabIndex = 0;

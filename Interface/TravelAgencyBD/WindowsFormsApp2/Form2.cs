@@ -482,12 +482,13 @@ namespace WindowsFormsApp2
         {
             string name = textSearch.Text;
             string fname = name.Split(' ')[0];
-            string lname = name.Split(' ')[1];
+            string lname = "";
 
             if (string.IsNullOrEmpty(fname))
             {
                fname = "None";
             }
+
 
             filterCustomer(noPage, fname, lname);
         }
@@ -2222,6 +2223,11 @@ namespace WindowsFormsApp2
         {
             if(tabControl1.SelectedTab == tabPage2)
             {
+                if(noPage == 1)
+                {
+                    btn_BackC.Enabled = false;
+                }
+
                 loadCustomers(noPage);
             }
 
@@ -2378,6 +2384,7 @@ namespace WindowsFormsApp2
             string pack = listBox3.SelectedItem.ToString();
             packID = Int32.Parse(pack.Split(' ')[0]);
 
+            Debug.WriteLine(packID);
             Form8 reviewHistoric = new Form8(packID);
             reviewHistoric.ShowDialog();
 
@@ -2386,12 +2393,12 @@ namespace WindowsFormsApp2
 
         private void btn_EditBook_Click(object sender, EventArgs e)
         {
-            string ID = listBox2.SelectedItem.ToString();
+            string ID = listBox2.SelectedItem.ToString().Split('-')[0];
 
             SqlCommand cmd = new SqlCommand
             {
                 CommandType = CommandType.StoredProcedure,
-                CommandText = "TravelAgency.spEnablePromo"
+                CommandText = "TravelAgency.EditBooking"
             };
 
             cmd.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int));

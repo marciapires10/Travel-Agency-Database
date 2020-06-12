@@ -45,6 +45,23 @@ namespace WindowsFormsApp2
             return cn.State == ConnectionState.Open;
         }
 
+
+        private string getCustName(int custID)
+        {
+            if (!verifySGBDConnection())
+            {
+                return "";
+            }
+
+            SqlCommand cmd;
+            cmd = new SqlCommand("Select TravelAgency.GetCustName('" + custID + "')", cn);
+
+            string name = (string)cmd.ExecuteScalar();
+
+            return name;
+
+        }
+
         private void loadReviews()
         {
             SqlCommand cmd = new SqlCommand("select * from TravelAgency.ReviewsHistoric ('" + pack_ID + "')", cn);
@@ -63,8 +80,11 @@ namespace WindowsFormsApp2
                 while (reader.Read())
                 {
                     string descr = reader["Description"].ToString();
-                    string cust = reader["Cust_ID"].ToString();
-                    var row = new string[] { descr, cust };
+                    int cust = Int32.Parse(reader["Cust_ID"].ToString());
+                    string nameComplete = getCustName(cust);
+                    string fname = nameComplete.Split(' ')[0];
+                    string lname = nameComplete.Split(' ')[1];
+                    var row = new string[] { descr, fname + " " + lname };
                     var list = new ListViewItem(row);
                     listView1.View = View.Details;
                     listView1.Items.Add(list);
@@ -76,7 +96,8 @@ namespace WindowsFormsApp2
 
         private void avgScore()
         {
-            SqlCommand cmd = new SqlCommand("select * from TravelAgency.AverageScore ('" + pack_ID + "')", cn);
+
+            SqlCommand cmd = new SqlCommand("select TravelAgency.AverageScore ('" + pack_ID + "')", cn);
 
             if (!verifySGBDConnection())
             {
@@ -84,7 +105,7 @@ namespace WindowsFormsApp2
             }
 
             cmd.Connection = cn;
-            int avgscore = (int)cmd.ExecuteScalar();
+            decimal avgscore = (decimal)cmd.ExecuteScalar();
 
             textBox1.Text = avgscore.ToString();
         }

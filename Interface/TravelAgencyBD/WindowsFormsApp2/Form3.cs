@@ -19,7 +19,7 @@ namespace WindowsFormsApp2
         {
             InitializeComponent();
             cn = getSGBDConnection();
-            textBox1.Text = CustID.ToString();
+            textBox1.Text = getCustName(CustID);
             textBox1.ReadOnly = true;
             loadBookHistoric(CustID);
         }
@@ -47,6 +47,22 @@ namespace WindowsFormsApp2
             }
 
             return cn.State == ConnectionState.Open;
+        }
+
+        private string getCustName(int custID)
+        {
+            if (!verifySGBDConnection())
+            {
+                return "";
+            }
+
+            SqlCommand cmd;
+            cmd = new SqlCommand("Select TravelAgency.GetCustName('" + custID + "')", cn);
+
+            string name = (string)cmd.ExecuteScalar();
+
+            return name;
+
         }
 
 
