@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btn_logout = new System.Windows.Forms.Button();
@@ -216,6 +216,7 @@
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.button11 = new System.Windows.Forms.Button();
             this.btn_addReview = new System.Windows.Forms.Button();
+            this.btn_showReviews = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -1752,7 +1753,9 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.btn_showReviews);
             this.tabPage4.Controls.Add(this.panel1);
+            this.tabPage4.Controls.Add(this.btn_addReview);
             this.tabPage4.Controls.Add(this.button10);
             this.tabPage4.Controls.Add(this.textBox14);
             this.tabPage4.Controls.Add(this.textBox28);
@@ -1996,7 +1999,7 @@
             // 
             // btn_showDetails
             // 
-            this.btn_showDetails.Location = new System.Drawing.Point(61, 453);
+            this.btn_showDetails.Location = new System.Drawing.Point(61, 406);
             this.btn_showDetails.Name = "btn_showDetails";
             this.btn_showDetails.Size = new System.Drawing.Size(118, 56);
             this.btn_showDetails.TabIndex = 3;
@@ -2007,9 +2010,9 @@
             // btn_Book
             // 
             this.btn_Book.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btn_Book.Location = new System.Drawing.Point(224, 454);
+            this.btn_Book.Location = new System.Drawing.Point(226, 408);
             this.btn_Book.Name = "btn_Book";
-            this.btn_Book.Size = new System.Drawing.Size(111, 54);
+            this.btn_Book.Size = new System.Drawing.Size(132, 54);
             this.btn_Book.TabIndex = 2;
             this.btn_Book.Text = "BOOK";
             this.btn_Book.UseVisualStyleBackColor = true;
@@ -2019,9 +2022,9 @@
             // 
             this.listBox3.FormattingEnabled = true;
             this.listBox3.ItemHeight = 20;
-            this.listBox3.Location = new System.Drawing.Point(61, 113);
+            this.listBox3.Location = new System.Drawing.Point(61, 92);
             this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(274, 304);
+            this.listBox3.Size = new System.Drawing.Size(297, 304);
             this.listBox3.TabIndex = 1;
             // 
             // label18
@@ -2036,17 +2039,17 @@
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(502, 47);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(562, 374);
             this.chart1.TabIndex = 14;
             this.chart1.Text = "chart1";
@@ -2138,16 +2141,15 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btn_addReview);
             this.panel1.Controls.Add(this.button11);
             this.panel1.Controls.Add(this.splitter1);
             this.panel1.Controls.Add(this.comboBox4);
             this.panel1.Controls.Add(this.label46);
             this.panel1.Controls.Add(this.listBox2);
             this.panel1.Controls.Add(this.label14);
-            this.panel1.Location = new System.Drawing.Point(362, 21);
+            this.panel1.Location = new System.Drawing.Point(381, 21);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(748, 520);
+            this.panel1.Size = new System.Drawing.Size(729, 520);
             this.panel1.TabIndex = 61;
             // 
             // label14
@@ -2191,7 +2193,7 @@
             // 
             this.splitter1.Location = new System.Drawing.Point(0, 0);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 520);
+            this.splitter1.Size = new System.Drawing.Size(10, 520);
             this.splitter1.TabIndex = 5;
             this.splitter1.TabStop = false;
             // 
@@ -2207,13 +2209,23 @@
             // 
             // btn_addReview
             // 
-            this.btn_addReview.Location = new System.Drawing.Point(193, 427);
+            this.btn_addReview.Location = new System.Drawing.Point(61, 486);
             this.btn_addReview.Name = "btn_addReview";
-            this.btn_addReview.Size = new System.Drawing.Size(274, 50);
+            this.btn_addReview.Size = new System.Drawing.Size(118, 43);
             this.btn_addReview.TabIndex = 7;
             this.btn_addReview.Text = "Add Review";
             this.btn_addReview.UseVisualStyleBackColor = true;
             this.btn_addReview.Click += new System.EventHandler(this.btn_addReview_Click);
+            // 
+            // btn_showReviews
+            // 
+            this.btn_showReviews.Location = new System.Drawing.Point(226, 486);
+            this.btn_showReviews.Name = "btn_showReviews";
+            this.btn_showReviews.Size = new System.Drawing.Size(132, 43);
+            this.btn_showReviews.TabIndex = 8;
+            this.btn_showReviews.Text = "Show Reviews";
+            this.btn_showReviews.UseVisualStyleBackColor = true;
+            this.btn_showReviews.Click += new System.EventHandler(this.btn_showReviews_Click);
             // 
             // Form2
             // 
@@ -2448,5 +2460,6 @@
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button btn_addReview;
+        private System.Windows.Forms.Button btn_showReviews;
     }
 }

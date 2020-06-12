@@ -8,6 +8,10 @@ AS
 			BEGIN TRY
 					DELETE FROM TravelAgency.Customer WHERE Email=@Email
 					DELETE FROM TravelAgency.Person WHERE Email=@Email
+					
+					IF 
+
+
 					SET @responseMsg='Success'
 			END TRY
 

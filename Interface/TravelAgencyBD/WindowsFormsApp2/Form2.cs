@@ -2360,40 +2360,33 @@ namespace WindowsFormsApp2
 
         private void btn_addReview_Click(object sender, EventArgs e)
         {
-            string bookID = listBox2.SelectedItem.ToString().Split('-')[0];
+            string pack = listBox3.SelectedItem.ToString();
+            packID = Int32.Parse(pack.Split(' ')[0]);
 
-            if (!verifySGBDConnection())
+            if (textBox4.Text == "")
             {
-                return;
+                MessageBox.Show("You have to assign a customer to review a package!");
+            }
+            else
+            {
+                custID = getCustID(textBox4.Text);
+                Form7 review = new Form7(packID, custID);
+                review.ShowDialog();
             }
 
-            SqlCommand cmd;
-            cmd = new SqlCommand("Select * from TravelAgency.GetBookIDs('" + bookID + "')", cn);
-
-            cmd.Connection = cn;
-
-            int packID_book = 0;
-            int custID_book = 0;
-
-            using (SqlDataReader reader = cmd.ExecuteReader())
-            {
-
-                while (reader.Read())
-                {
-                    packID_book = Int32.Parse(reader["Pack_ID"].ToString());
-                    custID_book = Int32.Parse(reader["Cust_ID"].ToString());
-                }
-            }
-
-            Debug.WriteLine(packID_book);
-            Debug.WriteLine(custID_book);
-
-            Form7 review = new Form7(packID_book, custID_book);
-            review.ShowDialog();
-
-            cn.Close();
             
 
+        }
+
+        private void btn_showReviews_Click(object sender, EventArgs e)
+        {
+            string pack = listBox3.SelectedItem.ToString();
+            packID = Int32.Parse(pack.Split(' ')[0]);
+
+            Form8 reviewHistoric = new Form8(packID);
+            reviewHistoric.ShowDialog();
+
+            cn.Close();
         }
     }
 }
