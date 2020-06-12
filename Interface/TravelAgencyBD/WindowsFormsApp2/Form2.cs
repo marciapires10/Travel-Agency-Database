@@ -1321,6 +1321,7 @@ namespace WindowsFormsApp2
             cmd.Parameters.Add(new SqlParameter("@Transf_ID", SqlDbType.Int));
             cmd.Parameters.Add(new SqlParameter("@opt1", SqlDbType.VarChar));
             cmd.Parameters.Add(new SqlParameter("@responseMsg", SqlDbType.NVarChar, 250));
+            cmd.Parameters.Add(new SqlParameter("@totalPrice", SqlDbType.SmallMoney, 250));
 
 
             cmd.Parameters["@Title"].Value = title;
@@ -1337,6 +1338,7 @@ namespace WindowsFormsApp2
             cmd.Parameters["@Transf_ID"].Value = transfID;
             cmd.Parameters["@opt1"].Value = opt;
             cmd.Parameters["@responseMsg"].Direction = ParameterDirection.Output;
+            cmd.Parameters["@totalPrice"].Direction = ParameterDirection.Output;
 
 
             if (!verifySGBDConnection())
@@ -1345,16 +1347,11 @@ namespace WindowsFormsApp2
             }
 
             cmd.Connection = cn;
-
-            try
-            {
-                cmd.ExecuteNonQuery();
-            }
-            catch { }
+            cmd.ExecuteNonQuery();
 
             if ("" + cmd.Parameters["@responseMsg"].Value == "Success")
             {
-                MessageBox.Show("You have createad a package!");
+                MessageBox.Show("You have createad a package with the final price of: " + cmd.Parameters["@totalPrice"].Value + "€");
             }
             else
             {
@@ -1383,7 +1380,36 @@ namespace WindowsFormsApp2
             int id = (int)cmd.ExecuteScalar();
             return id;
         }
-        
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            textBox9.Text = "";
+            textBox12.Text = "";
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            textBox10.Text = "";
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            textBox16.Text = "";
+            textBox26.Text = "";
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            textBox17.Text = "";
+            textBox27.Text = "";
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            textBox18.Text = "";
+            textBox7.Text = "";
+        }
+
         // ----------------------------- FLIGHT TAB ---------------------------------
         private void flight_modify_button_Click(object sender, EventArgs e)
         {
@@ -2052,7 +2078,6 @@ namespace WindowsFormsApp2
             textBox30.Show();
             textBox29.Show();
             textBox28.Show();
-            comboBox4.Show();
             textBox33.Show();
             textBox32.Show();
             richTextBox2.Show();
@@ -2069,8 +2094,134 @@ namespace WindowsFormsApp2
             label39.Show();
             label41.Show();
 
+            button10.Enabled = true;
+            panel1.Visible = false;
+
+            if (!verifySGBDConnection())
+                return;
+
+
+            SqlCommand cmd = new SqlCommand
+            {
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "TravelAgency.spLoadPackage"
+            };
+
+            cmd.Connection = cn;
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                /*textBox31.Text = reader["Title"].ToString();
+                richTextBox2.Text = reader["Description"].ToString();
+                textBox35.Text = reader["noPersons"].ToString();
+                textBox14.Text = reader["Duration"].ToString();
+                dateTimePicker4.Value = reader["startDate"].ToString();
+                dateTimePicker3.Value = reader["endDate"].ToString();
+                textBox34.Text = reader["Acomm_ID"].ToString();
+                textBox30.Text = reader[""];
+                textBox29.Text = reader[""];
+                textBox28.Text = reader[""];
+                textBox33.Text = reader["Promo_ID"].ToString();
+                textBox32.Text = reader["totalPrice"].ToString();*/
+            }
+
+            cn.Close();
 
         }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            textBox31.Hide();
+            textBox35.Hide();
+            textBox14.Hide();
+            dateTimePicker4.Hide();
+            dateTimePicker3.Hide();
+            textBox34.Hide();
+            textBox30.Hide();
+            textBox29.Hide();
+            textBox28.Hide();
+            textBox33.Hide();
+            textBox32.Hide();
+            richTextBox2.Hide();
+            label40.Hide();
+            label45.Hide();
+            label42.Hide();
+            label38.Hide();
+            label37.Hide();
+            label44.Hide();
+            label36.Hide();
+            label35.Hide();
+            label34.Hide();
+            label43.Hide();
+            label39.Hide();
+            label41.Hide();
+
+            button10.Enabled = false;
+        }
+
+        private void loadBookings()
+        {
+            if (!verifySGBDConnection())
+                return;
+
+
+            SqlCommand cmd = new SqlCommand
+            {
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "TravelAgency.spLoadBookings"
+            };
+
+            cmd.Connection = cn;
+            SqlDataReader reader = cmd.ExecuteReader();
+            listBox2.Items.Clear();
+
+            while (reader.Read())
+            {
+                listBox2.Items.Add(reader["ID"] + " - " + reader["bookDate"]);
+            }
+
+
+            cn.Close();
+        }
+
+        private void filterBooking(string option)
+        {
+            SqlCommand cmd = new SqlCommand
+            {
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "TravelAgency.spFilterBookings"
+            };
+
+            cmd.Parameters.Add(new SqlParameter("@option", SqlDbType.VarChar));
+            cmd.Parameters["@option"].Value = option;
+
+
+            if (!verifySGBDConnection())
+                return;
+
+            cmd.Connection = cn;
+
+            listBox2.Items.Clear();
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+
+                while (reader.Read())
+                {
+                    listBox2.Items.Add(reader["ID"] + " - " + reader["bookDate"]);
+                }
+            }
+
+            cn.Close();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            string option = comboBox4.Text;
+            filterBooking(option);
+        }
+
 
         private void tabControl1_Selected(object sender, TabControlEventArgs e)
         {
@@ -2082,6 +2233,14 @@ namespace WindowsFormsApp2
             if (tabControl1.SelectedTab == tabPage4)
             {
                 loadPackages();
+                loadBookings();
+
+
+                comboBox4.Items.Clear();
+                comboBox4.Items.Add("Yes");
+                comboBox4.Items.Add("No");
+                comboBox4.Items.Add("None");
+                comboBox4.SelectedItem = "None";
 
                 textBox31.Hide();
                 textBox35.Hide();
@@ -2092,7 +2251,6 @@ namespace WindowsFormsApp2
                 textBox30.Hide();
                 textBox29.Hide();
                 textBox28.Hide();
-                comboBox4.Hide();
                 textBox33.Hide();
                 textBox32.Hide();
                 richTextBox2.Hide();
@@ -2116,10 +2274,20 @@ namespace WindowsFormsApp2
             string pack = listBox3.SelectedItem.ToString();
             packID = Int32.Parse(pack.Split(' ')[0]);
             int agID = Int32.Parse(textBox20.Text);
-            custID = getCustID(textBox4.Text);
+            
+            if(textBox4.Text == "")
+            {
+                MessageBox.Show("You have to assign a customer to book a package!");
+            }
+            else
+            {
+                custID = getCustID(textBox4.Text);
+                Form6 book = new Form6(packID, agID, custID);
+                book.ShowDialog();
+            }
+            
 
-            Form6 book = new Form6(packID, agID, custID);
-            book.ShowDialog();
+            
         }
 
         private void btn_Search_Click_1(object sender, EventArgs e)
@@ -2179,7 +2347,53 @@ namespace WindowsFormsApp2
 
                 loadPromo();
             }
+
+            if (tabControl2.SelectedTab == tabPage9)
+            {
+                textBox9.ReadOnly = true;
+                textBox10.ReadOnly = true;
+                textBox16.ReadOnly = true;
+                textBox17.ReadOnly = true;
+                textBox18.ReadOnly = true;
+            }
         }
 
+        private void btn_addReview_Click(object sender, EventArgs e)
+        {
+            string bookID = listBox2.SelectedItem.ToString().Split('-')[0];
+
+            if (!verifySGBDConnection())
+            {
+                return;
+            }
+
+            SqlCommand cmd;
+            cmd = new SqlCommand("Select * from TravelAgency.GetBookIDs('" + bookID + "')", cn);
+
+            cmd.Connection = cn;
+
+            int packID_book = 0;
+            int custID_book = 0;
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+
+                while (reader.Read())
+                {
+                    packID_book = Int32.Parse(reader["Pack_ID"].ToString());
+                    custID_book = Int32.Parse(reader["Cust_ID"].ToString());
+                }
+            }
+
+            Debug.WriteLine(packID_book);
+            Debug.WriteLine(custID_book);
+
+            Form7 review = new Form7(packID_book, custID_book);
+            review.ShowDialog();
+
+            cn.Close();
+            
+
+        }
     }
 }

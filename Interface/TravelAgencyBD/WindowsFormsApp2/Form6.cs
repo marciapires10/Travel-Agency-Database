@@ -118,9 +118,9 @@ namespace WindowsFormsApp2
         private void Form6_Load(object sender, EventArgs e)
         {
             comboBox1.Items.Clear();
-            comboBox1.Text = "False";
             comboBox1.Items.Add("False");
             comboBox1.Items.Add("True");
+            comboBox1.SelectedItem = "False";
 
 
             var dateAndTime = DateTime.Now;

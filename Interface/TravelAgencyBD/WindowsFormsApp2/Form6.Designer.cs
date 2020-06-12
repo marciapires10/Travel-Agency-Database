@@ -70,6 +70,7 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(367, 147);
             this.comboBox1.Name = "comboBox1";
@@ -88,7 +89,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(428, 220);
+            this.textBox2.Location = new System.Drawing.Point(416, 220);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(155, 26);
             this.textBox2.TabIndex = 5;
