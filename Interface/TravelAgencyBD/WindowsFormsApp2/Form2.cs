@@ -50,12 +50,6 @@ namespace WindowsFormsApp2
 
             textBox12.ReadOnly = true;
 
-            comboBox5.Items.Clear();
-            comboBox5.Items.Add("Yes");
-            comboBox5.Items.Add("No");
-            comboBox5.SelectedItem = "No";
-
-            
         }
 
         private SqlConnection getSGBDConnection()
@@ -1289,15 +1283,27 @@ namespace WindowsFormsApp2
             int noPersons = Int32.Parse(textBox8.Text);
             //int totalPrice = Int32.Parse(textBox11.Text);
             int accID = getAccID(textBox9.Text);
-            string promoComplete = textBox10.Text;
-            int promoID = Int32.Parse(promoComplete.Split('-')[0]);
+
+            int promoID = -1;
+            if (textBox10.Text.Contains("-"))
+            {
+                string promoComplete = textBox10.Text;
+                promoID = Int32.Parse(promoComplete.Split('-')[0]);
+            }
+
             string flight1 = textBox16.Text;
             int flightID1 = Int32.Parse(flight1.Split('|')[0]);
             string flight2 = textBox17.Text;
             int flightID2 = Int32.Parse(flight2.Split('|')[0]);
-            string opt = comboBox5.SelectedItem.ToString();
-            string transfer = textBox18.Text;
-            int transfID = Int32.Parse(transfer.Split('|')[0]);
+
+            int transfID = -1;
+            string opt = "False";
+            if (textBox18.Text.Contains("|"))
+            {
+                string transfer = textBox18.Text;
+                transfID = Int32.Parse(transfer.Split('|')[0]);
+                opt = "Yes"; 
+            }
 
 
             SqlCommand cmd = new SqlCommand
@@ -1313,7 +1319,6 @@ namespace WindowsFormsApp2
             cmd.Parameters.Add(new SqlParameter("@startDate", SqlDbType.Date));
             cmd.Parameters.Add(new SqlParameter("@endDate", SqlDbType.Date));
             cmd.Parameters.Add(new SqlParameter("@noPersons", SqlDbType.Int));
-            //cmd.Parameters.Add(new SqlParameter("@totalPrice", SqlDbType.SmallMoney));
             cmd.Parameters.Add(new SqlParameter("@Acomm_ID", SqlDbType.Int));
             cmd.Parameters.Add(new SqlParameter("@Promo_ID", SqlDbType.Int));
             cmd.Parameters.Add(new SqlParameter("@Flight_ID1", SqlDbType.Int));
@@ -1330,7 +1335,6 @@ namespace WindowsFormsApp2
             cmd.Parameters["@startDate"].Value = startDate;
             cmd.Parameters["@endDate"].Value = endDate;
             cmd.Parameters["@noPersons"].Value = noPersons;
-            //cmd.Parameters["@totalPrice"].Value = totalPrice;
             cmd.Parameters["@Acomm_ID"].Value = accID;
             cmd.Parameters["@Promo_ID"].Value = promoID;
             cmd.Parameters["@Flight_ID1"].Value = flightID1;
@@ -1915,21 +1919,12 @@ namespace WindowsFormsApp2
 
         private void btn_SelectTransfer_Click(object sender, EventArgs e)
         {
-            if (comboBox5.SelectedItem.Equals("Yes"))
-            {
-                MessageBox.Show("You have added the selected transfer to your package!");
-                string id_transf_selected = Convert.ToString(dataGridView2.CurrentRow.Cells["ID"].Value) + " | " + Convert.ToString(dataGridView2.CurrentRow.Cells["CC_Depart"].Value) + " - " + Convert.ToString(dataGridView2.CurrentRow.Cells["CC_Arriv"].Value);
-                textBox7.Text = id_transf_selected;
-                textBox18.Text = id_transf_selected;
-                textBox7.ReadOnly = true;
-                textBox18.ReadOnly = true;
-            }
-
-            else
-            {
-                MessageBox.Show("You have to change Transfer option to Yes");
-            }
-            
+            MessageBox.Show("You have added the selected transfer to your package!");
+            string id_transf_selected = Convert.ToString(dataGridView2.CurrentRow.Cells["ID"].Value) + " | " + Convert.ToString(dataGridView2.CurrentRow.Cells["CC_Depart"].Value) + " - " + Convert.ToString(dataGridView2.CurrentRow.Cells["CC_Arriv"].Value);
+            textBox7.Text = id_transf_selected;
+            textBox18.Text = id_transf_selected;
+            textBox7.ReadOnly = true;
+            textBox18.ReadOnly = true;
         }
 
 

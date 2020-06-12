@@ -29,28 +29,26 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.company = new System.Windows.Forms.TextBox();
-            this.price_num = new System.Windows.Forms.NumericUpDown();
-            this.included = new System.Windows.Forms.ComboBox();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.dep_city_combobox = new System.Windows.Forms.ComboBox();
-            this.new_dep_city_button = new System.Windows.Forms.Button();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.arr_city_combobox = new System.Windows.Forms.ComboBox();
-            this.new_arr_city_button = new System.Windows.Forms.Button();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.cancel = new System.Windows.Forms.Button();
             this.edit = new System.Windows.Forms.Button();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.new_arr_city_button = new System.Windows.Forms.Button();
+            this.arr_city_combobox = new System.Windows.Forms.ComboBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.dep_city_combobox = new System.Windows.Forms.ComboBox();
+            this.new_dep_city_button = new System.Windows.Forms.Button();
+            this.company = new System.Windows.Forms.TextBox();
+            this.price_num = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.price_num)).BeginInit();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.price_num)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -58,22 +56,19 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.company, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.price_num, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.included, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 6;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.RowCount = 5;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
@@ -81,116 +76,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(653, 447);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // company
-            // 
-            this.company.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.company.Location = new System.Drawing.Point(166, 27);
-            this.company.Name = "company";
-            this.company.Size = new System.Drawing.Size(484, 20);
-            this.company.TabIndex = 0;
-            // 
-            // price_num
-            // 
-            this.price_num.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.price_num.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.price_num.DecimalPlaces = 2;
-            this.price_num.Location = new System.Drawing.Point(166, 101);
-            this.price_num.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.price_num.Name = "price_num";
-            this.price_num.Size = new System.Drawing.Size(484, 20);
-            this.price_num.TabIndex = 1;
-            // 
-            // included
-            // 
-            this.included.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.included.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.included.FormattingEnabled = true;
-            this.included.Items.AddRange(new object[] {
-            "True",
-            "False"});
-            this.included.Location = new System.Drawing.Point(166, 174);
-            this.included.Name = "included";
-            this.included.Size = new System.Drawing.Size(484, 21);
-            this.included.TabIndex = 2;
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.dep_city_combobox, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.new_dep_city_button, 1, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(163, 222);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(490, 74);
-            this.tableLayoutPanel2.TabIndex = 3;
-            // 
-            // dep_city_combobox
-            // 
-            this.dep_city_combobox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.dep_city_combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.dep_city_combobox.FormattingEnabled = true;
-            this.dep_city_combobox.Location = new System.Drawing.Point(3, 26);
-            this.dep_city_combobox.Name = "dep_city_combobox";
-            this.dep_city_combobox.Size = new System.Drawing.Size(239, 21);
-            this.dep_city_combobox.TabIndex = 0;
-            // 
-            // new_dep_city_button
-            // 
-            this.new_dep_city_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.new_dep_city_button.Location = new System.Drawing.Point(248, 25);
-            this.new_dep_city_button.Name = "new_dep_city_button";
-            this.new_dep_city_button.Size = new System.Drawing.Size(239, 23);
-            this.new_dep_city_button.TabIndex = 1;
-            this.new_dep_city_button.Text = "New City";
-            this.new_dep_city_button.UseVisualStyleBackColor = true;
-            this.new_dep_city_button.Click += new System.EventHandler(this.new_dep_city_button_Click);
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.arr_city_combobox, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.new_arr_city_button, 1, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(163, 296);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(490, 74);
-            this.tableLayoutPanel3.TabIndex = 4;
-            // 
-            // arr_city_combobox
-            // 
-            this.arr_city_combobox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.arr_city_combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.arr_city_combobox.FormattingEnabled = true;
-            this.arr_city_combobox.Location = new System.Drawing.Point(3, 26);
-            this.arr_city_combobox.Name = "arr_city_combobox";
-            this.arr_city_combobox.Size = new System.Drawing.Size(239, 21);
-            this.arr_city_combobox.TabIndex = 0;
-            // 
-            // new_arr_city_button
-            // 
-            this.new_arr_city_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.new_arr_city_button.Location = new System.Drawing.Point(248, 25);
-            this.new_arr_city_button.Name = "new_arr_city_button";
-            this.new_arr_city_button.Size = new System.Drawing.Size(239, 23);
-            this.new_arr_city_button.TabIndex = 1;
-            this.new_arr_city_button.Text = "New City";
-            this.new_arr_city_button.UseVisualStyleBackColor = true;
-            this.new_arr_city_button.Click += new System.EventHandler(this.new_arr_city_button_Click);
             // 
             // tableLayoutPanel4
             // 
@@ -200,21 +85,21 @@
             this.tableLayoutPanel4.Controls.Add(this.cancel, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.edit, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(163, 370);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(163, 356);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(490, 77);
-            this.tableLayoutPanel4.TabIndex = 5;
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(490, 91);
+            this.tableLayoutPanel4.TabIndex = 14;
             // 
             // cancel
             // 
             this.cancel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cancel.Location = new System.Drawing.Point(3, 3);
             this.cancel.Name = "cancel";
-            this.cancel.Size = new System.Drawing.Size(239, 71);
-            this.cancel.TabIndex = 0;
+            this.cancel.Size = new System.Drawing.Size(239, 85);
+            this.cancel.TabIndex = 14;
             this.cancel.Text = "Cancel";
             this.cancel.UseVisualStyleBackColor = true;
             this.cancel.Click += new System.EventHandler(this.cancel_Click);
@@ -224,17 +109,114 @@
             this.edit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.edit.Location = new System.Drawing.Point(248, 3);
             this.edit.Name = "edit";
-            this.edit.Size = new System.Drawing.Size(239, 71);
+            this.edit.Size = new System.Drawing.Size(239, 85);
             this.edit.TabIndex = 1;
             this.edit.Text = "Edit Transfer";
             this.edit.UseVisualStyleBackColor = true;
             this.edit.Click += new System.EventHandler(this.edit_Click);
             // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.new_arr_city_button, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.arr_city_combobox, 0, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(163, 267);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(490, 89);
+            this.tableLayoutPanel3.TabIndex = 12;
+            // 
+            // new_arr_city_button
+            // 
+            this.new_arr_city_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.new_arr_city_button.Location = new System.Drawing.Point(248, 33);
+            this.new_arr_city_button.Name = "new_arr_city_button";
+            this.new_arr_city_button.Size = new System.Drawing.Size(239, 23);
+            this.new_arr_city_button.TabIndex = 1;
+            this.new_arr_city_button.Text = "New City";
+            this.new_arr_city_button.UseVisualStyleBackColor = true;
+            this.new_arr_city_button.Click += new System.EventHandler(this.new_arr_city_button_Click);
+            // 
+            // arr_city_combobox
+            // 
+            this.arr_city_combobox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.arr_city_combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.arr_city_combobox.FormattingEnabled = true;
+            this.arr_city_combobox.Location = new System.Drawing.Point(3, 34);
+            this.arr_city_combobox.Name = "arr_city_combobox";
+            this.arr_city_combobox.Size = new System.Drawing.Size(239, 21);
+            this.arr_city_combobox.TabIndex = 0;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.dep_city_combobox, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.new_dep_city_button, 1, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(163, 178);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(490, 89);
+            this.tableLayoutPanel2.TabIndex = 11;
+            // 
+            // dep_city_combobox
+            // 
+            this.dep_city_combobox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.dep_city_combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.dep_city_combobox.FormattingEnabled = true;
+            this.dep_city_combobox.Location = new System.Drawing.Point(3, 34);
+            this.dep_city_combobox.Name = "dep_city_combobox";
+            this.dep_city_combobox.Size = new System.Drawing.Size(239, 21);
+            this.dep_city_combobox.TabIndex = 0;
+            // 
+            // new_dep_city_button
+            // 
+            this.new_dep_city_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.new_dep_city_button.Location = new System.Drawing.Point(248, 33);
+            this.new_dep_city_button.Name = "new_dep_city_button";
+            this.new_dep_city_button.Size = new System.Drawing.Size(239, 23);
+            this.new_dep_city_button.TabIndex = 1;
+            this.new_dep_city_button.Text = "New City";
+            this.new_dep_city_button.UseVisualStyleBackColor = true;
+            this.new_dep_city_button.Click += new System.EventHandler(this.new_dep_city_button_Click);
+            // 
+            // company
+            // 
+            this.company.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.company.Location = new System.Drawing.Point(166, 34);
+            this.company.Name = "company";
+            this.company.Size = new System.Drawing.Size(484, 20);
+            this.company.TabIndex = 0;
+            // 
+            // price_num
+            // 
+            this.price_num.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.price_num.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.price_num.DecimalPlaces = 2;
+            this.price_num.Location = new System.Drawing.Point(166, 123);
+            this.price_num.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.price_num.Name = "price_num";
+            this.price_num.Size = new System.Drawing.Size(484, 20);
+            this.price_num.TabIndex = 1;
+            // 
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 30);
+            this.label1.Location = new System.Drawing.Point(3, 38);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(157, 13);
             this.label1.TabIndex = 6;
@@ -245,29 +227,18 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 104);
+            this.label2.Location = new System.Drawing.Point(3, 127);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(157, 13);
             this.label2.TabIndex = 7;
             this.label2.Text = "Price:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 178);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(157, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Included:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // label4
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 252);
+            this.label4.Location = new System.Drawing.Point(3, 216);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(157, 13);
             this.label4.TabIndex = 9;
@@ -278,7 +249,7 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 326);
+            this.label5.Location = new System.Drawing.Point(3, 305);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(157, 13);
             this.label5.TabIndex = 10;
@@ -295,10 +266,10 @@
             this.Text = "edit_transfer";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.price_num)).EndInit();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.price_num)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -308,20 +279,18 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TextBox company;
         private System.Windows.Forms.NumericUpDown price_num;
-        private System.Windows.Forms.ComboBox included;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.ComboBox dep_city_combobox;
         private System.Windows.Forms.Button new_dep_city_button;
-        private System.Windows.Forms.ComboBox arr_city_combobox;
-        private System.Windows.Forms.Button new_arr_city_button;
-        private System.Windows.Forms.Button cancel;
-        private System.Windows.Forms.Button edit;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Button cancel;
+        private System.Windows.Forms.Button edit;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Button new_arr_city_button;
+        private System.Windows.Forms.ComboBox arr_city_combobox;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     }
 }

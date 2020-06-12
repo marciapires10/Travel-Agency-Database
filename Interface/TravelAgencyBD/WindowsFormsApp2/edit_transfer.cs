@@ -59,14 +59,6 @@ namespace WindowsFormsApp2
                 Debug.WriteLine(reader["Company"].ToString());
                 company.Text = reader["Company"].ToString();
 
-                foreach (String s in included.Items)
-                {
-                    if (s.Contains(reader["Included"].ToString()))
-                    {
-                        included.SelectedIndex = included.Items.IndexOf(s);
-                    }
-                }
-
                 price_num.Value = (decimal) reader["Price"];
 
                 foreach (String s in dep_city_combobox.Items)
@@ -136,7 +128,6 @@ namespace WindowsFormsApp2
         {
             if (company.Text == null ||
                 price_num.Value <= 0 ||
-                included.SelectedItem == null ||
                 dep_city_combobox.SelectedItem == null ||
                 arr_city_combobox.SelectedItem == null)
             {
@@ -146,9 +137,6 @@ namespace WindowsFormsApp2
 
             String _company = company.Text;
             decimal _price = price_num.Value;
-            Boolean _included;
-            if (included.SelectedItem.ToString() == "True") _included = true;
-            else _included = false;
             String city_dep = dep_city_combobox.SelectedItem.ToString();
             String city_arr = arr_city_combobox.SelectedItem.ToString();
             String country_dep = city_dep.Split(',')[1];
@@ -178,14 +166,12 @@ namespace WindowsFormsApp2
 
             cmd.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int));
             cmd.Parameters.Add(new SqlParameter("@Company", SqlDbType.VarChar));
-            cmd.Parameters.Add(new SqlParameter("@Included", SqlDbType.Bit));
             cmd.Parameters.Add(new SqlParameter("@Price", SqlDbType.SmallMoney));
             cmd.Parameters.Add(new SqlParameter("@departLoc", SqlDbType.VarChar));
             cmd.Parameters.Add(new SqlParameter("@arrivalLoc", SqlDbType.VarChar));
             cmd.Parameters.Add(new SqlParameter("@responseMsg", SqlDbType.NVarChar,250));
             cmd.Parameters["@ID"].Value = this.ID;
             cmd.Parameters["@Company"].Value = _company;
-            cmd.Parameters["@Included"].Value = _included;
             cmd.Parameters["@Price"].Value = _price;
             cmd.Parameters["@departLoc"].Value = city_dep;
             cmd.Parameters["@arrivalLoc"].Value = city_arr;
