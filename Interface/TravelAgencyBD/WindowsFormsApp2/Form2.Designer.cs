@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -215,6 +215,28 @@
             this.btn_Book = new System.Windows.Forms.Button();
             this.listBox3 = new System.Windows.Forms.ListBox();
             this.label18 = new System.Windows.Forms.Label();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.label46 = new System.Windows.Forms.Label();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.splitter1 = new System.Windows.Forms.Splitter();
+            this.button11 = new System.Windows.Forms.Button();
+            this.btn_addReview = new System.Windows.Forms.Button();
+            this.btn_showReviews = new System.Windows.Forms.Button();
+            this.btn_EditBook = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -1935,7 +1957,9 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.btn_showReviews);
             this.tabPage4.Controls.Add(this.panel1);
+            this.tabPage4.Controls.Add(this.btn_addReview);
             this.tabPage4.Controls.Add(this.button10);
             this.tabPage4.Controls.Add(this.textBox14);
             this.tabPage4.Controls.Add(this.textBox28);
@@ -2301,8 +2325,7 @@
             // 
             // btn_showDetails
             // 
-            this.btn_showDetails.Location = new System.Drawing.Point(41, 294);
-            this.btn_showDetails.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_showDetails.Location = new System.Drawing.Point(61, 406);
             this.btn_showDetails.Name = "btn_showDetails";
             this.btn_showDetails.Size = new System.Drawing.Size(79, 36);
             this.btn_showDetails.TabIndex = 3;
@@ -2313,10 +2336,9 @@
             // btn_Book
             // 
             this.btn_Book.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btn_Book.Location = new System.Drawing.Point(149, 295);
-            this.btn_Book.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Book.Location = new System.Drawing.Point(226, 408);
             this.btn_Book.Name = "btn_Book";
-            this.btn_Book.Size = new System.Drawing.Size(74, 35);
+            this.btn_Book.Size = new System.Drawing.Size(132, 54);
             this.btn_Book.TabIndex = 2;
             this.btn_Book.Text = "BOOK";
             this.btn_Book.UseVisualStyleBackColor = true;
@@ -2325,10 +2347,10 @@
             // listBox3
             // 
             this.listBox3.FormattingEnabled = true;
-            this.listBox3.Location = new System.Drawing.Point(41, 73);
-            this.listBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBox3.ItemHeight = 20;
+            this.listBox3.Location = new System.Drawing.Point(61, 92);
             this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(184, 199);
+            this.listBox3.Size = new System.Drawing.Size(297, 304);
             this.listBox3.TabIndex = 1;
             // 
             // label18
@@ -2341,6 +2363,217 @@
             this.label18.Size = new System.Drawing.Size(129, 20);
             this.label18.TabIndex = 0;
             this.label18.Text = "List of packages:";
+            // 
+            // chart1
+            // 
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
+            this.chart1.Location = new System.Drawing.Point(502, 47);
+            this.chart1.Name = "chart1";
+            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chart1.Series.Add(series3);
+            this.chart1.Size = new System.Drawing.Size(562, 374);
+            this.chart1.TabIndex = 14;
+            this.chart1.Text = "chart1";
+            // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3});
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(62, 77);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(364, 313);
+            this.listView1.TabIndex = 15;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "ID";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Active";
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Discount %";
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(451, 357);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(54, 35);
+            this.button5.TabIndex = 34;
+            this.button5.Text = "X";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(451, 413);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(54, 35);
+            this.button6.TabIndex = 35;
+            this.button6.Text = "X";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(955, 238);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(54, 35);
+            this.button7.TabIndex = 36;
+            this.button7.Text = "X";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(953, 292);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(54, 35);
+            this.button8.TabIndex = 37;
+            this.button8.Text = "X";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(953, 352);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(54, 35);
+            this.button9.TabIndex = 38;
+            this.button9.Text = "X";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(1001, 506);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(96, 35);
+            this.button10.TabIndex = 59;
+            this.button10.Text = "OK";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.button13);
+            this.panel1.Controls.Add(this.btn_EditBook);
+            this.panel1.Controls.Add(this.button11);
+            this.panel1.Controls.Add(this.splitter1);
+            this.panel1.Controls.Add(this.comboBox4);
+            this.panel1.Controls.Add(this.label46);
+            this.panel1.Controls.Add(this.listBox2);
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Location = new System.Drawing.Point(381, 21);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(729, 520);
+            this.panel1.TabIndex = 61;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label14.Location = new System.Drawing.Point(188, 33);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(187, 29);
+            this.label14.TabIndex = 1;
+            this.label14.Text = "List of bookings:";
+            // 
+            // listBox2
+            // 
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.ItemHeight = 20;
+            this.listBox2.Location = new System.Drawing.Point(193, 92);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(274, 304);
+            this.listBox2.TabIndex = 2;
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Location = new System.Drawing.Point(520, 92);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(44, 20);
+            this.label46.TabIndex = 3;
+            this.label46.Text = "Paid:";
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(570, 89);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(139, 28);
+            this.comboBox4.TabIndex = 4;
+            // 
+            // splitter1
+            // 
+            this.splitter1.Location = new System.Drawing.Point(0, 0);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(10, 520);
+            this.splitter1.TabIndex = 5;
+            this.splitter1.TabStop = false;
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(652, 134);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(57, 31);
+            this.button11.TabIndex = 6;
+            this.button11.Text = "OK";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // btn_addReview
+            // 
+            this.btn_addReview.Location = new System.Drawing.Point(61, 486);
+            this.btn_addReview.Name = "btn_addReview";
+            this.btn_addReview.Size = new System.Drawing.Size(118, 43);
+            this.btn_addReview.TabIndex = 7;
+            this.btn_addReview.Text = "Add Review";
+            this.btn_addReview.UseVisualStyleBackColor = true;
+            this.btn_addReview.Click += new System.EventHandler(this.btn_addReview_Click);
+            // 
+            // btn_showReviews
+            // 
+            this.btn_showReviews.Location = new System.Drawing.Point(226, 486);
+            this.btn_showReviews.Name = "btn_showReviews";
+            this.btn_showReviews.Size = new System.Drawing.Size(132, 43);
+            this.btn_showReviews.TabIndex = 8;
+            this.btn_showReviews.Text = "Show Reviews";
+            this.btn_showReviews.UseVisualStyleBackColor = true;
+            this.btn_showReviews.Click += new System.EventHandler(this.btn_showReviews_Click);
+            // 
+            // btn_EditBook
+            // 
+            this.btn_EditBook.Location = new System.Drawing.Point(193, 415);
+            this.btn_EditBook.Name = "btn_EditBook";
+            this.btn_EditBook.Size = new System.Drawing.Size(96, 50);
+            this.btn_EditBook.TabIndex = 7;
+            this.btn_EditBook.Text = "Paid";
+            this.btn_EditBook.UseVisualStyleBackColor = true;
+            this.btn_EditBook.Click += new System.EventHandler(this.btn_EditBook_Click);
+            // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(336, 417);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(131, 48);
+            this.button13.TabIndex = 8;
+            this.button13.Text = "Remove";
+            this.button13.UseVisualStyleBackColor = true;
             // 
             // Form2
             // 
@@ -2575,5 +2808,8 @@
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button btn_addReview;
+        private System.Windows.Forms.Button btn_showReviews;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button btn_EditBook;
     }
 }

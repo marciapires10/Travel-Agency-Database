@@ -50,9 +50,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label1.Location = new System.Drawing.Point(247, 89);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(287, 29);
+            this.label1.Size = new System.Drawing.Size(325, 29);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Add a review to this book:";
+            this.label1.Text = "Add a review to this package:";
             // 
             // trackBar1
             // 

@@ -81,6 +81,7 @@ namespace WindowsFormsApp2
             if ("" + cmd.Parameters["@responseMsg"].Value == "Success")
             {
                 MessageBox.Show("Thanks for your review!");
+                this.Close();
             }
             else
             {

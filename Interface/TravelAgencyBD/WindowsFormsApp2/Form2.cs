@@ -26,6 +26,7 @@ namespace WindowsFormsApp2
         private string curr_agent = "";
         private int packID = 0;
         private int custID = 0;
+        private int bookID = 0;
         private BindingSource bindingSource1 = new BindingSource();
         private SqlDataAdapter dataAdapter = new SqlDataAdapter();
         private BindingSource bindingSource2 = new BindingSource();
@@ -512,6 +513,7 @@ namespace WindowsFormsApp2
             }
         }
 
+
         private void btn_BackC_Click(object sender, EventArgs e)
         {
             noPage--;
@@ -531,6 +533,7 @@ namespace WindowsFormsApp2
                 btn_BackC.Enabled = false;
             }
         }
+
 
         private int getCustID(string email)
         {
@@ -675,8 +678,6 @@ namespace WindowsFormsApp2
                     btn_Conf.Text = "SELECT";
                     btn_Conf.Click += new EventHandler(btn_Conf_Click);
 
-                    Debug.WriteLine("load 3???");
-
                     lb7.AutoSize = true;
                     lb7.Location = new System.Drawing.Point(305, 130);
                     lb7.TabIndex = 3;
@@ -715,8 +716,6 @@ namespace WindowsFormsApp2
                     lb6.Name = "label6_" + nAcc;
                     lb7.Name = "label7_" + nAcc;
                     
-
-                    Debug.WriteLine(btn_Conf.Name);
 
                     lb2.Text = reader["Name"].ToString();
                     lb3.Text = reader["Description"].ToString();
@@ -2089,7 +2088,7 @@ namespace WindowsFormsApp2
             label39.Show();
             label41.Show();
 
-            button10.Enabled = true;
+            button10.Visible = true;
             panel1.Visible = false;
 
             if (!verifySGBDConnection())
@@ -2152,7 +2151,8 @@ namespace WindowsFormsApp2
             label39.Hide();
             label41.Hide();
 
-            button10.Enabled = false;
+            button10.Visible = false;
+            panel1.Visible = true;
         }
 
         private void loadBookings()
@@ -2355,40 +2355,69 @@ namespace WindowsFormsApp2
 
         private void btn_addReview_Click(object sender, EventArgs e)
         {
-            string bookID = listBox2.SelectedItem.ToString().Split('-')[0];
+            string pack = listBox3.SelectedItem.ToString();
+            packID = Int32.Parse(pack.Split(' ')[0]);
+
+            if (textBox4.Text == "")
+            {
+                MessageBox.Show("You have to assign a customer to review a package!");
+            }
+            else
+            {
+                custID = getCustID(textBox4.Text);
+                Form7 review = new Form7(packID, custID);
+                review.ShowDialog();
+            }
+
+            
+
+        }
+
+        private void btn_showReviews_Click(object sender, EventArgs e)
+        {
+            string pack = listBox3.SelectedItem.ToString();
+            packID = Int32.Parse(pack.Split(' ')[0]);
+
+            Form8 reviewHistoric = new Form8(packID);
+            reviewHistoric.ShowDialog();
+
+            cn.Close();
+        }
+
+        private void btn_EditBook_Click(object sender, EventArgs e)
+        {
+            string ID = listBox2.SelectedItem.ToString();
+
+            SqlCommand cmd = new SqlCommand
+            {
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "TravelAgency.spEnablePromo"
+            };
+
+            cmd.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int));
+            cmd.Parameters.Add(new SqlParameter("@responseMsg", SqlDbType.NVarChar, 250));
+            cmd.Parameters["@ID"].Value = ID;
+            cmd.Parameters["@responseMsg"].Direction = ParameterDirection.Output;
 
             if (!verifySGBDConnection())
             {
                 return;
             }
 
-            SqlCommand cmd;
-            cmd = new SqlCommand("Select * from TravelAgency.GetBookIDs('" + bookID + "')", cn);
-
             cmd.Connection = cn;
+            cmd.ExecuteNonQuery();
 
-            int packID_book = 0;
-            int custID_book = 0;
-
-            using (SqlDataReader reader = cmd.ExecuteReader())
+            if ("" + cmd.Parameters["@responseMsg"].Value == "Success")
             {
-
-                while (reader.Read())
-                {
-                    packID_book = Int32.Parse(reader["Pack_ID"].ToString());
-                    custID_book = Int32.Parse(reader["Cust_ID"].ToString());
-                }
+                MessageBox.Show("Book paid");
+            }
+            else
+            {
+                MessageBox.Show("Error");
             }
 
-            Debug.WriteLine(packID_book);
-            Debug.WriteLine(custID_book);
-
-            Form7 review = new Form7(packID_book, custID_book);
-            review.ShowDialog();
-
+            loadBookings();
             cn.Close();
-            
-
         }
     }
 }
