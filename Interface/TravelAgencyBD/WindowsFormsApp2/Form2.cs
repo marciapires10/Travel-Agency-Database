@@ -1325,7 +1325,7 @@ namespace WindowsFormsApp2
             dateTimePicker2.Format = DateTimePickerFormat.Short;
             DateTime endDate = dateTimePicker2.Value;
             int noPersons = Int32.Parse(textBox8.Text);
-            int totalPrice = Int32.Parse(textBox11.Text);
+            //int totalPrice = Int32.Parse(textBox11.Text);
             int accID = getAccID(textBox9.Text);
             int promoID = Int32.Parse(textBox10.Text);
             int flightID1 = Int32.Parse(textBox16.Text);
@@ -1347,14 +1347,14 @@ namespace WindowsFormsApp2
             cmd.Parameters.Add(new SqlParameter("@startDate", SqlDbType.Date));
             cmd.Parameters.Add(new SqlParameter("@endDate", SqlDbType.Date));
             cmd.Parameters.Add(new SqlParameter("@noPersons", SqlDbType.Int));
-            cmd.Parameters.Add(new SqlParameter("@totalPrice", SqlDbType.SmallMoney));
+            //cmd.Parameters.Add(new SqlParameter("@totalPrice", SqlDbType.SmallMoney));
             cmd.Parameters.Add(new SqlParameter("@Acomm_ID", SqlDbType.Int));
             cmd.Parameters.Add(new SqlParameter("@Promo_ID", SqlDbType.Int));
             cmd.Parameters.Add(new SqlParameter("@Flight_ID1", SqlDbType.Int));
             cmd.Parameters.Add(new SqlParameter("@Flight_ID2", SqlDbType.Int));
             cmd.Parameters.Add(new SqlParameter("@Transf_ID", SqlDbType.Int));
             cmd.Parameters.Add(new SqlParameter("@opt1", SqlDbType.VarChar));
-            //cmd.Parameters.Add(new SqlParameter("@responseMsg", SqlDbType.NVarChar, 250));
+            cmd.Parameters.Add(new SqlParameter("@responseMsg", SqlDbType.NVarChar, 250));
 
 
             cmd.Parameters["@Title"].Value = title;
@@ -1363,14 +1363,14 @@ namespace WindowsFormsApp2
             cmd.Parameters["@startDate"].Value = startDate;
             cmd.Parameters["@endDate"].Value = endDate;
             cmd.Parameters["@noPersons"].Value = noPersons;
-            cmd.Parameters["@totalPrice"].Value = totalPrice;
+            //cmd.Parameters["@totalPrice"].Value = totalPrice;
             cmd.Parameters["@Acomm_ID"].Value = accID;
             cmd.Parameters["@Promo_ID"].Value = promoID;
             cmd.Parameters["@Flight_ID1"].Value = flightID1;
             cmd.Parameters["@Flight_ID2"].Value = flightID2;
             cmd.Parameters["@Transf_ID"].Value = transfID;
             cmd.Parameters["@opt1"].Value = opt;
-            //cmd.Parameters["@responseMsg"].Direction = ParameterDirection.Output;
+            cmd.Parameters["@responseMsg"].Direction = ParameterDirection.Output;
 
 
             if (!verifySGBDConnection())
