@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -180,15 +180,15 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.btn_showReviews = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btn_addReview = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
+            this.btn_EditBook = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.label46 = new System.Windows.Forms.Label();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.button13 = new System.Windows.Forms.Button();
-            this.btn_EditBook = new System.Windows.Forms.Button();
+            this.btn_addReview = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.textBox14 = new System.Windows.Forms.TextBox();
             this.textBox28 = new System.Windows.Forms.TextBox();
@@ -274,7 +274,7 @@
             this.tabPage1.Controls.Add(this.label26);
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(1130, 567);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Profile";
@@ -282,18 +282,18 @@
             // 
             // chart1
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart1.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(497, 49);
             this.chart1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chart1.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(603, 340);
             this.chart1.TabIndex = 14;
             this.chart1.Text = "chart1";
@@ -451,7 +451,7 @@
             this.tabPage2.Controls.Add(this.btn_Add);
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(1130, 567);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Customers";
@@ -682,7 +682,7 @@
             this.tabPage3.Controls.Add(this.tabControl2);
             this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(1130, 567);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Packages";
@@ -736,7 +736,7 @@
             this.tabPage9.Controls.Add(this.label10);
             this.tabPage9.Location = new System.Drawing.Point(4, 29);
             this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage9.Size = new System.Drawing.Size(1116, 528);
             this.tabPage9.TabIndex = 4;
             this.tabPage9.Text = "Overview";
@@ -1004,8 +1004,8 @@
             this.tabPage5.Controls.Add(this.label2);
             this.tabPage5.Location = new System.Drawing.Point(4, 29);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage5.Size = new System.Drawing.Size(1112, 521);
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(1116, 528);
             this.tabPage5.TabIndex = 0;
             this.tabPage5.Text = "Accommodation";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1120,8 +1120,8 @@
             this.tabPage6.Controls.Add(this.tableLayoutPanel2);
             this.tabPage6.Location = new System.Drawing.Point(4, 29);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage6.Size = new System.Drawing.Size(1112, 521);
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(1116, 528);
             this.tabPage6.TabIndex = 1;
             this.tabPage6.Text = "Flight";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -1139,7 +1139,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1106, 515);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1110, 522);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // tableLayoutPanel3
@@ -1165,7 +1165,7 @@
             this.tableLayoutPanel3.Controls.Add(this.textBox27, 1, 17);
             this.tableLayoutPanel3.Controls.Add(this.btn_Flight1, 1, 16);
             this.tableLayoutPanel3.Controls.Add(this.btn_Flight2, 1, 18);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(668, 13);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(672, 17);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 19;
@@ -1414,7 +1414,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.Size = new System.Drawing.Size(657, 509);
+            this.dataGridView1.Size = new System.Drawing.Size(660, 516);
             this.dataGridView1.TabIndex = 0;
             // 
             // tabPage7
@@ -1422,8 +1422,8 @@
             this.tabPage7.Controls.Add(this.tableLayoutPanel5);
             this.tabPage7.Location = new System.Drawing.Point(4, 29);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage7.Size = new System.Drawing.Size(1112, 521);
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage7.Size = new System.Drawing.Size(1116, 528);
             this.tabPage7.TabIndex = 2;
             this.tabPage7.Text = "Transfer";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -1441,7 +1441,7 @@
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(1106, 515);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(1110, 522);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // dataGridView2
@@ -1455,7 +1455,7 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersWidth = 62;
-            this.dataGridView2.Size = new System.Drawing.Size(655, 505);
+            this.dataGridView2.Size = new System.Drawing.Size(658, 512);
             this.dataGridView2.TabIndex = 0;
             // 
             // tableLayoutPanel6
@@ -1476,7 +1476,7 @@
             this.tableLayoutPanel6.Controls.Add(this.textBox7, 1, 5);
             this.tableLayoutPanel6.Controls.Add(this.btn_SelectTransfer, 1, 6);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(667, 5);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(670, 5);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 7;
@@ -1487,7 +1487,7 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(435, 505);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(436, 512);
             this.tableLayoutPanel6.TabIndex = 1;
             // 
             // tableLayoutPanel7
@@ -1498,19 +1498,19 @@
             this.tableLayoutPanel7.Controls.Add(this.transfer_edit_button, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.transfer_remove_button, 1, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(144, 0);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(145, 0);
             this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 69F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(291, 72);
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 73F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(291, 73);
             this.tableLayoutPanel7.TabIndex = 0;
             // 
             // transfer_edit_button
             // 
             this.transfer_edit_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.transfer_edit_button.Location = new System.Drawing.Point(4, 18);
+            this.transfer_edit_button.Location = new System.Drawing.Point(4, 19);
             this.transfer_edit_button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.transfer_edit_button.Name = "transfer_edit_button";
             this.transfer_edit_button.Size = new System.Drawing.Size(137, 35);
@@ -1522,7 +1522,7 @@
             // transfer_remove_button
             // 
             this.transfer_remove_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.transfer_remove_button.Location = new System.Drawing.Point(149, 18);
+            this.transfer_remove_button.Location = new System.Drawing.Point(149, 19);
             this.transfer_remove_button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.transfer_remove_button.Name = "transfer_remove_button";
             this.transfer_remove_button.Size = new System.Drawing.Size(138, 35);
@@ -1534,10 +1534,10 @@
             // transfer_add_button
             // 
             this.transfer_add_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.transfer_add_button.Location = new System.Drawing.Point(4, 18);
+            this.transfer_add_button.Location = new System.Drawing.Point(4, 19);
             this.transfer_add_button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.transfer_add_button.Name = "transfer_add_button";
-            this.transfer_add_button.Size = new System.Drawing.Size(136, 35);
+            this.transfer_add_button.Size = new System.Drawing.Size(137, 35);
             this.transfer_add_button.TabIndex = 1;
             this.transfer_add_button.Text = "Add New";
             this.transfer_add_button.UseVisualStyleBackColor = true;
@@ -1546,10 +1546,10 @@
             // transfer_search_button
             // 
             this.transfer_search_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.transfer_search_button.Location = new System.Drawing.Point(4, 90);
+            this.transfer_search_button.Location = new System.Drawing.Point(4, 92);
             this.transfer_search_button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.transfer_search_button.Name = "transfer_search_button";
-            this.transfer_search_button.Size = new System.Drawing.Size(136, 35);
+            this.transfer_search_button.Size = new System.Drawing.Size(137, 35);
             this.transfer_search_button.TabIndex = 2;
             this.transfer_search_button.Text = "Search:";
             this.transfer_search_button.UseVisualStyleBackColor = true;
@@ -1558,7 +1558,7 @@
             // transfer_search_textbox
             // 
             this.transfer_search_textbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.transfer_search_textbox.Location = new System.Drawing.Point(148, 95);
+            this.transfer_search_textbox.Location = new System.Drawing.Point(149, 96);
             this.transfer_search_textbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.transfer_search_textbox.Name = "transfer_search_textbox";
             this.transfer_search_textbox.Size = new System.Drawing.Size(283, 26);
@@ -1568,7 +1568,7 @@
             // 
             this.transfer_filters_label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.transfer_filters_label.AutoSize = true;
-            this.transfer_filters_label.Location = new System.Drawing.Point(148, 170);
+            this.transfer_filters_label.Location = new System.Drawing.Point(149, 172);
             this.transfer_filters_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.transfer_filters_label.Name = "transfer_filters_label";
             this.transfer_filters_label.Size = new System.Drawing.Size(283, 20);
@@ -1580,10 +1580,10 @@
             // 
             this.transfer_company_label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.transfer_company_label.AutoSize = true;
-            this.transfer_company_label.Location = new System.Drawing.Point(4, 242);
+            this.transfer_company_label.Location = new System.Drawing.Point(4, 245);
             this.transfer_company_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.transfer_company_label.Name = "transfer_company_label";
-            this.transfer_company_label.Size = new System.Drawing.Size(136, 20);
+            this.transfer_company_label.Size = new System.Drawing.Size(137, 20);
             this.transfer_company_label.TabIndex = 5;
             this.transfer_company_label.Text = "Select Company:";
             this.transfer_company_label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1592,10 +1592,10 @@
             // 
             this.transfer_city_label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.transfer_city_label.AutoSize = true;
-            this.transfer_city_label.Location = new System.Drawing.Point(4, 314);
+            this.transfer_city_label.Location = new System.Drawing.Point(4, 318);
             this.transfer_city_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.transfer_city_label.Name = "transfer_city_label";
-            this.transfer_city_label.Size = new System.Drawing.Size(136, 20);
+            this.transfer_city_label.Size = new System.Drawing.Size(137, 20);
             this.transfer_city_label.TabIndex = 6;
             this.transfer_city_label.Text = "Select City:";
             this.transfer_city_label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1605,7 +1605,7 @@
             this.transfer_company_combobox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.transfer_company_combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.transfer_company_combobox.FormattingEnabled = true;
-            this.transfer_company_combobox.Location = new System.Drawing.Point(148, 238);
+            this.transfer_company_combobox.Location = new System.Drawing.Point(149, 241);
             this.transfer_company_combobox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.transfer_company_combobox.Name = "transfer_company_combobox";
             this.transfer_company_combobox.Size = new System.Drawing.Size(283, 28);
@@ -1617,7 +1617,7 @@
             this.transfer_city_combobox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.transfer_city_combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.transfer_city_combobox.FormattingEnabled = true;
-            this.transfer_city_combobox.Location = new System.Drawing.Point(148, 310);
+            this.transfer_city_combobox.Location = new System.Drawing.Point(149, 314);
             this.transfer_city_combobox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.transfer_city_combobox.Name = "transfer_city_combobox";
             this.transfer_city_combobox.Size = new System.Drawing.Size(283, 28);
@@ -1628,10 +1628,10 @@
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(4, 376);
+            this.label9.Location = new System.Drawing.Point(4, 381);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(136, 40);
+            this.label9.Size = new System.Drawing.Size(137, 40);
             this.label9.TabIndex = 10;
             this.label9.Text = "Selected Transfer:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1639,7 +1639,7 @@
             // textBox7
             // 
             this.textBox7.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox7.Location = new System.Drawing.Point(148, 383);
+            this.textBox7.Location = new System.Drawing.Point(149, 388);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(282, 26);
             this.textBox7.TabIndex = 11;
@@ -1647,7 +1647,7 @@
             // btn_SelectTransfer
             // 
             this.btn_SelectTransfer.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_SelectTransfer.Location = new System.Drawing.Point(195, 444);
+            this.btn_SelectTransfer.Location = new System.Drawing.Point(196, 450);
             this.btn_SelectTransfer.Name = "btn_SelectTransfer";
             this.btn_SelectTransfer.Size = new System.Drawing.Size(188, 49);
             this.btn_SelectTransfer.TabIndex = 12;
@@ -1674,7 +1674,7 @@
             this.tabPage8.Controls.Add(this.label5);
             this.tabPage8.Location = new System.Drawing.Point(4, 29);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage8.Size = new System.Drawing.Size(1116, 528);
             this.tabPage8.TabIndex = 3;
             this.tabPage8.Text = "Promo";
@@ -1872,7 +1872,7 @@
             this.tabPage4.Controls.Add(this.label18);
             this.tabPage4.Location = new System.Drawing.Point(4, 29);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage4.Size = new System.Drawing.Size(1130, 567);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Bookings";
@@ -1880,10 +1880,10 @@
             // 
             // btn_showReviews
             // 
-            this.btn_showReviews.Location = new System.Drawing.Point(339, 748);
+            this.btn_showReviews.Location = new System.Drawing.Point(213, 501);
             this.btn_showReviews.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_showReviews.Name = "btn_showReviews";
-            this.btn_showReviews.Size = new System.Drawing.Size(198, 66);
+            this.btn_showReviews.Size = new System.Drawing.Size(130, 51);
             this.btn_showReviews.TabIndex = 8;
             this.btn_showReviews.Text = "Show Reviews";
             this.btn_showReviews.UseVisualStyleBackColor = true;
@@ -1899,26 +1899,37 @@
             this.panel1.Controls.Add(this.label46);
             this.panel1.Controls.Add(this.listBox2);
             this.panel1.Controls.Add(this.label14);
-            this.panel1.Location = new System.Drawing.Point(366, 6);
+            this.panel1.Location = new System.Drawing.Point(380, 6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(747, 553);
+            this.panel1.Size = new System.Drawing.Size(733, 553);
             this.panel1.TabIndex = 61;
             // 
-            // btn_addReview
+            // button13
             // 
-            this.btn_addReview.Location = new System.Drawing.Point(92, 748);
-            this.btn_addReview.Name = "btn_addReview";
-            this.btn_addReview.Size = new System.Drawing.Size(177, 66);
-            this.btn_addReview.TabIndex = 7;
-            this.btn_addReview.Text = "Add Review";
-            this.btn_addReview.UseVisualStyleBackColor = true;
-            this.btn_addReview.Click += new System.EventHandler(this.btn_addReview_Click);
+            this.button13.Location = new System.Drawing.Point(239, 448);
+            this.button13.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(160, 50);
+            this.button13.TabIndex = 8;
+            this.button13.Text = "Remove";
+            this.button13.UseVisualStyleBackColor = true;
+            // 
+            // btn_EditBook
+            // 
+            this.btn_EditBook.Location = new System.Drawing.Point(100, 449);
+            this.btn_EditBook.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_EditBook.Name = "btn_EditBook";
+            this.btn_EditBook.Size = new System.Drawing.Size(108, 49);
+            this.btn_EditBook.TabIndex = 7;
+            this.btn_EditBook.Text = "Paid";
+            this.btn_EditBook.UseVisualStyleBackColor = true;
+            this.btn_EditBook.Click += new System.EventHandler(this.btn_EditBook_Click);
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(978, 206);
+            this.button11.Location = new System.Drawing.Point(599, 165);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(86, 48);
+            this.button11.Size = new System.Drawing.Size(56, 38);
             this.button11.TabIndex = 6;
             this.button11.Text = "OK";
             this.button11.UseVisualStyleBackColor = true;
@@ -1928,7 +1939,7 @@
             // 
             this.splitter1.Location = new System.Drawing.Point(0, 0);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(15, 553);
+            this.splitter1.Size = new System.Drawing.Size(10, 553);
             this.splitter1.TabIndex = 5;
             this.splitter1.TabStop = false;
             // 
@@ -1936,7 +1947,7 @@
             // 
             this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(855, 137);
+            this.comboBox4.Location = new System.Drawing.Point(449, 112);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(206, 28);
             this.comboBox4.TabIndex = 4;
@@ -1944,7 +1955,7 @@
             // label46
             // 
             this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(780, 142);
+            this.label46.Location = new System.Drawing.Point(445, 77);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(44, 20);
             this.label46.TabIndex = 3;
@@ -1956,7 +1967,7 @@
             this.listBox2.ItemHeight = 20;
             this.listBox2.Location = new System.Drawing.Point(92, 78);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(316, 384);
+            this.listBox2.Size = new System.Drawing.Size(316, 344);
             this.listBox2.TabIndex = 2;
             // 
             // label14
@@ -1969,26 +1980,15 @@
             this.label14.TabIndex = 1;
             this.label14.Text = "List of bookings:";
             // 
-            // button13
+            // btn_addReview
             // 
-            this.button13.Location = new System.Drawing.Point(504, 642);
-            this.button13.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(196, 74);
-            this.button13.TabIndex = 8;
-            this.button13.Text = "Remove";
-            this.button13.UseVisualStyleBackColor = true;
-            // 
-            // btn_EditBook
-            // 
-            this.btn_EditBook.Location = new System.Drawing.Point(290, 638);
-            this.btn_EditBook.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btn_EditBook.Name = "btn_EditBook";
-            this.btn_EditBook.Size = new System.Drawing.Size(144, 77);
-            this.btn_EditBook.TabIndex = 7;
-            this.btn_EditBook.Text = "Paid";
-            this.btn_EditBook.UseVisualStyleBackColor = true;
-            this.btn_EditBook.Click += new System.EventHandler(this.btn_EditBook_Click);
+            this.btn_addReview.Location = new System.Drawing.Point(61, 499);
+            this.btn_addReview.Name = "btn_addReview";
+            this.btn_addReview.Size = new System.Drawing.Size(120, 53);
+            this.btn_addReview.TabIndex = 7;
+            this.btn_addReview.Text = "Add Review";
+            this.btn_addReview.UseVisualStyleBackColor = true;
+            this.btn_addReview.Click += new System.EventHandler(this.btn_addReview_Click);
             // 
             // button10
             // 
@@ -2206,10 +2206,10 @@
             // 
             // btn_showDetails
             // 
-            this.btn_showDetails.Location = new System.Drawing.Point(92, 625);
+            this.btn_showDetails.Location = new System.Drawing.Point(61, 436);
             this.btn_showDetails.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_showDetails.Name = "btn_showDetails";
-            this.btn_showDetails.Size = new System.Drawing.Size(118, 55);
+            this.btn_showDetails.Size = new System.Drawing.Size(120, 55);
             this.btn_showDetails.TabIndex = 3;
             this.btn_showDetails.Text = "Show details";
             this.btn_showDetails.UseVisualStyleBackColor = true;
@@ -2218,10 +2218,10 @@
             // btn_Book
             // 
             this.btn_Book.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btn_Book.Location = new System.Drawing.Point(339, 628);
+            this.btn_Book.Location = new System.Drawing.Point(213, 438);
             this.btn_Book.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_Book.Name = "btn_Book";
-            this.btn_Book.Size = new System.Drawing.Size(198, 83);
+            this.btn_Book.Size = new System.Drawing.Size(130, 53);
             this.btn_Book.TabIndex = 2;
             this.btn_Book.Text = "BOOK";
             this.btn_Book.UseVisualStyleBackColor = true;
@@ -2234,7 +2234,7 @@
             this.listBox3.Location = new System.Drawing.Point(61, 83);
             this.listBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(282, 384);
+            this.listBox3.Size = new System.Drawing.Size(282, 344);
             this.listBox3.TabIndex = 1;
             // 
             // label18
