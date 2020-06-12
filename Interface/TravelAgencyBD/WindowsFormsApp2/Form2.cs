@@ -2046,7 +2046,7 @@ namespace WindowsFormsApp2
             SqlCommand cmd = new SqlCommand
             {
                 CommandType = CommandType.StoredProcedure,
-                CommandText = "TravelAgency.spLoadPackage"
+                CommandText = "TravelAgency.spLoadPackages"
             };
 
             cmd.Connection = cn;
@@ -2064,6 +2064,8 @@ namespace WindowsFormsApp2
 
         private void btn_showDetails_Click(object sender, EventArgs e)
         {
+
+
             textBox31.Show();
             textBox35.Show();
             textBox14.Show();
@@ -2102,27 +2104,55 @@ namespace WindowsFormsApp2
                 CommandText = "TravelAgency.spLoadPackage"
             };
 
-            cmd.Connection = cn;
-            SqlDataReader reader = cmd.ExecuteReader();
+            if (listBox3.SelectedItem == null) return;
+            string pack = listBox3.SelectedItem.ToString();
+            packID = Int32.Parse(pack.Split(' ')[0]);
 
-            while (reader.Read())
-            {
-                /*textBox31.Text = reader["Title"].ToString();
-                richTextBox2.Text = reader["Description"].ToString();
-                textBox35.Text = reader["noPersons"].ToString();
-                textBox14.Text = reader["Duration"].ToString();
-                dateTimePicker4.Value = reader["startDate"].ToString();
-                dateTimePicker3.Value = reader["endDate"].ToString();
-                textBox34.Text = reader["Acomm_ID"].ToString();
-                textBox30.Text = reader[""];
-                textBox29.Text = reader[""];
-                textBox28.Text = reader[""];
-                textBox33.Text = reader["Promo_ID"].ToString();
-                textBox32.Text = reader["totalPrice"].ToString();*/
-            }
+            cmd.Parameters.Add(new SqlParameter("@Pack_ID", SqlDbType.Int));
+            cmd.Parameters.Add(new SqlParameter("@title", SqlDbType.VarChar, 40));
+            cmd.Parameters.Add(new SqlParameter("@description", SqlDbType.VarChar, 500));
+            cmd.Parameters.Add(new SqlParameter("@noPersons", SqlDbType.Int));
+            cmd.Parameters.Add(new SqlParameter("@duration", SqlDbType.Int));
+            cmd.Parameters.Add(new SqlParameter("@start_date", SqlDbType.SmallDateTime));
+            cmd.Parameters.Add(new SqlParameter("@end_date", SqlDbType.SmallDateTime));
+            cmd.Parameters.Add(new SqlParameter("@accommodation", SqlDbType.VarChar, 40));
+            cmd.Parameters.Add(new SqlParameter("@dep_flight", SqlDbType.VarChar, 100));
+            cmd.Parameters.Add(new SqlParameter("@arr_flight", SqlDbType.VarChar, 100));
+            cmd.Parameters.Add(new SqlParameter("@transfer", SqlDbType.VarChar, 100));
+            cmd.Parameters.Add(new SqlParameter("@promo", SqlDbType.VarChar, 10));
+            cmd.Parameters.Add(new SqlParameter("@price", SqlDbType.SmallMoney));
+            cmd.Parameters["@Pack_ID"].Value = packID;
+            cmd.Parameters["@title"].Direction = ParameterDirection.Output;
+            cmd.Parameters["@description"].Direction = ParameterDirection.Output;
+            cmd.Parameters["@noPersons"].Direction = ParameterDirection.Output;
+            cmd.Parameters["@duration"].Direction = ParameterDirection.Output;
+            cmd.Parameters["@start_date"].Direction = ParameterDirection.Output;
+            cmd.Parameters["@end_date"].Direction = ParameterDirection.Output;
+            cmd.Parameters["@accommodation"].Direction = ParameterDirection.Output;
+            cmd.Parameters["@dep_flight"].Direction = ParameterDirection.Output;
+            cmd.Parameters["@arr_flight"].Direction = ParameterDirection.Output;
+            cmd.Parameters["@transfer"].Direction = ParameterDirection.Output;
+            cmd.Parameters["@promo"].Direction = ParameterDirection.Output;
+            cmd.Parameters["@price"].Direction = ParameterDirection.Output;
+
+            cmd.Connection = cn;
+            cmd.ExecuteNonQuery();
+
+            textBox31.Text = cmd.Parameters["@title"].Value.ToString();
+            richTextBox2.Text = cmd.Parameters["@description"].Value.ToString();
+            textBox35.Text = cmd.Parameters["@noPersons"].Value.ToString();
+            textBox14.Text = cmd.Parameters["@duration"].Value.ToString();
+            dateTimePicker4.Value = DateTime.Parse(cmd.Parameters["@start_date"].Value.ToString());
+            dateTimePicker3.Value = DateTime.Parse(cmd.Parameters["@end_date"].Value.ToString());
+            textBox34.Text = cmd.Parameters["@accommodation"].Value.ToString();
+            textBox30.Text = cmd.Parameters["@dep_flight"].Value.ToString();
+            textBox29.Text = cmd.Parameters["@arr_flight"].Value.ToString();
+            textBox28.Text = cmd.Parameters["@transfer"].Value.ToString();
+            textBox33.Text = cmd.Parameters["@promo"].Value.ToString();
+            textBox32.Text = cmd.Parameters["@price"].Value.ToString();
+
 
             cn.Close();
-
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -2381,6 +2411,7 @@ namespace WindowsFormsApp2
 
         private void btn_showReviews_Click(object sender, EventArgs e)
         {
+            if (listBox3.SelectedItem == null) return;
             string pack = listBox3.SelectedItem.ToString();
             packID = Int32.Parse(pack.Split(' ')[0]);
 

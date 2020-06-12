@@ -58,6 +58,8 @@ namespace WindowsFormsApp2
 
             string name = (string)cmd.ExecuteScalar();
 
+            cn.Close();
+
             return name;
 
         }
@@ -65,6 +67,9 @@ namespace WindowsFormsApp2
         private void loadReviews()
         {
             SqlCommand cmd = new SqlCommand("select * from TravelAgency.ReviewsHistoric ('" + pack_ID + "')", cn);
+
+            List<string> descr = new List<string>();
+            List<int> cust = new List<int>();
 
             if (!verifySGBDConnection())
             {
@@ -79,19 +84,24 @@ namespace WindowsFormsApp2
 
                 while (reader.Read())
                 {
-                    string descr = reader["Description"].ToString();
-                    int cust = Int32.Parse(reader["Cust_ID"].ToString());
-                    string nameComplete = getCustName(cust);
-                    string fname = nameComplete.Split(' ')[0];
-                    string lname = nameComplete.Split(' ')[1];
-                    var row = new string[] { descr, fname + " " + lname };
-                    var list = new ListViewItem(row);
-                    listView1.View = View.Details;
-                    listView1.Items.Add(list);
+                    descr.Add(reader["Description"].ToString());
+                    cust.Add(Int32.Parse(reader["Cust_ID"].ToString()));
                 }
             }
 
             cn.Close();
+
+            for (int i = 0; i < descr.Count - 1; i++) {
+                string nameComplete = getCustName(cust[i]);
+                string fname = nameComplete.Split(' ')[0];
+                string lname = nameComplete.Split(' ')[1];
+                var row = new string[] { descr[i], fname + " " + lname };
+                var list = new ListViewItem(row);
+                listView1.View = View.Details;
+                listView1.Items.Add(list);
+            }
+
+
         }
 
         private void avgScore()
@@ -105,9 +115,11 @@ namespace WindowsFormsApp2
             }
 
             cmd.Connection = cn;
-            decimal avgscore = (decimal)cmd.ExecuteScalar();
+            decimal avgscore = decimal.Parse(cmd.ExecuteScalar().ToString());
+            if (avgscore < 0) textBox1.Text = "No Reviews";
+            else textBox1.Text = avgscore.ToString();
 
-            textBox1.Text = avgscore.ToString();
+            cn.Close();
         }
 
         private void btn_close_Click(object sender, EventArgs e)
