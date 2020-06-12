@@ -13,6 +13,8 @@ BEGIN
 
   SET NOCOUNT ON;
 
+  BEGIN TRAN
+
   DECLARE @Salt VARCHAR(25);
   DECLARE @PwdWithSalt VARCHAR(125);
 
@@ -68,8 +70,9 @@ BEGIN
    BEGIN CATCH
       SET @responseMsg = error_message()
    END CATCH
+   COMMIT TRAN
 
 END;
 GO
 
-exec TravelAgency.CreateAgent Marcia, Jesus, 918573945, projetodebd, 'marcia.pires@ua.pt', 'Success'
+--exec TravelAgency.CreateAgent Marcia, Jesus, 918573945, projetodebd, 'marcia.pires@ua.pt', 'Success'

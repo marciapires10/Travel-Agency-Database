@@ -9,19 +9,21 @@ CREATE PROCEDURE TravelAgency.spAddCustomer
 AS
 
 BEGIN
-		SET NOCOUNT ON
+		SET NOCOUNT ON;
+		BEGIN TRAN
 
-		BEGIN TRY
-					INSERT INTO TravelAgency.Person (Email, Fname, Lname, PhoneNo) 
-					VALUES (@Email, @Fname, @Lname, @PhoneNo)
+			BEGIN TRY
+						INSERT INTO TravelAgency.Person (Email, Fname, Lname, PhoneNo) 
+						VALUES (@Email, @Fname, @Lname, @PhoneNo)
 
-					INSERT INTO TravelAgency.Customer(NIF, Email)
-					VALUES (@NIF, @Email)
+						INSERT INTO TravelAgency.Customer(NIF, Email)
+						VALUES (@NIF, @Email)
 
-					SET @responseMsg = 'Success'
-		END TRY
+						SET @responseMsg = 'Success'
+			END TRY
 
-		BEGIN CATCH
-					SET @responseMsg = error_message()
-		END CATCH
+			BEGIN CATCH
+						SET @responseMsg = error_message()
+			END CATCH
+		COMMIT TRAN
 END

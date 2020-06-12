@@ -127,6 +127,7 @@ CREATE TABLE TravelAgency.Transfer(
 	FOREIGN KEY(CC_Arriv) REFERENCES TravelAgency.CC(City),
 );
 
+
 CREATE TABLE TravelAgency.Booking(
 	ID			INT				NOT NULL	identity(1,1),
 	Paid		BIT				NOT NULL,

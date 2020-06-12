@@ -15,7 +15,6 @@ namespace WindowsFormsApp2
     public partial class Form5 : Form
     {
         private SqlConnection cn;
-        private string current_customer;
 
         public Form5()
         {
@@ -54,7 +53,7 @@ namespace WindowsFormsApp2
             if (!Int32.TryParse(textBox6.Text,out phoneNo))
             {
                 Debug.WriteLine(phoneNo);
-                MessageBox.Show("Phone Number must be a number wiwdwdith 9 digits.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Phone Number must be a number with 9 digits.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else if (phoneNo < 100000000 || phoneNo > 1000000000)
@@ -68,8 +67,6 @@ namespace WindowsFormsApp2
             string lname = textBox3.Text;
             string email = textBox4.Text;
             string password = textBox1.Text;
-
-            Debug.WriteLine(fname + " " + lname + " " + email + " " + phoneNo + " " + password);
 
             if (!verifySGBDConnection())
             {

@@ -11,7 +11,7 @@ AS
 				Name	VARCHAR(max) not null,
 				Image	VARCHAR(max),
 				Description VARCHAR(max),
-				Price VARCHAR(max) not null,
+				Price SMALLMONEY not null,
 				CC_Location VARCHAR(max) not null
 			)
 
@@ -61,4 +61,4 @@ AS
 
 GO
 
-exec TravelAgency.spFilterAcc 12, 1, 'None', 'None'
+--exec TravelAgency.spFilterAcc 12, 1, 'None', 'None'
