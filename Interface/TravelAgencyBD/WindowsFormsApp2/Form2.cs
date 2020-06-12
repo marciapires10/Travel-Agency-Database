@@ -1954,8 +1954,6 @@ namespace WindowsFormsApp2
                 }
             }
 
-            fillChart();
-
             cn.Close();
         }
         
@@ -2006,23 +2004,6 @@ namespace WindowsFormsApp2
             }
 
             cn.Close();
-        }
-
-        private void fillChart()
-        {
-            chart1.Series["Series1"].Points.AddXY("January", "1000");
-            chart1.Series["Series1"].Points.AddXY("February", "1000");
-            chart1.Series["Series1"].Points.AddXY("March", "1000");
-            chart1.Series["Series1"].Points.AddXY("April", "1000");
-            chart1.Series["Series1"].Points.AddXY("May", "1000");
-            chart1.Series["Series1"].Points.AddXY("June", "1000");
-            chart1.Series["Series1"].Points.AddXY("July", "1000");
-            chart1.Series["Series1"].Points.AddXY("August", "1000");
-            chart1.Series["Series1"].Points.AddXY("September", "1000");
-            chart1.Series["Series1"].Points.AddXY("October", "1000");
-            chart1.Series["Series1"].Points.AddXY("November", "1000");
-            chart1.Series["Series1"].Points.AddXY("December", "1000");
-            chart1.Titles.Add("Alguma coisa");
         }
 
 

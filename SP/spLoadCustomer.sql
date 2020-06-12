@@ -6,7 +6,9 @@ AS
 	BEGIN
 		SET NOCOUNT ON
 
-		Select Person.Email, Person.Fname, Person.Lname, Person.phoneNo, CustID, NIF from TravelAgency.Customer Join TravelAgency.Person ON TravelAgency.Customer.Email = TravelAgency.Person.Email
+		Select Person.Email, Person.Fname, Person.Lname, Person.phoneNo, CustID, NIF 
+		from TravelAgency.Customer Join TravelAgency.Person 
+		ON TravelAgency.Customer.Email = TravelAgency.Person.Email
 		ORDER BY CustID
 
 		OFFSET @size * (@noPage - 1) ROWS
