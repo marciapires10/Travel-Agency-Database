@@ -5,18 +5,34 @@ CREATE PROCEDURE TravelAgency.spDeleteCustomer
 AS
 	BEGIN
 			SET NOCOUNT ON
-			BEGIN TRY
-					DELETE FROM TravelAgency.Customer WHERE Email=@Email
-					DELETE FROM TravelAgency.Person WHERE Email=@Email
+			BEGIN TRAN
+				BEGIN TRY
+						
+						DECLARE @CustID INT
+						SET @CustID = (Select TravelAgency.GetCustID(@Email))
+
+						IF EXISTS(Select Cust_ID from TravelAgency.Booking Where TravelAgency.Booking.Paid = 0)
+							BEGIN
+									DELETE FROM TravelAgency.Booking WHERE Cust_ID = @CustID
+							END
+						ELSE
+							BEGIN
+								UPDATE TravelAgency.Booking
+								SET Cust_ID = '0'
+								WHERE Cust_ID = @CustID
+							END
+
+						DELETE FROM TravelAgency.Customer WHERE Email=@Email
+						DELETE FROM TravelAgency.Person WHERE Email=@Email
 					
-					IF 
 
 
-					SET @responseMsg='Success'
-			END TRY
+						SET @responseMsg='Success'
+				END TRY
 
-			BEGIN CATCH
-					SET @responseMsg=error_message()
-			END CATCH
+				BEGIN CATCH
+						SET @responseMsg=error_message()
+				END CATCH
+			COMMIT TRAN
 	END
 GO

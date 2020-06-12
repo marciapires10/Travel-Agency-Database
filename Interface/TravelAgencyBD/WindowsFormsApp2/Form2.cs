@@ -518,6 +518,7 @@ namespace WindowsFormsApp2
             }
         }
 
+
         private void btn_BackC_Click(object sender, EventArgs e)
         {
             noPage--;
@@ -537,6 +538,7 @@ namespace WindowsFormsApp2
                 btn_BackC.Enabled = false;
             }
         }
+
 
         private int getCustID(string email)
         {
@@ -681,8 +683,6 @@ namespace WindowsFormsApp2
                     btn_Conf.Text = "SELECT";
                     btn_Conf.Click += new EventHandler(btn_Conf_Click);
 
-                    Debug.WriteLine("load 3???");
-
                     lb7.AutoSize = true;
                     lb7.Location = new System.Drawing.Point(305, 130);
                     lb7.TabIndex = 3;
@@ -721,8 +721,6 @@ namespace WindowsFormsApp2
                     lb6.Name = "label6_" + nAcc;
                     lb7.Name = "label7_" + nAcc;
                     
-
-                    Debug.WriteLine(btn_Conf.Name);
 
                     lb2.Text = reader["Name"].ToString();
                     lb3.Text = reader["Description"].ToString();

@@ -16,3 +16,5 @@ AS
 			RETURN @Name;
 
 	END
+
+Select * FROM TravelAgency.GetCustName(94)
